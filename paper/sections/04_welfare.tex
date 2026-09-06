@@ -1,2 +1,83 @@
-\section{Welfare}
-Stage 10 writing placeholder. Theory is frozen.
+\section{Welfare: First Best and Second Best}
+
+Because utility is quadratic, consumer surplus can be calculated exactly. At a symmetric equilibrium with $A_1=A_2=A$, the price and quantity are
+\begin{equation}
+ p^*=\frac{A(1-\rho)}{2-\rho},
+ \qquad
+ q^*=\frac{A}{(2-\rho)(1+\rho)}.
+ \label{eq:symmetricpq}
+\end{equation}
+Substituting the equilibrium quantity into the representative consumer's utility net of expenditure gives
+\begin{equation}
+ CS(A,\rho)=\frac{A^2}{(2-\rho)^2(1+\rho)}.
+ \label{eq:CS}
+\end{equation}
+Aggregate producer surplus is
+\begin{equation}
+ PS(A,\rho)=\frac{2A^2(1-\rho)}{(2-\rho)^2(1+\rho)}.
+ \label{eq:PS}
+\end{equation}
+Therefore total surplus is
+\begin{equation}
+ W(A,\rho)=\frac{A^2(3-2\rho)}{(2-\rho)^2(1+\rho)}.
+ \label{eq:W}
+\end{equation}
+Since production has zero marginal cost, prices are transfers between consumers and firms. The policy results below are therefore driven by real changes in equilibrium product quality rather than by a transfer convention.
+
+Let
+\begin{equation}
+ K(\rho)\equiv\frac{3-2\rho}{(2-\rho)^2(1+\rho)}>0.
+\end{equation}
+Then $W=K(\rho)A^2$, so the regulator's symmetric welfare ranking is identical to its ranking of $A$.
+
+\subsection{A welfare decomposition}
+
+Along the decentralized private R\&D equilibrium, symmetric quality is
+\begin{equation}
+ A(b)=a+\theta\left[(1+b)g(x^F(b))+g(E-x^F(b))\right].
+ \label{eq:Ab}
+\end{equation}
+Differentiating and using the private first-order condition \eqref{eq:privategeneral} gives
+\begin{equation}
+ \frac{dA}{db}
+ =\theta\left[
+ g(x^F)+b(1+\nu)g'(x^F)\frac{dx^F}{db}
+ \right].
+ \label{eq:decomposition}
+\end{equation}
+The first term is the direct diffusion gain from applying the common improvement to a broader standardized scope. It is positive whenever common R\&D is positive. The second term is negative because $dx^F/db<0$: broader standardization induces firms to withdraw R\&D from the common layer. Thus the regulator faces a direct standardization benefit and an endogenous innovation-composition loss.
+
+Since
+\begin{equation}
+ \frac{dW}{db}=2K(\rho)A(b)\frac{dA}{db},
+\end{equation}
+the same decomposition determines the sign of the welfare derivative.
+
+\subsection{First best}
+
+Now suppose that the regulator can choose both the standardization scope $b$ and the symmetric R\&D composition $x$. Conditional on $b$, the planner's R\&D choice satisfies \eqref{eq:socialgeneral}. Let $x^S(b)$ denote this optimum. By the envelope theorem,
+\begin{equation}
+ \frac{dW^{FB}}{db}
+ =W_A\,\theta g(x^S(b))>0,
+\end{equation}
+where $W_A>0$. Consequently, the first-best regulator always expands the common scope to its maximum.
+
+\begin{proposition}[First-best standardization]\label{prop:firstbest}
+Under the frozen parameter restrictions, the first-best standardization scope is
+\begin{equation}
+ b^{FB}=1.
+\end{equation}
+\end{proposition}
+
+Combining Propositions~\ref{prop:benchmark}, \ref{prop:selective}, and \ref{prop:firstbest} yields the central welfare comparison:
+\begin{equation}
+ b^{BT}=b^{FB}=1,
+ \qquad
+ 0<b^{FULL}<1
+ \quad\text{when }\bar\nu(y)<\nu<y.
+ \label{eq:centralcomparison}
+\end{equation}
+
+The interpretation is second-best. The regulator would prefer complete standardization if it could prevent the induced distortion in R\&D composition. Restricting the common scope is optimal only because the regulator controls $b$ but not firms' subsequent allocation of scarce R\&D resources. In this sense, selective standardization substitutes imperfectly for a missing instrument that would align the private return to common innovation with its social return.
+
+This distinction also limits the policy claim. The model does not establish that a narrower standard dominates a combination of complete standardization and an innovation subsidy, licensing rule, or other appropriation instrument. Such instruments are outside the frozen game. The result is instead that when scope is the regulator's only instrument, complete standardization can be too broad in decentralized equilibrium even though it remains first-best.
