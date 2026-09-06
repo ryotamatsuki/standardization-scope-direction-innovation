@@ -11,42 +11,55 @@
 ## Workflow authority
 
 - Repository: `ryotamatsuki/research-paper-workflow`
-- Version used from Stage 9R onward: `v1.3`
+- Active version from Stage 9R onward: `v1.3`
 - Release commit: `3e4e6a3f76d86058024d06f9710f942e21627386`
-- Stage 9 template: `templates/STAGE_09_REPRODUCIBILITY_SETUP.md` at that release commit
-- v1.3 figure/table lifecycle is active; Stage 10 must complete the Figure/Table Architecture Gate before manuscript completion.
+- Stage 10 template: `templates/STAGE_10_PAPER_BUILD.md` at that release commit
+- Figure/table checklist: `checklists/FIGURE_TABLE_CHECKLIST.md` at that release commit
 
-Earlier workflow references in repository history (`v1.1` and `v1.2`) remain historical provenance only and are not the active authority for Stage 9R onward.
+Earlier workflow references in repository history (`v1.1` and `v1.2`) remain historical provenance only.
 
-## Stage 9R start-state record
+## Stage 9R
 
 - Starting remote `main`: `26d28b84dc3e0649c6c9f40e4fd706e23c0694ed`
-- Open pull requests at start: none
-- Existing non-main branches observed at start: `stage7-5r-freeze-decision`, `stage7r-post-astra-repair`, `stage8r-amended-theory-freeze`, `stage9-reproducibility`, `stage10-paper-build`
-- Stage 9R working branch: `stage9r-v13-reproducibility-sync`
-- Concurrent-work policy: no reset or overwrite of historical branches; Stage 9R starts from current remote main only.
+- Stage 9R branch: `stage9r-v13-reproducibility-sync`
+- Stage 9R merge commit: `ba641614eb191928193f443d46d15d40af08b1d9`
+- Verdict: `REPRODUCIBILITY BASELINE READY`
 
-## Reproducibility scope
+Stage 9R established the v2 reproducibility baseline and v1.3 exposition-output plumbing without changing theory or manuscript claims.
 
-Stage 9R changes repository infrastructure, metadata, tests, and exposition-output plumbing only. It does not alter the frozen game, equations, propositions, welfare claims, robustness scope, or novelty boundary.
+## Pre-Stage-10R JET/GEB architecture gate
 
-At Stage 9R there are zero approved quantitative manuscript figures/tables. This is intentional: workflow v1.3 assigns exposition-vehicle selection to the Stage 10 Figure/Table Architecture Gate. The Stage 9R pipeline validates an explicit empty manifest so later outputs cannot appear through undocumented manual steps.
+A project-specific **JET vs GEB Two-Journal Top-Journal Architecture Gate** was inserted after Stage 9R. RAND Journal of Economics was explicitly excluded from the active comparison by project instruction.
 
-## Pre-Stage-10R one-shot editorial gate
-
-After Stage 9R and before Stage 10R, a project-specific **JET vs GEB Two-Journal Top-Journal Architecture Gate** is active.
-
-RAND Journal of Economics is explicitly excluded from this gate by project instruction and is not part of the active architecture comparison.
-
-- Gate base state after the superseding user instruction: main `094344c2141c4c5e98c22f72c3b2031f8f93b47c`
 - Active gate record: `docs/TOP_JOURNAL_FIT_GATE_JET_GEB_2026-09-06.md`
-- Gate role: journal-identity / architecture routing only; no theory-change authority
 - Gate verdict: `KEEP SSDI v2 — NO JET/GEB THEORY ROLLBACK — PROCEED TO STAGE 10R`
-- JET decision: no in-project generalization; a credible JET move requires a new general policy theorem beyond weak allocation monotonicity and must clear the Bryan–Lemus (2017) direction-of-innovation collision test
-- GEB decision: no in-project generalization; a credible GEB move requires materially new game-theoretic interaction or a general strategic result
-- Preferred separate top-theory fork if pursued later: JET-oriented general theory of policy-controlled spillovers and endogenous allocation
-- Authorized current-paper route: `Stage 9R -> JET/GEB Top-Journal Architecture Gate -> Stage 10R`
+- JET: no in-project generalization; a credible move requires a new general policy theorem and a distinct novelty position relative to Bryan–Lemus (2017)
+- GEB: no in-project redesign; a credible move requires materially new game-theoretic interaction or a general strategic result
+- Current-paper route: preserve v2 and complete Stage 10R
 
-Historical note: commit `094344c2141c4c5e98c22f72c3b2031f8f93b47c` briefly contained a three-journal JET/GEB/RAND gate created by parallel work. The user then explicitly instructed that RAND should not be considered. That RAND-inclusive gate is therefore superseded and is not active project authority.
+Historical note: commit `094344c2141c4c5e98c22f72c3b2031f8f93b47c` briefly contained a RAND-inclusive three-journal gate created by parallel work. It is superseded and not active authority.
 
-The special gate does not alter `SSDI-THEORY-FREEZE-2026-09-06-v2`. Any later desire to pursue a JET/GEB-level general theorem must reopen the earliest affected theory stage or begin a separate project.
+## Stage 10R
+
+- Starting remote `main`: `b975e42e4cba97ee6aa2cb177efa34df3f1c85d0`
+- Open pull requests at Stage 10R start: none
+- Working branch: `stage10r-v2-manuscript-sync`
+- Active manuscript title after exposition-only retitling: *Standardization Scope and Endogenous Innovation Portfolios*
+- Theory authority remains `SSDI-THEORY-FREEZE-2026-09-06-v2`; no theory change is authorized or made
+- Figure/Table Architecture record: `docs/FIGURE_TABLE_ARCHITECTURE_STAGE10R.md`
+- Quantitative-output authority: `docs/EXPOSITION_OUTPUT_MANIFEST.json`
+- Required quantitative outputs: one verified policy-regime figure; no quantitative tables
+
+Stage 10R manuscript repairs include:
+
+1. removal of unconstrained first-best claims;
+2. replacement of globally strict general-technology comparative statics by global weak monotonicity with strictness only under interiority;
+3. explicit restriction of the fixed-allocation benchmark to symmetric allocations;
+4. deletion of the rejected generic `C^2` policy-curvature robustness claim;
+5. deletion of the rejected steep-capacity-cost policy-persistence claim;
+6. retention of endogenous-total-R&D only through the conditional relative-return FOC;
+7. completion of boundary-price-equilibrium and KKT/corner exposition;
+8. explicit closest-literature positioning against Bryan–Lemus (2017) and Acemoglu–Gancia–Zilibotti (2012);
+9. implementation of the v1.3 Figure/Table Architecture Gate and reproducible threshold regime map.
+
+The title change is an exposition/positioning change only and does not modify the frozen research question, game, assumptions, propositions, or welfare concept.
