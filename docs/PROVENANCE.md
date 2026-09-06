@@ -71,6 +71,7 @@ The repair:
 
 - Starting remote `main`: `4d221158ed9d1b3375a8a5e970ea9e6f5cd2afcd`
 - Branch: `stage11r-v3-hostile-referee-regate`
+- Merge commit: `87108448ef5665bcc6d898911aa2179c7aa6a3bb`
 - Audit record: `docs/STAGE_11R_V3_HOSTILE_REFEREE_REGATE.md`
 - Independent continuation implementation: `scripts/stage11_independent_continuation_audit.py`
 - Active theory remains v3; no new theory change is authorized.
@@ -91,8 +92,23 @@ Stage-11R classification:
 
 Minor carry-forward items are limited to copy/positioning: clarify pure-strategy uniqueness wording, optionally mention `(R)` in the figure caption, and consider adjacent 2026 empirical standards/innovation evidence during journal-specific integration. None changes the frozen theory.
 
+## Stage 12 journal positioning
+
+- Starting remote `main`: `87108448ef5665bcc6d898911aa2179c7aa6a3bb`
+- Branch: `stage12-journal-positioning`
+- Positioning record: `docs/STAGE_12_JOURNAL_POSITIONING.md`
+- Final verdict: `PRIMARY JOURNAL SELECTED — GO TO INTEGRATION`
+- Primary target: `International Journal of Industrial Organization (IJIO)`
+- Operational default ladder: `IJIO -> Review of Industrial Organization -> Journal of Industry, Competition and Trade`
+- Optional stretch: `The Journal of Industrial Economics`
+- RAND: excluded by explicit project instruction.
+
+Current web evidence used at Stage 12 shows that IJIO explicitly covers theoretical and empirical industrial organization, technological change and regulation, and has recently published work on innovation incentives in technical standards and standard-setting/innovation. JIE is retained only as a higher-risk stretch because the surviving contribution is narrow and the exact policy theorem is quadratic-specific. RIO is the strongest fallback because recent issues continue to publish self-contained IO theory on innovation, spillovers, differentiation, and policy.
+
+No theory change is authorized by Stage 12. Journal selection follows the surviving Stage-11 result set.
+
 Authorized forward route after successful CI and merge:
 
-`Stage 11R complete -> Stage 12 journal positioning`.
+`Stage 12 complete -> Stage 13 IJIO integration`.
 
-Stage 12 must select a journal for the surviving contribution rather than reshape the result to fit a preferred outlet.
+Stage 13 may make claim-preserving journal-specific presentation, disclosure, figure-caption, literature, metadata, and cover-letter changes, but may not change the frozen theory without formal rollback.
