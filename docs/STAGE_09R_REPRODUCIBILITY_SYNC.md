@@ -8,9 +8,9 @@ Active freeze: `SSDI-THEORY-FREEZE-2026-09-06-v2`
 
 Canonical workflow: `ryotamatsuki/research-paper-workflow` **v1.3**, release commit `3e4e6a3f76d86058024d06f9710f942e21627386`.
 
-Canonical template: `templates/STAGE_09_REPRODUCIBILITY_SETUP.md` at the same release commit.
+Canonical template: `templates/STAGE_09_REPRODUCIBILITY_SETUP.md` at that release commit.
 
-## 1. Starting remote state
+## 1. Starting remote/main SHA
 
 - Starting remote `main`: `26d28b84dc3e0649c6c9f40e4fd706e23c0694ed`.
 - Open pull requests at work start: none.
@@ -18,9 +18,9 @@ Canonical template: `templates/STAGE_09_REPRODUCIBILITY_SETUP.md` at the same re
 - Stage 9R branch: `stage9r-v13-reproducibility-sync`.
 - No historical branch was reset, overwritten, or used as the work base.
 
-The v1.3 release is backward compatible and does not alter stage numbering, theory-freeze meaning, or normal routing. Its new figure/table lifecycle is adopted from Stage 9R onward.
+Workflow v1.3 is a backward-compatible minor release. Stage numbering, freeze semantics, and normal routing are unchanged; its figure/table lifecycle is adopted from Stage 9R onward.
 
-## 2. Repository tree after Stage 9R infrastructure sync
+## 2. Repository tree
 
 ```text
 .github/workflows/verify.yml
@@ -67,97 +67,99 @@ tables/
 The Makefile exposes:
 
 - `make symbolic` — symbolic identities;
-- `make numerical` — numerical/global-deviation checkpoints already in the repository;
+- `make numerical` — numerical/global-deviation checkpoints;
 - `make test` — pytest regression suite;
 - `make verify` — symbolic + numerical + tests;
 - `make exposition` — validate/regenerate the currently approved exposition-output set;
 - `make paper` — LaTeX/BibTeX manuscript build;
 - `make all` — complete local-equivalent gate: verification + exposition + paper.
 
-The manuscript is modular LaTeX with bibliography in `references/references.bib`.
+The manuscript is modular LaTeX and the bibliography source is `references/references.bib`.
 
-## 4. Verification scripts and tests
+## 4. Verification scripts/tests
 
-Existing verified model infrastructure is retained without theory edits:
+The existing model-verification code is retained without theory edits.
 
-- `scripts/symbolic_verify.py` checks the quadratic private allocation FOC, `dx^F/db`, the coordinated symmetric allocation, `F''`, endpoint derivative identities, threshold polynomial identities, and Bertrand price/profit formulas.
-- `scripts/numerical_verify.py` checks the canonical interior policy example, private allocation against grid optimization, and unilateral price deviations at representative histories.
-- `tests/test_freeze_regressions.py` checks threshold endpoint signs, canonical interiority, and the `rho -> nu` mapping.
-- `tests/test_stage9r_metadata.py` prevents drift in active freeze/workflow metadata and verifies the Stage-9R exposition manifest.
+- `scripts/symbolic_verify.py`: quadratic private-allocation FOC, `dx^F/db`, coordinated symmetric allocation, `F''`, endpoint derivatives, threshold-polynomial identities, Bertrand price/profit identities.
+- `scripts/numerical_verify.py`: canonical interior policy example, private allocation against grid optimization, unilateral price-deviation checks.
+- `tests/test_freeze_regressions.py`: threshold endpoint signs, canonical interiority, `rho -> nu` mapping.
+- `tests/test_stage9r_metadata.py`: active freeze/workflow metadata and the Stage-9R exposition manifest.
 
-Stage 9R does not claim that these implementation tests substitute for analytic proofs. The proposition register remains governed by `docs/THEORY_FREEZE.md`.
+These implementation checks do not substitute for analytic proof; proposition authority remains `docs/THEORY_FREEZE.md`.
 
-## 5. Environment / dependencies
+## 5. Environment/dependencies
 
-CI uses Python 3.12. Python dependencies are documented in `requirements.txt`:
+CI uses Python 3.12. `requirements.txt` records:
 
 - `sympy>=1.13,<2`;
 - `pytest>=8,<9`;
 - `numpy>=2,<3`.
 
-The CI manuscript build installs TeX Live LaTeX base/recommended/extra and BibTeX-extra packages. No external data download is required for the current baseline verification or manuscript build.
+The manuscript build installs TeX Live LaTeX base/recommended/extra and BibTeX-extra. No external data download is required for the current baseline verification or manuscript build.
 
-## 6. Figure / table pipeline under workflow v1.3
+## 6. Figure/table pipeline under workflow v1.3
 
-Workflow v1.3 requires a Figure/Table Architecture Gate in Stage 10. Stage 9R therefore does not pre-commit the paper to a decorative or unverified visual.
+Workflow v1.3 requires the substantive Figure/Table Architecture Gate at Stage 10, not Stage 9. Stage 9R therefore creates the reproducible plumbing without inventing a visual before that gate.
 
-`docs/EXPOSITION_OUTPUT_MANIFEST.json` records exactly zero approved quantitative outputs at Stage 9R. `scripts/generate_exposition_outputs.py` validates the active freeze/workflow identifiers, the explicit empty output set, and the presence of provenance locations in `figures/` and `tables/`.
+`docs/EXPOSITION_OUTPUT_MANIFEST.json` records exactly zero approved quantitative outputs. `scripts/generate_exposition_outputs.py` validates the active freeze/workflow identifiers, the explicit empty set, and provenance directories `figures/` and `tables/`.
 
-`make exposition` is the deterministic regeneration gate. At Stage 10R, every figure/table accepted by the architecture gate must be added to the manifest, generated from verified model objects or authoritative data, and incorporated into this target and CI.
+`make exposition` is the deterministic regeneration/validation target. At Stage 10R, every accepted quantitative figure/table must be generated from verified model objects or authoritative source data, listed in the manifest, and incorporated into this target and CI.
 
-## 7. CI / local-equivalent gate
+## 7. CI / local-equivalent gate status
 
-The GitHub Actions workflow runs:
+GitHub Actions run `34021009478` completed successfully on the Stage 9R PR head.
 
-1. install Python dependencies;
-2. `make verify`;
-3. `make exposition`;
-4. install TeX dependencies;
-5. `make paper`.
+All required steps passed:
 
-Final Stage 9R status is to be recorded only after the branch CI completes successfully.
+1. Python dependency installation — **PASS**;
+2. `make verify` — **PASS**;
+3. `make exposition` — **PASS**;
+4. TeX dependency installation — **PASS**;
+5. `make paper` — **PASS**.
+
+Thus the repository has a functioning reproducibility baseline under the v2 freeze and workflow v1.3.
 
 ## 8. Provenance locations
 
 - Active theory: `docs/THEORY_FREEZE.md`.
 - Historical v1 theory: `docs/THEORY_FREEZE_v1.md`.
-- Theory repair record: `docs/THEORY_CHANGE_RECORD_2026-09-06_POST_ASTRA.md`.
-- Stage 7R / 7.5R / 8R decisions: corresponding files under `docs/`.
-- Active workflow and remote-start metadata: `docs/PROVENANCE.md`.
+- Theory repair: `docs/THEORY_CHANGE_RECORD_2026-09-06_POST_ASTRA.md`.
+- Stage 7R / 7.5R / 8R decisions: corresponding `docs/` records.
+- Workflow and remote-start metadata: `docs/PROVENANCE.md`.
 - Figure/table output authority: `docs/EXPOSITION_OUTPUT_MANIFEST.json`.
 
-The active workflow authority is v1.3 / `3e4e6a3...`; earlier v1.1/v1.2 references are historical only.
+The active workflow authority from Stage 9R onward is v1.3 / `3e4e6a3f76d86058024d06f9710f942e21627386`. Earlier v1.1/v1.2 references are historical provenance only.
 
-## 9. Remaining blockers / stale state
+## 9. Remaining blockers
 
-There is no reproducibility-infrastructure blocker.
+There is **no reproducibility-infrastructure blocker**.
 
-However, the current manuscript text was produced before the v2 repair and remains **substantively stale** in places. A successful `make paper` at Stage 9R proves only that the source builds; it does not certify manuscript-to-freeze consistency. In particular, Stage 10R must remove the old unconstrained-`first best` language, repair general-technology quantifiers, remove refuted `C^2` policy-curvature robustness, narrow endogenous-total-R&D claims, and close the documented appendix exposition gaps.
+The current manuscript text remains substantively stale because it predates the v2 repair. Stage 9R deliberately does not edit manuscript claims. A successful `make paper` here establishes build reproducibility only, not manuscript-to-freeze consistency.
 
-That stale manuscript state is intentionally not repaired in Stage 9R because section synchronization belongs to Stage 10R.
+Stage 10R must remove the old unconstrained-`first best` language, repair general-technology quantifiers, remove the refuted generic `C^2` policy-curvature claim, narrow endogenous-total-R&D claims, restrict the fixed-allocation benchmark correctly, and close the documented appendix exposition gaps.
 
 ## 10. Exact Stage 10R writing contract under workflow v1.3
 
-Stage 10R must use only `SSDI-THEORY-FREEZE-2026-09-06-v2` and must re-fetch current remote state before substantial implementation cycles.
+Stage 10R must use only `SSDI-THEORY-FREEZE-2026-09-06-v2` and re-fetch current remote state before substantial implementation cycles.
 
-Required manuscript synchronization:
+It must:
 
-1. update abstract, introduction, welfare, robustness, related-literature contribution boundary, conclusion, proposition statements, and appendix to v2;
-2. prohibit any claim of an unconstrained first best;
-3. state the general concave result as global weak monotonicity, with strict signs only under interiority;
+1. synchronize abstract, equilibrium propositions, welfare, robustness, related-literature boundary, conclusion, appendix, and then Introduction to v2;
+2. make no unconstrained first-best claim;
+3. state general concave comparative statics as global weak monotonicity with strict signs only under interiority;
 4. restrict fixed-allocation welfare claims to fixed symmetric allocation;
-5. retain the exact selective-standardization uniqueness/threshold theorem only for the quadratic baseline;
+5. retain the exact selective-standardization threshold/uniqueness theorem only for the quadratic baseline;
 6. retain endogenous-total-R&D only for the conditional relative-return FOC;
-7. close the omitted price-boundary-equilibrium uniqueness exposition and add KKT/corner language where required;
+7. close the price-boundary-equilibrium uniqueness exposition and add required KKT/corner language;
 8. complete the **mandatory v1.3 Figure/Table Architecture Gate before finalizing the Introduction**;
 9. assign every headline result one primary exposition vehicle;
-10. implement every required quantitative figure/table reproducibly, update `docs/EXPOSITION_OUTPUT_MANIFEST.json`, and make `make exposition` regenerate/check it;
+10. implement every required quantitative figure/table reproducibly and update `docs/EXPOSITION_OUTPUT_MANIFEST.json` plus `make exposition`;
 11. run `make all` and CI before declaring the repaired manuscript complete.
 
-No new theorem, extension, assumption, or broader novelty claim is authorized.
+No new theorem, extension, assumption, welfare claim, or broader novelty claim is authorized.
 
-## 11. Provisional Stage 9R verdict
+## 11. Final Stage 9R verdict
 
-`REPRODUCIBILITY BASELINE READY` **conditional only on the branch CI gate succeeding**.
+`REPRODUCIBILITY BASELINE READY`
 
-If CI succeeds, no further Stage 9R repair is required and the project proceeds to Stage 10R. If CI fails, the failure must be repaired at Stage 9R unless it reveals a substantive theory mismatch, in which case the affected earlier stage must be reopened.
+Proceed to **Stage 10R — v2 Manuscript Synchronization and v1.3 Figure/Table Architecture Gate**.
