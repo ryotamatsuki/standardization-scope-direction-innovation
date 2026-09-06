@@ -107,8 +107,33 @@ Current web evidence used at Stage 12 shows that IJIO explicitly covers theoreti
 
 No theory change is authorized by Stage 12. Journal selection follows the surviving Stage-11 result set.
 
-Authorized forward route after successful CI and merge:
+## Stage 13 IJIO full-paper integration
 
-`Stage 12 complete -> Stage 13 IJIO integration`.
+- Starting remote `main`: `10109b3fa528b638a9d652e635cc10099ee1f8f5`
+- Branch: `stage13-ijio-integration`
+- Merge commit: `25a308c07277614a522164d0b52387b550c93a2e`
+- Integration record: `docs/STAGE_13_IJIO_FULL_PAPER_INTEGRATION.md`
+- Verdict: `INTEGRATED MANUSCRIPT READY FOR SUBMISSION QA`
 
-Stage 13 may make claim-preserving journal-specific presentation, disclosure, figure-caption, literature, metadata, and cover-letter changes, but may not change the frozen theory without formal rollback.
+Stage 13 sharpened the Introduction and closest-literature boundary for IJIO, added the `(R)` scope qualification to Figure 1, restricted global price-equilibrium wording to pure strategies, integrated bounded 2026 standards/innovation evidence, added Elsevier-style AI/data declarations, and prepared Highlights, cover letter, and submission metadata. The theory freeze remained v3.
+
+## Stage 14 IJIO submission QA
+
+- Starting remote `main`: `25a308c07277614a522164d0b52387b550c93a2e`
+- Branch: `stage14-submission-qa`
+- QA record: `docs/STAGE_14_IJIO_SUBMISSION_QA.md`
+- Qualified package source commit: `c5c5f132a051a40339fc3a140c07f91e0920629e`
+- Qualified workflow run: `34029839013`
+- Qualified artifact ID: `9988256374`
+- Artifact ZIP SHA-256: `df90da9f8cf7e8a485702399f542eef2a232d703afcfe5acf7094377e3f47c64`
+- Verdict: `SUBMISSION QA PASS`
+
+Stage 14 reused verified author/account and declaration information from prior journal submissions, including the exact IJIO Editorial Manager article-type label `Research Paper`. It created a separate author title page while preserving the anonymous review manuscript and deliberately excluded the private street address from the public repository.
+
+The clean-run gate passed symbolic and numerical verification, the independent continuation audit, 11 regression tests, figure regeneration, LaTeX build, citation/cross-reference kill tests, package completeness checks, and PDF/font preflight. The exact qualified artifact was rendered and visually inspected page by page. The 16-page manuscript, separate title page, and standalone vector figure have no clipping, overlap, broken glyph, or missing-content defect. Bounded Stage-14 repairs removed visible hyperlink boxes, removed an internal title-page note, and embedded appropriate vector fonts without changing economic content.
+
+Authorized forward route:
+
+`Stage 14 complete -> Stage 15 submission freeze / authenticated Editorial Manager finalization`.
+
+Stage 15 must freeze the exact submission objects and portal entries, confirm any current live file roles, classifications, reviewer requirements, declarations, and payment conditions, and inspect the system-generated submission PDF before final Submit. Any substantive manuscript/theory change still requires rollback.
