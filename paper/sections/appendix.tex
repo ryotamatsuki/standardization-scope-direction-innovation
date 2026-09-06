@@ -36,38 +36,64 @@ Substituting \eqref{eq:price}, the right-hand side of \eqref{eq:foreclosurethres
 which follows from \eqref{eq:R}. Thus no feasible nonnegative deviation can foreclose the rival. A deviation high enough to make the deviator's own demand zero yields zero profit and is dominated by the positive active-equilibrium profit. Every positive-profit deviation therefore remains in the active region, where \eqref{eq:activeprofitappendix} is strictly concave and uniquely maximized by \eqref{eq:price}. The active candidate is consequently the unique global Nash equilibrium of every price subgame.
 
 \subsection{General-technology allocation monotonicity and corners}
-Let $g$ be differentiable, increasing, and strictly concave on $[0,E]$. Define the private and coordinated symmetric objectives
+Let $g$ be differentiable, increasing, and strictly concave on $[0,E]$. Define
 \begin{align}
  f_F(x,b)&=(1-\nu b)g(x)+g(E-x),\\
  f_S(x,b)&=(1+b)g(x)+g(E-x).
 \end{align}
-Both are strictly concave in $x$, so each has a unique maximizer on the compact interval $[0,E]$. Moreover,
-\begin{equation}
- \frac{\partial^2 f_F}{\partial x\,\partial b}=-\nu g'(x)<0,
- \qquad
- \frac{\partial^2 f_S}{\partial x\,\partial b}=g'(x)>0.
-\end{equation}
-Thus $f_F$ has decreasing differences and $f_S$ has increasing differences. Monotone comparative statics for the unique maximizers imply that $x^F(b)$ is globally nonincreasing and $x^S(b)$ globally nondecreasing. This argument includes boundary optima and does not require interior first-order conditions.
+Both objectives are strictly concave in $x$, so each has a unique maximizer on $[0,E]$.
 
-Where the relevant optimum is interior, define
+Take $b_2>b_1$. For the private problem,
 \begin{equation}
- \Phi_F(x,b)=(1-\nu b)g'(x)-g'(E-x).
+ f_F(x,b_2)-f_F(x,b_1)=-\nu(b_2-b_1)g(x),
+ \label{eq:private-diff-order}
 \end{equation}
-Then
+which is nonincreasing in $x$. This is decreasing differences without any second-derivative assumption. Let $x_k=x^F(b_k)$. If $x_2>x_1$, optimality at the two policy values implies
 \begin{equation}
- \Phi_{F,x}=(1-\nu b)g''(x)+g''(E-x)<0,
+ f_F(x_2,b_2)-f_F(x_2,b_1)
+ \geq
+ f_F(x_1,b_2)-f_F(x_1,b_1),
+\end{equation}
+whereas \eqref{eq:private-diff-order} implies the reverse inequality. Equality would make both distinct choices optimal at both policy values, contradicting uniqueness. Hence
+\begin{equation}
+ x^F(b_2)\leq x^F(b_1).
+\end{equation}
+This argument includes boundary optima.
+
+For the coordinated symmetric problem,
+\begin{equation}
+ f_S(x,b_2)-f_S(x,b_1)=(b_2-b_1)g(x),
+ \label{eq:coord-diff-order}
+\end{equation}
+which is nondecreasing in $x$. The analogous revealed-preference argument yields
+\begin{equation}
+ x^S(b_2)\geq x^S(b_1),
+\end{equation}
+again including corners.
+
+It remains to establish strict ordering when both compared optima are interior. First note that differentiability, monotonicity, and strict concavity imply $g'(x)>0$ at every interior $x\in(0,E)$. Indeed, monotonicity implies $g'(x)\geq0$. If $g'(x_0)=0$ at an interior point, concavity makes $g'$ nonincreasing, so $g'(x)=0$ for all $x>x_0$ where the derivative is evaluated. By the mean value theorem $g$ would then be constant on a nontrivial interval, contradicting strict concavity.
+
+Suppose the private optima at $b_1$ and $b_2$ are both interior and, contrary to strict ordering, equal the same $x$. Their first-order conditions would be
+\begin{equation}
+ (1-\nu b_1)g'(x)=g'(E-x),
  \qquad
- \Phi_{F,b}=-\nu g'(x)<0,
+ (1-\nu b_2)g'(x)=g'(E-x).
 \end{equation}
-so
+Subtracting gives $\nu(b_2-b_1)g'(x)=0$, impossible because $\nu>0$, $b_2>b_1$, and $g'(x)>0$. Combining this with global nonincreasingness gives
 \begin{equation}
- \frac{dx^F}{db}=-\frac{\Phi_{F,b}}{\Phi_{F,x}}<0.
+ x^F(b_2)<x^F(b_1).
 \end{equation}
-Similarly, with
+The coordinated case is identical: equality of two interior optima would require
 \begin{equation}
- \Phi_S(x,b)=(1+b)g'(x)-g'(E-x),
+ (1+b_1)g'(x)=g'(E-x),
+ \qquad
+ (1+b_2)g'(x)=g'(E-x),
 \end{equation}
-we have $\Phi_{S,b}=g'(x)>0$ and $\Phi_{S,x}<0$, hence $dx^S/db>0$ at an interior optimum. If a boundary KKT condition binds, the optimizer can remain at $0$ or $E$ over an interval of $b$, so the global comparative static is weak rather than everywhere strict.
+which is impossible for $b_2>b_1$ and $g'(x)>0$. Therefore
+\begin{equation}
+ x^S(b_2)>x^S(b_1).
+\end{equation}
+No pointwise derivative sign for $x^F(b)$ or $x^S(b)$ is asserted for a general technology.
 
 \subsection{Threshold uniqueness}
 Differentiating \eqref{eq:H} with respect to $\nu$ gives
@@ -90,4 +116,4 @@ At a symmetric Bertrand equilibrium, $q_1=q_2=q$. Gross utility is
 Net consumer surplus subtracts expenditure $2pq$. Using \eqref{eq:symmetricpq} yields \eqref{eq:CS}; adding equilibrium profits yields \eqref{eq:W}. If a planner instead controlled quantities at a fixed symmetric quality $A$, maximizing $2Aq-(1+\rho)q^2$ gives $q^{EFF}=A/(1+\rho)$ and $W^{EFF}=A^2/(1+\rho)$. Subtracting \eqref{eq:W} gives \eqref{eq:bertrandgap}, confirming that the coordinated symmetric-R\&D benchmark with decentralized pricing is not an unconstrained first best.
 
 \subsection{Computational and exposition verification}
-The repository contains symbolic identity checks in \texttt{scripts/symbolic\_verify.py}, an independent numerical evaluator in \texttt{scripts/numerical\_verify.py}, regression tests in \texttt{tests/}, and the Stage-10 exposition generator in \texttt{scripts/generate\_exposition\_outputs.py}. These artifacts implement the active frozen theory record \texttt{SSDI-THEORY-FREEZE-2026-09-06-v2}. They are verification and reproducibility aids rather than substitutes for the analytic arguments above. The policy-regime figure is generated directly from the threshold equation $H(y,\bar\nu(y))=0$ over the proven domain and is not based on a hand-entered or arbitrarily normalized index.
+The repository contains symbolic identity checks in \texttt{scripts/symbolic\_verify.py}, an independent numerical evaluator in \texttt{scripts/numerical\_verify.py}, regression tests in \texttt{tests/}, and the Stage-10 exposition generator in \texttt{scripts/generate\_exposition\_outputs.py}. These artifacts implement the active frozen theory record \texttt{SSDI-THEORY-FREEZE-2026-09-06-v3}. They are verification and reproducibility aids rather than substitutes for the analytic arguments above. The policy-regime figure is generated directly from the unchanged threshold equation $H(y,\bar\nu(y))=0$ over the proven quadratic domain and is not based on a hand-entered or arbitrarily normalized index.
