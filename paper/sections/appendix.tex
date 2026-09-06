@@ -1,0 +1,46 @@
+\section{Proof Details and Verification Notes}
+
+\subsection{Global price continuation}
+For fixed qualities $(A_i,A_j)$, the active-region profit of firm $i$ is
+\begin{equation}
+ \pi_i(p_i;p_j)=\frac{p_i\left[A_i-p_i-\rho(A_j-p_j)\right]}{1-\rho^2},
+\end{equation}
+which is strictly concave in $p_i$. Solving the two first-order conditions gives \eqref{eq:price}. Condition~\eqref{eq:R} implies positive candidate prices and quantities at every feasible upstream history and makes the price required to foreclose the rival negative. Hence no feasible nonnegative unilateral deviation can cross into a profitable rival-foreclosure region. Deviations that make own demand zero yield zero profit and are dominated by the positive equilibrium profit. Thus the active candidate is the unique global Nash equilibrium of every price subgame.
+
+\subsection{Private and social R\&D comparative statics}
+For a general increasing strictly concave $g$, define
+\begin{equation}
+ \Phi_F(x,b)=(1-\nu b)g'(x)-g'(E-x).
+\end{equation}
+At an interior optimum, $\Phi_F=0$ and
+\begin{equation}
+ \Phi_{F,x}=(1-\nu b)g''(x)+g''(E-x)<0,
+ \qquad
+ \Phi_{F,b}=-\nu g'(x)<0.
+\end{equation}
+Therefore $dx^F/db=-\Phi_{F,b}/\Phi_{F,x}<0$. Similarly, for
+\begin{equation}
+ \Phi_S(x,b)=(1+b)g'(x)-g'(E-x),
+\end{equation}
+we have $\Phi_{S,b}=g'(x)>0$ and $\Phi_{S,x}<0$, so $dx^S/db>0$.
+
+\subsection{Threshold uniqueness}
+Differentiating \eqref{eq:H} with respect to $\nu$ gives
+\begin{equation}
+ H_\nu=3\nu^2+4\nu(y^2-4y+1)+y^2-4y+16.
+\end{equation}
+For $0<\nu<y<1$,
+\begin{equation}
+ H_\nu>4(y^2-4y+1)+(y^2-4y+16)=5(y-2)^2>0.
+\end{equation}
+Together with $H(y,0)<0<H(y,y)$, continuity implies a unique root $\bar\nu(y)\in(0,y)$.
+
+\subsection{Exact consumer surplus}
+At a symmetric equilibrium, $q_1=q_2=q$. Gross utility is
+\begin{equation}
+ 2Aq-(1+\rho)q^2.
+\end{equation}
+Net consumer surplus subtracts expenditure $2pq$. Using \eqref{eq:symmetricpq} yields \eqref{eq:CS}. Adding equilibrium profits yields \eqref{eq:W}.
+
+\subsection{Computational verification}
+The repository contains symbolic identity checks in \texttt{scripts/symbolic\_verify.py}, an independent numerical evaluator in \texttt{scripts/numerical\_verify.py}, and regression tests in \texttt{tests/test\_freeze\_regressions.py}. These artifacts implement the frozen theory record \texttt{SSDI-THEORY-FREEZE-2026-09-06-v1}; they are verification aids rather than substitutes for the analytic arguments above.
