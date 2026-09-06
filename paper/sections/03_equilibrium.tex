@@ -1,2 +1,141 @@
-\section{Equilibrium}
-Stage 10 writing placeholder. Theory is frozen.
+\section{Equilibrium and the Direction of Innovation}
+
+We solve the game backward. Under condition~\eqref{eq:R}, the price subgame has a unique active-product equilibrium at every feasible upstream history. The first-order conditions are
+\begin{equation}
+ 2p_i-\rho p_j=A_i-\rho A_j,
+\end{equation}
+which yield
+\begin{equation}
+ p_i^*=\frac{(2-\rho^2)A_i-\rho A_j}{4-\rho^2}.
+ \label{eq:price}
+\end{equation}
+Demand satisfies $q_i^*=p_i^*/(1-\rho^2)$, so equilibrium profit is
+\begin{equation}
+ \pi_i^*=\frac{\left[(2-\rho^2)A_i-\rho A_j\right]^2}
+ {(4-\rho^2)^2(1-\rho^2)}.
+ \label{eq:profit}
+\end{equation}
+Condition~\eqref{eq:R} guarantees that the bracketed term is positive for all feasible histories. Hence maximizing profit with respect to $x_i$ is equivalent to maximizing the linear quality index $(2-\rho^2)A_i-\rho A_j$.
+
+Using \eqref{eq:quality} and dividing by the positive coefficient $2-\rho^2$, firm $i$ solves
+\begin{equation}
+ \max_{x_i\in[0,E]}
+ \left(1-\nu b\right)g(x_i)+g(E-x_i),
+ \label{eq:rdproblem}
+\end{equation}
+where $\nu$ is defined in \eqref{eq:nu}. The rival's R\&D choice drops out of firm $i$'s best response. Economically, one unit of common-layer R\&D improves the firm's own product but, through the standard, also improves the rival's product. The term $\nu b$ is the private competitive penalty attached to that spillover.
+
+The objective in \eqref{eq:rdproblem} is strictly concave. Under \eqref{eq:nuy}, the unique optimum is interior for every $b\in[0,1]$ and equals
+\begin{equation}
+ x^F(b)=\frac{y-\nu b}{\kappa(2-\nu b)}.
+ \label{eq:xprivate}
+\end{equation}
+Because each firm's best response is independent of the rival's allocation, the R\&D subgame has a unique symmetric equilibrium and no asymmetric R\&D equilibrium in the frozen parameter region.
+
+\begin{proposition}[Private R\&D reallocation]\label{prop:private}
+Suppose \eqref{eq:yregion}, \eqref{eq:nuy}, and \eqref{eq:R} hold. The unique private R\&D allocation satisfies
+\begin{equation}
+ \frac{dx^F}{db}
+ =-\frac{\nu(2-y)}{\kappa(2-\nu b)^2}<0,
+ \qquad
+ \frac{dz^F}{db}>0.
+\end{equation}
+Thus a broader common standard redirects a fixed R\&D budget from common-layer toward proprietary innovation.
+\end{proposition}
+
+The sign does not rely on the quadratic specification. For any increasing strictly concave $g$, the private first-order condition is
+\begin{equation}
+ (1-\nu b)g'(x^F)=g'(E-x^F),
+ \label{eq:privategeneral}
+\end{equation}
+and implicit differentiation gives $dx^F/db<0$.
+
+For comparison, consider a planner that, conditional on a given scope $b$, chooses the symmetric R\&D composition to maximize symmetric product quality and therefore welfare. The planner solves
+\begin{equation}
+ \max_{x\in[0,E]} (1+b)g(x)+g(E-x),
+\end{equation}
+with first-order condition
+\begin{equation}
+ (1+b)g'(x^S)=g'(E-x^S).
+ \label{eq:socialgeneral}
+\end{equation}
+Under the quadratic technology,
+\begin{equation}
+ x^S(b)=\frac{y+b}{\kappa(2+b)}.
+ \label{eq:xsocial}
+\end{equation}
+
+\begin{proposition}[Directional private--social wedge]\label{prop:wedge}
+For any increasing strictly concave $g$, a broader standard shifts the private and social R\&D allocations in opposite directions:
+\begin{equation}
+ \frac{dx^F}{db}<0<\frac{dx^S}{db}.
+\end{equation}
+Moreover, for $b>0$,
+\begin{equation}
+ x^F(b)<\frac{E}{2}<x^S(b).
+\end{equation}
+\end{proposition}
+
+Proposition~\ref{prop:wedge} is the mechanism, not the main policy result. A standard that widens the use of common innovation makes such innovation less privately attractive because it strengthens competitors, while making it more socially attractive because the same technological improvement benefits a larger set of products.
+
+\subsection{The regulator's scope choice}
+
+We first hold the R\&D composition fixed at an arbitrary $\bar x>0$. Symmetric quality is then
+\begin{equation}
+ A^{BT}(b)=a+\theta\left[(1+b)g(\bar x)+g(E-\bar x)\right].
+\end{equation}
+Since $\partial A^{BT}/\partial b=\theta g(\bar x)>0$, welfare is increasing in $b$ for every fixed allocation with positive common R\&D.
+
+\begin{proposition}[Fixed-allocation benchmark]\label{prop:benchmark}
+For every fixed R\&D allocation with $\bar x>0$, the regulator chooses complete standardization:
+\begin{equation}
+ b^{BT}=1.
+\end{equation}
+If $\bar x=0$, the regulator is indifferent over $b$.
+\end{proposition}
+
+Now substitute the private R\&D equilibrium \eqref{eq:xprivate}. Since symmetric welfare is strictly increasing in symmetric quality, the policy problem is equivalent to maximizing
+\begin{equation}
+ F(b)=\kappa\left[(1+b)g(x^F(b))+g(E-x^F(b))\right].
+ \label{eq:F}
+\end{equation}
+Direct calculation gives
+\begin{equation}
+ F''(b)=
+ -\frac{\nu(2-y)^2(2b\nu^2+b\nu+2\nu+4)}{(2-b\nu)^4}<0,
+ \label{eq:Fpp}
+\end{equation}
+and
+\begin{equation}
+ F'(0)=\frac{y(4-y)}{8}>0.
+ \label{eq:Fp0}
+\end{equation}
+Thus the regulator never chooses zero standardization in the baseline region. At $b=1$, define
+\begin{align}
+ H(y,\nu)={}&\nu^3+2\nu^2y^2-8\nu^2y+2\nu^2 \\
+ &+\nu y^2-4\nu y+16\nu+2y^2-8y.
+ \label{eq:H}
+\end{align}
+The sign of $F'(1)$ is equivalent to the sign of $H$: $F'(1)<0$ if and only if $H(y,\nu)>0$. Furthermore,
+\begin{equation}
+ H(y,0)=2y(y-4)<0,
+ \qquad
+ H(y,y)=2y(y-2)^2(y+1)>0,
+\end{equation}
+and $H_\nu>0$ on $0<\nu<y<1$. Hence for every $y\in(1/2,1)$ there is a unique threshold $\bar\nu(y)\in(0,y)$ satisfying $H(y,\bar\nu(y))=0$.
+
+\begin{proposition}[Selective standardization]\label{prop:selective}
+Suppose \eqref{eq:yregion}, \eqref{eq:nuy}, and \eqref{eq:R} hold. For each $y\in(1/2,1)$ there exists a unique $\bar\nu(y)\in(0,y)$ such that
+\begin{equation}
+ \nu\leq\bar\nu(y) \quad\Longrightarrow\quad b^{FULL}=1,
+\end{equation}
+while
+\begin{equation}
+ \bar\nu(y)<\nu<y \quad\Longrightarrow\quad 0<b^{FULL}<1.
+\end{equation}
+In the latter region the interior policy is unique.
+\end{proposition}
+
+Because $\nu=\rho/(2-\rho^2)$ is increasing in $\rho$, stronger product-market substitutability makes selective standardization more likely. Rivalry increases the private cost of transferring the benefit of common R\&D to a competitor. The regulator responds not because the direct value of standardization has become negative, but because complete standardization induces too large a retreat from common innovation.
+
+For illustration, let $\kappa=1$, $E=0.7$, $\nu=0.5$, $\rho=\sqrt{3}-1$, $a=10$, and $\theta=0.2$. The verified numerical solution is $b^{FULL}\simeq0.6878$, whereas the fixed-allocation benchmark selects $b=1$.
