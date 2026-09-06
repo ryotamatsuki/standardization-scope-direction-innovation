@@ -15,7 +15,7 @@ Target manuscript: `Standardization Scope and Endogenous Innovation Portfolios`
 
 We study a regulator that chooses the scope of a common technical standard before competing firms allocate a fixed R&D capacity between common-layer and proprietary innovation. Broader scope makes common-layer improvements more transferable across rival products, lowering their private relative return because a firm's common R&D strengthens its competitor. In the quadratic baseline, firms therefore redirect R&D toward proprietary innovation as scope expands. More generally, with a differentiable increasing strictly concave innovation technology, private common-layer R&D is globally nonincreasing in scope, while a coordinated symmetric allocation is globally nondecreasing; when two compared scope choices both induce interior optima, these order comparisons are strict. Complete standardization is optimal for every fixed positive symmetric common-R&D allocation and when the regulator coordinates the symmetric R&D composition while Bertrand pricing remains decentralized. With decentralized endogenous R&D composition, however, sufficiently strong product-market rivalry yields a unique interior scope in the quadratic baseline. Selective standardization is thus a scope-only second-best response to an endogenous innovation-composition distortion.
 
-Current abstract length: 160 words; below the currently indexed IJIO author-guideline limit of 250 words.
+Current abstract length: 167 words under the Stage-14 package-QA tokenizer; below the currently indexed IJIO author-guideline limit of 250 words.
 
 **Keywords (6):**
 
@@ -105,7 +105,7 @@ No quantitative table is required by the paper's exposition architecture.
 
 Elsevier's current IJIO page identifies the journal as the official EARIE journal and explicitly welcomes theoretical work in industrial organization, technological change, strategic behavior and regulation. The official page links submissions to Editorial Manager.
 
-The direct ScienceDirect IJIO Guide for Authors is the controlling source, but automated access to the full guide remains blocked. Current indexed guide material reports a 250-word abstract limit, while contemporary IJIO articles display Highlights and standard Elsevier declaration sections. The current package's 160-word abstract is safely below that limit.
+The direct ScienceDirect IJIO Guide for Authors is the controlling source, but automated access to the full guide remains blocked. Current indexed guide material reports a 250-word abstract limit, while contemporary IJIO articles display Highlights and standard Elsevier declaration sections. The current package's 167-word abstract is safely below that limit.
 
 Elsevier artwork guidance currently accepts/recommends EPS, PDF, TIFF and JPEG; PDF is accepted for vector-based artwork. Fonts should be embedded. For bitmap alternatives, minimum resolutions are 1000 dpi for line art, 300 dpi for grayscale/color halftones and 500 dpi for combination artwork. The paper's sole figure is vector PDF, so raster-resolution requirements are not the controlling requirement.
 
