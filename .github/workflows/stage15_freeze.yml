@@ -1,0 +1,116 @@
+name: stage15-freeze
+
+on:
+  push:
+    branches:
+      - stage15-ijio-submission-freeze
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    env:
+      FROZEN_SHA: afd4c9d98170e4bb8fab7bc638b825133cf7fe37
+      FREEZE_ID: SSDI-IJIO-SUBMISSION-FREEZE-2026-09-06-v1
+    steps:
+      - name: Checkout exact frozen source
+        uses: actions/checkout@v4
+        with:
+          ref: afd4c9d98170e4bb8fab7bc638b825133cf7fe37
+          fetch-depth: 0
+
+      - name: Verify checkout identity
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$FROZEN_SHA"
+          git status --porcelain=v1
+          test -z "$(git status --porcelain=v1)"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run mathematical and regression verification
+        run: |
+          set -o pipefail
+          mkdir -p freeze_logs
+          make verify 2>&1 | tee freeze_logs/make_verify.log
+
+      - name: Regenerate exposition output
+        run: |
+          set -o pipefail
+          make exposition 2>&1 | tee freeze_logs/make_exposition.log
+
+      - name: Install TeX and PDF tools
+        run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-bibtex-extra poppler-utils zip
+
+      - name: Build anonymous manuscript
+        run: |
+          set -o pipefail
+          make paper 2>&1 | tee freeze_logs/make_paper.log
+
+      - name: Build separate IJIO title page
+        run: |
+          set -o pipefail
+          pdflatex -interaction=nonstopmode -halt-on-error -output-directory=submission submission/ijio_title_page.tex 2>&1 | tee freeze_logs/title_page_build.log
+
+      - name: Run Stage 14 package QA at frozen SHA
+        run: |
+          set -o pipefail
+          python scripts/stage14_package_qa.py 2>&1 | tee freeze_logs/stage14_package_qa.log
+
+      - name: Capture PDF metadata and embedded-font audit
+        run: |
+          {
+            echo '=== paper/main.pdf ==='
+            pdfinfo paper/main.pdf
+            pdffonts paper/main.pdf
+            echo '=== submission/ijio_title_page.pdf ==='
+            pdfinfo submission/ijio_title_page.pdf
+            pdffonts submission/ijio_title_page.pdf
+            echo '=== figures/policy_regime_map.pdf ==='
+            pdfinfo figures/policy_regime_map.pdf
+            pdffonts figures/policy_regime_map.pdf
+          } > freeze_logs/pdf_preflight.txt
+
+      - name: Build immutable source archive from frozen commit
+        run: git archive --format=zip --output=ssdi-source-afd4c9d98170e4bb8fab7bc638b825133cf7fe37.zip "$FROZEN_SHA"
+
+      - name: Assemble Stage 15 freeze bundle
+        run: |
+          set -euo pipefail
+          mkdir -p freeze_bundle/submission freeze_bundle/verification freeze_bundle/source
+          cp paper/main.pdf freeze_bundle/submission/anonymous_manuscript.pdf
+          cp submission/ijio_title_page.pdf freeze_bundle/submission/title_page.pdf
+          cp figures/policy_regime_map.pdf freeze_bundle/submission/policy_regime_map.pdf
+          cp submission/ijio_highlights.txt freeze_bundle/submission/highlights.txt
+          cp submission/ijio_cover_letter.md freeze_bundle/submission/cover_letter.md
+          cp submission/ijio_submission_metadata.md freeze_bundle/submission/submission_metadata.md
+          cp submission/ijio_declarations.md freeze_bundle/submission/declarations.md
+          cp references/references.bib freeze_bundle/source/references.bib
+          cp ssdi-source-afd4c9d98170e4bb8fab7bc638b825133cf7fe37.zip freeze_bundle/source/
+          cp freeze_logs/* freeze_bundle/verification/
+          cat > freeze_bundle/FREEZE_METADATA.txt <<EOF
+          Freeze ID: SSDI-IJIO-SUBMISSION-FREEZE-2026-09-06-v1
+          Frozen commit SHA: afd4c9d98170e4bb8fab7bc638b825133cf7fe37
+          Theory freeze: SSDI-THEORY-FREEZE-2026-09-06-v3
+          Target journal: International Journal of Industrial Organization
+          Article type: Research Paper
+          Freeze date: 2026-09-06
+          Submission status at bundle creation: FROZEN, not yet uploaded or submitted
+          EOF
+          (cd freeze_bundle && find . -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+          zip -r stage15-ijio-freeze-bundle.zip freeze_bundle >/dev/null
+          sha256sum stage15-ijio-freeze-bundle.zip > stage15-ijio-freeze-bundle.zip.sha256
+
+      - name: Upload Stage 15 freeze bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: stage15-ijio-submission-freeze
+          if-no-files-found: error
+          path: |
+            stage15-ijio-freeze-bundle.zip
+            stage15-ijio-freeze-bundle.zip.sha256
+            freeze_bundle/SHA256SUMS.txt
