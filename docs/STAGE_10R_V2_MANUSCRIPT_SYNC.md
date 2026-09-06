@@ -100,7 +100,7 @@ Changes:
 - distinguishes AGZ (2012)'s dynamic growth/standardization mechanism from the present static scope/portfolio feedback;
 - narrows the contribution to the scope-to-portfolio-to-policy-reversal architecture and exact quadratic threshold.
 
-Bibliography: `references/references.bib` now contains the verified Bryan–Lemus citation and DOI.
+Bibliography: `references/references.bib` contains the Bryan–Lemus citation and DOI.
 
 ### Section 7 — Conclusion
 
@@ -146,7 +146,7 @@ Representative checks:
 
 - `requirements.txt` adds Matplotlib for deterministic figure generation.
 - `make paper` now depends on `make exposition`.
-- `tests/test_stage9r_metadata.py` is updated to require the Stage-10 regime-map manifest and to block reintroduction of rejected manuscript phrases.
+- `tests/test_stage9r_metadata.py` requires the Stage-10 regime-map manifest, blocks reintroduction of rejected manuscript phrases, and verifies that citation keys and LaTeX cross-references resolve at source level.
 - README and figure/table provenance records are synchronized to Stage 10R.
 
 ## 5. Theory-change audit
@@ -163,18 +163,22 @@ The following are exposition/claim-scope repairs only:
 
 No rollback is triggered.
 
-## 6. Remaining blockers
+## 6. Verification status
 
-At implementation completion there is no known manuscript-content or exposition-architecture blocker. Final Stage-10 verdict is conditional only on the branch CI/local-equivalent gates:
+GitHub Actions run `34022633268` on the Stage-10R PR completed successfully before the final source-reference regression was added. It passed:
 
-1. dependency installation;
-2. `make verify`;
-3. `make exposition`;
-4. TeX dependency installation;
-5. `make paper`.
+1. Python dependency installation — **PASS**;
+2. `make verify` — **PASS**;
+3. `make exposition` — **PASS**;
+4. TeX dependency installation — **PASS**;
+5. `make paper` — **PASS**.
 
-## 7. Provisional verdict
+The subsequent source-reference regression and this final record update are required to pass the same CI workflow on the final PR head before merge. The PR is not to be merged on a failed or incomplete final-head run.
 
-`FULL DRAFT READY FOR REFEREE GATE` **conditional on Stage 10R branch CI passing**.
+There is no known manuscript-content, theory-scope, bibliography, cross-reference, build, or exposition-architecture blocker.
 
-If the CI/build exposes only implementation defects, repair them within Stage 10R. If it exposes a substantive mismatch with v2, reopen the earliest affected theory stage instead of patching the manuscript silently.
+## 7. Final verdict
+
+`FULL DRAFT READY FOR REFEREE GATE`
+
+This verdict becomes the authoritative main-branch state only after PR #10's final head passes CI and is merged. Stage 11 must attack the completed v2 manuscript and may not silently add new extensions or restore rejected claims.
