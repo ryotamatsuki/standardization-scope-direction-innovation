@@ -51,11 +51,10 @@ def test_v3_p2r_is_order_comparative_statics_only():
     assert "x^S(b_2)\\geq x^S(b_1)" in equilibrium
     assert "x^F(b_2)<x^F(b_1)" in equilibrium
     assert "x^S(b_2)>x^S(b_1)" in equilibrium
-    assert "No pointwise derivative sign" in equilibrium
+    assert "No pointwise sign for $dx^F/db$ or $dx^S/db$" in equilibrium
     assert "No pointwise derivative statement" in freeze
     assert "We do not assert a pointwise sign" in robustness
 
-    # The repaired general-g proof must not use second derivatives or implicit differentiation.
     assert "g''" not in appendix
     assert "Phi_{F,x}" not in appendix
     assert "frac{dx^F}{db}" not in robustness
