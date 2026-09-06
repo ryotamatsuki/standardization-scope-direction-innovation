@@ -7,7 +7,7 @@ Workflow release commit: `3e4e6a3f76d86058024d06f9710f942e21627386`
 
 Stage 11 hostile audit previously reopened Stage 7R only for the general-technology P2R formulation. That defect was repaired and refrozen as v3 without changing the quadratic baseline or Proposition 4. The repeated Stage 11R hostile referee gate returned `GO TO JOURNAL POSITIONING`.
 
-Stage 12 journal positioning selected **International Journal of Industrial Organization (IJIO)** as the primary target. Stage 13 IJIO full-paper integration is now complete on the integration branch with verdict `INTEGRATED MANUSCRIPT READY FOR SUBMISSION QA`. The operational default ladder remains `IJIO -> Review of Industrial Organization -> Journal of Industry, Competition and Trade`, with The Journal of Industrial Economics retained as an optional higher-risk stretch rather than the default second submission. RAND remains excluded by project instruction.
+Stage 12 journal positioning selected **International Journal of Industrial Organization (IJIO)** as the primary target. Stage 13 IJIO full-paper integration returned `INTEGRATED MANUSCRIPT READY FOR SUBMISSION QA`. Stage 14 submission QA is complete with verdict `SUBMISSION QA PASS`. The operational default ladder remains `IJIO -> Review of Industrial Organization -> Journal of Industry, Competition and Trade`, with The Journal of Industrial Economics retained as an optional higher-risk stretch rather than the default second submission. RAND remains excluded by project instruction.
 
 ## Reproducibility
 
@@ -28,6 +28,7 @@ make all
 - `make verify` runs symbolic identities, numerical checks, the independent Stage-11 continuation audit, and pytest regression tests.
 - `make exposition` regenerates and validates the policy-regime figure from the unchanged quadratic threshold equation.
 - `make paper` depends on `make exposition` and builds `paper/main.pdf` from the modular LaTeX source and bibliography.
+- CI additionally runs Stage-14 submission-package QA, PDF/font preflight, title-page build, unresolved-reference kill tests, and submission-artifact assembly.
 
 ## Stage 7R2 repair
 
@@ -77,9 +78,21 @@ Integrated items include:
 - IJIO Highlights;
 - cover letter;
 - submission metadata;
-- live fee/format check with unresolved account-dependent items explicitly deferred to Stage 14.
+- live fee/format check.
 
-No theory change is authorized or introduced by Stage 13.
+No theory change was authorized or introduced by Stage 13.
+
+## Stage 14 IJIO submission QA
+
+The QA record is `docs/STAGE_14_IJIO_SUBMISSION_QA.md`.
+
+Verdict: `SUBMISSION QA PASS`.
+
+The qualified package source commit is `c5c5f132a051a40339fc3a140c07f91e0920629e`. Clean CI verifies symbolic identities, numerical checks, continuation safety, regression tests, figure regeneration, LaTeX build, bibliography/cross-references, anonymous-manuscript separation, author title page, declarations, PDF font embedding, package completeness, and artifact generation.
+
+Author metadata and declaration fields are synchronized to the author's prior successful journal submissions. The IJIO article type is fixed to the previously confirmed Editorial Manager label `Research Paper`. The public repository does not store the private street address.
+
+The exact qualified CI artifact was visually inspected page by page. The manuscript is 16 pages; the title page and vector Figure 1 are clean and legible. Stage-14 cosmetic QA removed visible hyperlink boxes and an internal title-page note without changing theory or results.
 
 ## Exposition architecture
 
@@ -91,4 +104,4 @@ The active theory is defined by `docs/THEORY_FREEZE.md`. Historical freezes v1 a
 
 Authorized forward route:
 
-`Stage 13 complete -> Stage 14 submission QA`.
+`Stage 14 complete -> Stage 15 submission freeze / Editorial Manager finalization`.

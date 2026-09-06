@@ -1,6 +1,6 @@
 Dear Editors,
 
-Please consider the manuscript **“Standardization Scope and Endogenous Innovation Portfolios”** for publication in the *International Journal of Industrial Organization*.
+Please consider the manuscript **“Standardization Scope and Endogenous Innovation Portfolios”** for publication as a **Research Paper** in the *International Journal of Industrial Organization*.
 
 The paper studies a regulator that chooses the scope of a common technical standard before differentiated-product firms allocate a fixed R&D capacity between common-layer and proprietary innovation and then compete in prices. Broader scope increases the transferability of common-layer innovation to the rival, which lowers its private relative return and changes the composition of firms’ innovation portfolios.
 
@@ -10,12 +10,14 @@ The paper is positioned narrowly relative to the closest literatures. Llanes (20
 
 This combination of technical standards, innovation incentives, product-market rivalry, and regulation fits IJIO’s stated coverage of theoretical industrial organization, technological change, strategic behavior, and regulation. The manuscript contains a transparent statement of its functional-form limits and does not rely on an unconstrained first-best comparison.
 
-The paper uses no empirical data. Symbolic and numerical materials are used only to verify the analytic results. The manuscript includes the required declaration of generative AI and AI-assisted technologies and separately documents AI assistance used in the computational verification workflow.
+The paper uses no empirical data. Symbolic and numerical materials are used only to verify the analytic results. The manuscript includes a declaration of generative AI and AI-assisted technologies and separately documents AI assistance used in the computational verification workflow.
 
-Before submission, the corresponding author should confirm the following administrative declarations in Editorial Manager: the manuscript is not under consideration elsewhere; all authorship information is complete; and all funding and competing-interest disclosures are accurate.
+This manuscript is original, is not under consideration elsewhere, and I approve its submission to IJIO. No external funding supported the work. I declare no competing interests.
 
 Sincerely,
 
-[Corresponding author]
-[Affiliation]
-[Email]
+Ryota Matsuki  
+Independent Researcher  
+790-0853, Matsuyama, Ehime, Japan  
+ryota.matsuki@gmail.com  
+ORCID: 0009-0005-2329-531X
