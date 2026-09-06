@@ -1,16 +1,31 @@
 \documentclass[11pt]{article}
 \usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
 \title{Standardization Scope and the Direction of Innovation}
 \author{}
 \date{}
 \begin{document}
 \maketitle
+\begin{abstract}
+We study a regulator that chooses the scope of a common technical standard before competing firms allocate a fixed R\&D capacity between common-layer and proprietary innovation. A broader standard makes common-layer improvements more transferable across rival products. This raises the social return to common innovation but lowers its private return because a firm's common R\&D strengthens its competitor. Firms therefore redirect R\&D toward proprietary innovation as standardization expands, whereas a social planner reallocates R\&D in the opposite direction. In a differentiated Bertrand model, complete standardization is optimal for every fixed positive common-R\&D allocation and under the first best. With decentralized endogenous R\&D allocation, however, sufficiently strong product-market rivalry yields a unique interior standardization scope. Selective standardization is therefore a second-best response to an innovation-composition distortion rather than evidence that interoperability itself is socially harmful.
+\end{abstract}
+
+\noindent\textbf{Keywords:} technical standards; interoperability; R\&D allocation; innovation direction; product-market competition; second-best policy.\\
+\noindent\textbf{JEL:} L15, L13, O31, O38.
+
 \input{sections/01_introduction}
 \input{sections/02_model}
 \input{sections/03_equilibrium}
 \input{sections/04_welfare}
-\input{sections/05_conclusion}
+\input{sections/05_robustness}
+\input{sections/06_related_literature}
+\input{sections/07_conclusion}
+\appendix
+\input{sections/appendix}
 \bibliographystyle{apalike}
 \bibliography{../references/references}
 \end{document}
