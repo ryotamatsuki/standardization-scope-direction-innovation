@@ -7,7 +7,7 @@ Workflow release commit: `3e4e6a3f76d86058024d06f9710f942e21627386`
 
 Stage 11 hostile audit previously reopened Stage 7R only for the general-technology P2R formulation. That defect was repaired and refrozen as v3 without changing the quadratic baseline or Proposition 4. The repeated Stage 11R hostile referee gate returned `GO TO JOURNAL POSITIONING`.
 
-Stage 12 journal positioning is complete. Primary target: **International Journal of Industrial Organization (IJIO)**. The operational default ladder is `IJIO -> Review of Industrial Organization -> Journal of Industry, Competition and Trade`, with The Journal of Industrial Economics retained as an optional higher-risk stretch rather than the default second submission. RAND remains excluded by project instruction.
+Stage 12 journal positioning selected **International Journal of Industrial Organization (IJIO)** as the primary target. Stage 13 IJIO full-paper integration is now complete on the integration branch with verdict `INTEGRATED MANUSCRIPT READY FOR SUBMISSION QA`. The operational default ladder remains `IJIO -> Review of Industrial Organization -> Journal of Industry, Competition and Trade`, with The Journal of Industrial Economics retained as an optional higher-risk stretch rather than the default second submission. RAND remains excluded by project instruction.
 
 ## Reproducibility
 
@@ -60,7 +60,26 @@ Verdict: `PRIMARY JOURNAL SELECTED — GO TO INTEGRATION`.
 
 Primary target: **International Journal of Industrial Organization**.
 
-Stage 13 is authorized to perform IJIO-specific integration, disclosure/fee/format verification, bounded literature/copy updates, and submission-package preparation. It may not change the frozen theory or add a new mechanism merely to improve journal fit.
+## Stage 13 IJIO integration
+
+The integration record is `docs/STAGE_13_IJIO_FULL_PAPER_INTEGRATION.md`.
+
+Verdict: `INTEGRATED MANUSCRIPT READY FOR SUBMISSION QA`.
+
+Integrated items include:
+
+- IJIO-specific Introduction and literature emphasis;
+- Figure 1 caption domain clarification (`conditional on (R)`);
+- pure-strategy equilibrium wording correction;
+- 2026 standards/innovation empirical citation;
+- Elsevier-compliant generative-AI declaration and AI-assisted verification disclosure;
+- data-availability statement;
+- IJIO Highlights;
+- cover letter;
+- submission metadata;
+- live fee/format check with unresolved account-dependent items explicitly deferred to Stage 14.
+
+No theory change is authorized or introduced by Stage 13.
 
 ## Exposition architecture
 
@@ -72,4 +91,4 @@ The active theory is defined by `docs/THEORY_FREEZE.md`. Historical freezes v1 a
 
 Authorized forward route:
 
-`Stage 12 complete -> Stage 13 IJIO integration`.
+`Stage 13 complete -> Stage 14 submission QA`.
