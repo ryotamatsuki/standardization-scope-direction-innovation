@@ -75,7 +75,7 @@ for rel, text in production_texts:
             fail(f"placeholder {token!r} remains in {rel}")
 
 caption_text = read("paper/sections/03_equilibrium.tex")
-if "conditional on condition~\\eqref{eq:R}" not in caption_text:
+if "conditional on the global continuation restriction~\\eqref{eq:R}" not in caption_text:
     fail("Figure 1 caption does not state the (R) scope condition")
 
 appendix = read("paper/sections/appendix.tex")
