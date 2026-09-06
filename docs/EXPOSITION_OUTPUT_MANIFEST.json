@@ -1,5 +1,5 @@
 {
-  "freeze_id": "SSDI-THEORY-FREEZE-2026-09-06-v2",
+  "freeze_id": "SSDI-THEORY-FREEZE-2026-09-06-v3",
   "workflow_version": "v1.3",
   "workflow_release_commit": "3e4e6a3f76d86058024d06f9710f942e21627386",
   "stage": "10R",
@@ -7,7 +7,7 @@
     {
       "id": "policy-regime-map",
       "type": "figure",
-      "economic_object": "The unique threshold bar_nu(y) solving H(y,nu)=0 in the frozen quadratic policy theorem",
+      "economic_object": "The unique threshold bar_nu(y) solving H(y,nu)=0 in the unchanged quadratic policy theorem",
       "primary_result": "Proposition 4: complete versus selective standardization regimes",
       "generator": "scripts/generate_exposition_outputs.py",
       "output_path": "figures/policy_regime_map.pdf",
@@ -20,6 +20,6 @@
       "required_in_final_paper": true
     }
   ],
-  "status": "STAGE_10_ARCHITECTURE_IMPLEMENTED",
-  "note": "No quantitative table is required. The regime map is the only required visual because the headline theorem is a threshold/regime result; other results are more efficiently communicated by propositions, equations, numerical illustration, or prose."
+  "status": "STAGE_10_ARCHITECTURE_REVALIDATED_UNDER_V3",
+  "note": "The Stage-11 P2R repair does not alter Proposition 4 or the regime map. No quantitative table is required."
 }
