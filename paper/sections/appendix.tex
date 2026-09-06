@@ -1,46 +1,93 @@
 \section{Proof Details and Verification Notes}
 
 \subsection{Global price continuation}
-For fixed qualities $(A_i,A_j)$, the active-region profit of firm $i$ is
+Fix an upstream history and qualities $(A_i,A_j)$. In the region where both products have positive demand, firm $i$'s profit is
 \begin{equation}
  \pi_i(p_i;p_j)=\frac{p_i\left[A_i-p_i-\rho(A_j-p_j)\right]}{1-\rho^2},
+ \label{eq:activeprofitappendix}
 \end{equation}
-which is strictly concave in $p_i$. Solving the two first-order conditions gives \eqref{eq:price}. Condition~\eqref{eq:R} implies positive candidate prices and quantities at every feasible upstream history and makes the price required to foreclose the rival negative. Hence no feasible nonnegative unilateral deviation can cross into a profitable rival-foreclosure region. Deviations that make own demand zero yield zero profit and are dominated by the positive equilibrium profit. Thus the active candidate is the unique global Nash equilibrium of every price subgame.
+which is strictly concave in $p_i$. The two active-region first-order conditions yield the candidate in \eqref{eq:price}.
 
-\subsection{Private and social R\&D comparative statics}
-For a general increasing strictly concave $g$, define
+Condition~\eqref{eq:R} implies, for every feasible pair of qualities,
+\begin{equation}
+ \frac{A_i}{A_j}
+ <\frac{2}{\rho(3-\rho^2)}
+ \quad\text{and}\quad
+ \frac{A_i}{A_j}
+ >\frac{\rho(3-\rho^2)}{2}>\rho.
+ \label{eq:qualityratioappendix}
+\end{equation}
+The second inequality shows that a product cannot be inactive in a price equilibrium. If product $i$ had zero demand while $p_j\geq0$, then at a sufficiently small positive price $p_i$ its active-demand numerator would satisfy
+\begin{equation}
+ A_i-p_i-\rho(A_j-p_j)
+ > A_i-\rho A_j-p_i>0
+\end{equation}
+for small enough $p_i>0$. Firm $i$ would then earn strictly positive profit, contradicting zero-demand equilibrium behavior. Hence no separate one-active-product or zero-demand Nash equilibrium exists.
+
+It remains to rule out a profitable unilateral deviation from the active candidate into a region that forecloses the rival. Holding $p_j=p_j^*$, product $j$ would be driven to zero demand only if firm $i$ set
+\begin{equation}
+ p_i\leq A_i-\frac{A_j-p_j^*}{\rho}.
+ \label{eq:foreclosurethreshold}
+\end{equation}
+Substituting \eqref{eq:price}, the right-hand side of \eqref{eq:foreclosurethreshold} is negative exactly when
+\begin{equation}
+ \frac{A_i}{A_j}<\frac{2}{\rho(3-\rho^2)},
+\end{equation}
+which follows from \eqref{eq:R}. Thus no feasible nonnegative deviation can foreclose the rival. A deviation high enough to make the deviator's own demand zero yields zero profit and is dominated by the positive active-equilibrium profit. Every positive-profit deviation therefore remains in the active region, where \eqref{eq:activeprofitappendix} is strictly concave and uniquely maximized by \eqref{eq:price}. The active candidate is consequently the unique global Nash equilibrium of every price subgame.
+
+\subsection{General-technology allocation monotonicity and corners}
+Let $g$ be differentiable, increasing, and strictly concave on $[0,E]$. Define the private and coordinated symmetric objectives
+\begin{align}
+ f_F(x,b)&=(1-\nu b)g(x)+g(E-x),\\
+ f_S(x,b)&=(1+b)g(x)+g(E-x).
+\end{align}
+Both are strictly concave in $x$, so each has a unique maximizer on the compact interval $[0,E]$. Moreover,
+\begin{equation}
+ \frac{\partial^2 f_F}{\partial x\,\partial b}=-\nu g'(x)<0,
+ \qquad
+ \frac{\partial^2 f_S}{\partial x\,\partial b}=g'(x)>0.
+\end{equation}
+Thus $f_F$ has decreasing differences and $f_S$ has increasing differences. Monotone comparative statics for the unique maximizers imply that $x^F(b)$ is globally nonincreasing and $x^S(b)$ globally nondecreasing. This argument includes boundary optima and does not require interior first-order conditions.
+
+Where the relevant optimum is interior, define
 \begin{equation}
  \Phi_F(x,b)=(1-\nu b)g'(x)-g'(E-x).
 \end{equation}
-At an interior optimum, $\Phi_F=0$ and
+Then
 \begin{equation}
  \Phi_{F,x}=(1-\nu b)g''(x)+g''(E-x)<0,
  \qquad
- \Phi_{F,b}=-\nu g'(x)<0.
+ \Phi_{F,b}=-\nu g'(x)<0,
 \end{equation}
-Therefore $dx^F/db=-\Phi_{F,b}/\Phi_{F,x}<0$. Similarly, for
+so
+\begin{equation}
+ \frac{dx^F}{db}=-\frac{\Phi_{F,b}}{\Phi_{F,x}}<0.
+\end{equation}
+Similarly, with
 \begin{equation}
  \Phi_S(x,b)=(1+b)g'(x)-g'(E-x),
 \end{equation}
-we have $\Phi_{S,b}=g'(x)>0$ and $\Phi_{S,x}<0$, so $dx^S/db>0$.
+we have $\Phi_{S,b}=g'(x)>0$ and $\Phi_{S,x}<0$, hence $dx^S/db>0$ at an interior optimum. If a boundary KKT condition binds, the optimizer can remain at $0$ or $E$ over an interval of $b$, so the global comparative static is weak rather than everywhere strict.
 
 \subsection{Threshold uniqueness}
 Differentiating \eqref{eq:H} with respect to $\nu$ gives
 \begin{equation}
  H_\nu=3\nu^2+4\nu(y^2-4y+1)+y^2-4y+16.
 \end{equation}
-For $0<\nu<y<1$,
-\begin{equation}
- H_\nu>4(y^2-4y+1)+(y^2-4y+16)=5(y-2)^2>0.
-\end{equation}
+For $0<\nu<y<1$, because $y^2-4y+1<0$ on the frozen range and $\nu<1$,
+\begin{align}
+ H_\nu
+ &>4(y^2-4y+1)+(y^2-4y+16)\\
+ &=5(y-2)^2>0.
+\end{align}
 Together with $H(y,0)<0<H(y,y)$, continuity implies a unique root $\bar\nu(y)\in(0,y)$.
 
-\subsection{Exact consumer surplus}
-At a symmetric equilibrium, $q_1=q_2=q$. Gross utility is
+\subsection{Exact consumer surplus and the Bertrand welfare gap}
+At a symmetric Bertrand equilibrium, $q_1=q_2=q$. Gross utility is
 \begin{equation}
  2Aq-(1+\rho)q^2.
 \end{equation}
-Net consumer surplus subtracts expenditure $2pq$. Using \eqref{eq:symmetricpq} yields \eqref{eq:CS}. Adding equilibrium profits yields \eqref{eq:W}.
+Net consumer surplus subtracts expenditure $2pq$. Using \eqref{eq:symmetricpq} yields \eqref{eq:CS}; adding equilibrium profits yields \eqref{eq:W}. If a planner instead controlled quantities at a fixed symmetric quality $A$, maximizing $2Aq-(1+\rho)q^2$ gives $q^{EFF}=A/(1+\rho)$ and $W^{EFF}=A^2/(1+\rho)$. Subtracting \eqref{eq:W} gives \eqref{eq:bertrandgap}, confirming that the coordinated symmetric-R\&D benchmark with decentralized pricing is not an unconstrained first best.
 
-\subsection{Computational verification}
-The repository contains symbolic identity checks in \texttt{scripts/symbolic\_verify.py}, an independent numerical evaluator in \texttt{scripts/numerical\_verify.py}, and regression tests in \texttt{tests/test\_freeze\_regressions.py}. These artifacts implement the frozen theory record \texttt{SSDI-THEORY-FREEZE-2026-09-06-v1}; they are verification aids rather than substitutes for the analytic arguments above.
+\subsection{Computational and exposition verification}
+The repository contains symbolic identity checks in \texttt{scripts/symbolic\_verify.py}, an independent numerical evaluator in \texttt{scripts/numerical\_verify.py}, regression tests in \texttt{tests/}, and the Stage-10 exposition generator in \texttt{scripts/generate\_exposition\_outputs.py}. These artifacts implement the active frozen theory record \texttt{SSDI-THEORY-FREEZE-2026-09-06-v2}. They are verification and reproducibility aids rather than substitutes for the analytic arguments above. The policy-regime figure is generated directly from the threshold equation $H(y,\bar\nu(y))=0$ over the proven domain and is not based on a hand-entered or arbitrarily normalized index.

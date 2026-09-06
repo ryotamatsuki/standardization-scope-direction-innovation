@@ -1,15 +1,16 @@
 # Figures
 
-No quantitative manuscript figure is approved at Stage 9R.
+Stage 10R approves exactly one required quantitative manuscript figure under `research-paper-workflow` v1.3:
 
-Under `research-paper-workflow` v1.3, Stage 10 must complete the mandatory Figure/Table Architecture Gate and assign a primary exposition vehicle to each headline result before a required figure is introduced.
+- `policy_regime_map.pdf` — the complete-versus-selective standardization regime map generated from the unique root `bar_nu(y)` of `H(y,nu)=0` on the frozen quadratic domain `1/2 < y < 1`, `0 < nu < y`.
 
-Any figure later approved must:
+Provenance:
 
-- be generated from a verified model object or authoritative source data;
-- keep its generator in `scripts/` or another documented source location;
-- be reproducible through the repository build targets;
-- preserve the actual economic scale, sign, and proven parameter domain;
-- be listed in `docs/EXPOSITION_OUTPUT_MANIFEST.json`.
+- active freeze: `SSDI-THEORY-FREEZE-2026-09-06-v2`;
+- generator: `scripts/generate_exposition_outputs.py`;
+- manifest: `docs/EXPOSITION_OUTPUT_MANIFEST.json`;
+- manuscript hook: `fig:regime-map`;
+- representative check: `bar_nu(0.7)=0.3587285925190902`;
+- regeneration target: `make exposition` or `make paper`.
 
-Hand-entered quantitative figure values are prohibited.
+The PDF is generated rather than hand edited. The figure communicates the proven threshold/regime structure only and must not be interpreted outside the quadratic baseline or outside the frozen parameter domain.

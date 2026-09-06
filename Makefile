@@ -2,7 +2,7 @@ PYTHON ?= python
 
 .PHONY: all verify symbolic numerical test exposition figures tables paper clean
 
-all: verify exposition paper
+all: verify paper
 
 verify: symbolic numerical test
 
@@ -22,7 +22,7 @@ figures: exposition
 
 tables: exposition
 
-paper:
+paper: exposition
 	cd paper && pdflatex -interaction=nonstopmode -halt-on-error main.tex >/dev/null
 	cd paper && bibtex main >/dev/null
 	cd paper && pdflatex -interaction=nonstopmode -halt-on-error main.tex >/dev/null
@@ -30,3 +30,4 @@ paper:
 
 clean:
 	rm -f paper/*.aux paper/*.bbl paper/*.blg paper/*.log paper/*.out paper/*.pdf
+	rm -f figures/policy_regime_map.pdf

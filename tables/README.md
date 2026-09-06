@@ -1,15 +1,7 @@
 # Tables
 
-No quantitative manuscript table is approved at Stage 9R.
+The Stage 10R Figure/Table Architecture Gate requires no quantitative manuscript table.
 
-Under `research-paper-workflow` v1.3, Stage 10 must complete the mandatory Figure/Table Architecture Gate before a required table is introduced.
+The headline threshold result is more efficiently communicated by the verified policy-regime figure, while the remaining headline results are compact propositions, equations, or prose statements. Adding a table would duplicate those objects without materially reducing reader cost.
 
-Any table later approved must:
-
-- be generated from verified model objects or authoritative source data;
-- keep its generator and source inputs in the repository;
-- be reproducible through documented build targets;
-- machine-check representative values where feasible;
-- be listed in `docs/EXPOSITION_OUTPUT_MANIFEST.json`.
-
-Hand-entered quantitative table values are prohibited.
+If a later journal-specific stage proposes a quantitative table, it must be generated from verified model objects or authoritative source data, listed in `docs/EXPOSITION_OUTPUT_MANIFEST.json`, and added without changing the frozen theory or result set.
