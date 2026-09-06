@@ -11,7 +11,7 @@
 ## Workflow authority
 
 - Repository: `ryotamatsuki/research-paper-workflow`
-- Version used for Stage 9R: `v1.3`
+- Version used from Stage 9R onward: `v1.3`
 - Release commit: `3e4e6a3f76d86058024d06f9710f942e21627386`
 - Stage 9 template: `templates/STAGE_09_REPRODUCIBILITY_SETUP.md` at that release commit
 - v1.3 figure/table lifecycle is active; Stage 10 must complete the Figure/Table Architecture Gate before manuscript completion.
@@ -31,3 +31,18 @@ Earlier workflow references in repository history (`v1.1` and `v1.2`) remain his
 Stage 9R changes repository infrastructure, metadata, tests, and exposition-output plumbing only. It does not alter the frozen game, equations, propositions, welfare claims, robustness scope, or novelty boundary.
 
 At Stage 9R there are zero approved quantitative manuscript figures/tables. This is intentional: workflow v1.3 assigns exposition-vehicle selection to the Stage 10 Figure/Table Architecture Gate. The Stage 9R pipeline validates an explicit empty manifest so later outputs cannot appear through undocumented manual steps.
+
+## Pre-Stage-10R one-shot editorial gate
+
+After Stage 9R and before Stage 10R, a project-specific **JET vs GEB vs RAND Three-Journal Top-Journal Architecture Gate** was inserted at the user's request.
+
+- Gate entry main SHA: `ba641614eb191928193f443d46d15d40af08b1d9`
+- Gate record: `docs/TOP_JOURNAL_FIT_GATE_JET_GEB_RAND_2026-09-06.md`
+- Gate role: journal-identity / architecture routing only; no theory-change authority
+- Gate verdict: `RAND-DOMINANT — NO THEORY ROLLBACK`
+- JET decision: no in-project generalization; a credible JET move requires a new general theorem and must clear the Bryan-Lemus (2017) direction-of-innovation collision test
+- GEB decision: no in-project generalization; a credible GEB move requires materially new game-theoretic content
+- RAND decision: conditional top-target fit; strengthen v2 through Stage 10R manuscript, proof, literature, institutional, and figure/table architecture rather than theory redesign
+- Authorized route: `Stage 9R -> Top-Journal Fit Gate -> Stage 10R`
+
+The special gate does not alter `SSDI-THEORY-FREEZE-2026-09-06-v2`. Any later desire to pursue a JET/GEB-level general theorem must reopen the earliest affected theory stage or begin a separate project.
