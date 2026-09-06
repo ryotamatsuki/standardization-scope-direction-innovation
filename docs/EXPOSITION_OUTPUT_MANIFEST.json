@@ -1,0 +1,9 @@
+{
+  "freeze_id": "SSDI-THEORY-FREEZE-2026-09-06-v2",
+  "workflow_version": "v1.3",
+  "workflow_release_commit": "3e4e6a3f76d86058024d06f9710f942e21627386",
+  "stage": "9R",
+  "approved_quantitative_outputs": [],
+  "status": "NO_OUTPUTS_APPROVED_BEFORE_STAGE_10_ARCHITECTURE_GATE",
+  "note": "Stage 10 must assign a primary exposition vehicle to each headline result before any quantitative figure or table is required in the manuscript."
+}
