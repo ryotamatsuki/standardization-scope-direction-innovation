@@ -1,16 +1,19 @@
 PYTHON ?= python
 
-.PHONY: all verify symbolic numerical test exposition figures tables paper clean
+.PHONY: all verify symbolic numerical continuation test exposition figures tables paper clean
 
 all: verify paper
 
-verify: symbolic numerical test
+verify: symbolic numerical continuation test
 
 symbolic:
 	$(PYTHON) scripts/symbolic_verify.py
 
 numerical:
 	$(PYTHON) scripts/numerical_verify.py
+
+continuation:
+	$(PYTHON) scripts/stage11_independent_continuation_audit.py
 
 test:
 	pytest -q
