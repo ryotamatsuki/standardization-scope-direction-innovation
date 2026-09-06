@@ -1,6 +1,8 @@
 PYTHON ?= python
 
-.PHONY: verify symbolic numerical test paper clean
+.PHONY: all verify symbolic numerical test exposition figures tables paper clean
+
+all: verify exposition paper
 
 verify: symbolic numerical test
 
@@ -12,6 +14,13 @@ numerical:
 
 test:
 	pytest -q
+
+exposition:
+	$(PYTHON) scripts/generate_exposition_outputs.py
+
+figures: exposition
+
+tables: exposition
 
 paper:
 	cd paper && pdflatex -interaction=nonstopmode -halt-on-error main.tex >/dev/null
