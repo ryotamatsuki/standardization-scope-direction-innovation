@@ -15,7 +15,9 @@ test:
 
 paper:
 	cd paper && pdflatex -interaction=nonstopmode -halt-on-error main.tex >/dev/null
+	cd paper && bibtex main >/dev/null
+	cd paper && pdflatex -interaction=nonstopmode -halt-on-error main.tex >/dev/null
 	cd paper && pdflatex -interaction=nonstopmode -halt-on-error main.tex >/dev/null
 
 clean:
-	rm -f paper/*.aux paper/*.log paper/*.out paper/*.pdf
+	rm -f paper/*.aux paper/*.bbl paper/*.blg paper/*.log paper/*.out paper/*.pdf
