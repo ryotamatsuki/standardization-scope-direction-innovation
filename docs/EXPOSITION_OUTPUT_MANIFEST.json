@@ -2,8 +2,24 @@
   "freeze_id": "SSDI-THEORY-FREEZE-2026-09-06-v2",
   "workflow_version": "v1.3",
   "workflow_release_commit": "3e4e6a3f76d86058024d06f9710f942e21627386",
-  "stage": "9R",
-  "approved_quantitative_outputs": [],
-  "status": "NO_OUTPUTS_APPROVED_BEFORE_STAGE_10_ARCHITECTURE_GATE",
-  "note": "Stage 10 must assign a primary exposition vehicle to each headline result before any quantitative figure or table is required in the manuscript."
+  "stage": "10R",
+  "approved_quantitative_outputs": [
+    {
+      "id": "policy-regime-map",
+      "type": "figure",
+      "economic_object": "The unique threshold bar_nu(y) solving H(y,nu)=0 in the frozen quadratic policy theorem",
+      "primary_result": "Proposition 4: complete versus selective standardization regimes",
+      "generator": "scripts/generate_exposition_outputs.py",
+      "output_path": "figures/policy_regime_map.pdf",
+      "manuscript_label": "fig:regime-map",
+      "domain": "1/2 < y < 1 and 0 < nu < y",
+      "representative_checks": {
+        "bar_nu_at_y_0_7": 0.3587285925190902,
+        "bar_nu_at_y_0_9": 0.4755546783510237
+      },
+      "required_in_final_paper": true
+    }
+  ],
+  "status": "STAGE_10_ARCHITECTURE_IMPLEMENTED",
+  "note": "No quantitative table is required. The regime map is the only required visual because the headline theorem is a threshold/regime result; other results are more efficiently communicated by propositions, equations, numerical illustration, or prose."
 }
