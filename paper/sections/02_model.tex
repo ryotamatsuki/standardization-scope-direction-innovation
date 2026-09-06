@@ -1,2 +1,62 @@
 \section{Model}
-Stage 10 writing placeholder. Theory is frozen.
+
+There are two symmetric firms, indexed by $i\in\{1,2\}$, a benevolent regulator, and a representative consumer. The game has three stages. First, the regulator chooses the scope of a mandatory common technical standard, $b\in[0,1]$. Second, firms simultaneously allocate a fixed R\&D capacity $E>0$ between common-layer innovation $x_i$ and proprietary innovation $z_i$, subject to
+\begin{equation}
+ x_i+z_i=E,\qquad x_i,z_i\geq 0.
+\end{equation}
+Third, firms simultaneously choose nonnegative prices $p_i\geq0$.
+
+Innovation in either layer raises product quality through
+\begin{equation}
+ g(r)=r-\frac{\kappa}{2}r^2,
+\end{equation}
+with $\kappa>0$. Define $y\equiv \kappa E$ and impose
+\begin{equation}
+ \frac12<y<1.
+ \label{eq:yregion}
+\end{equation}
+Hence $g'(r)=1-\kappa r>0$ on $[0,E]$ and $g$ is strictly concave.
+
+The quality intercept of firm $i$ is
+\begin{equation}
+ A_i=a+\theta\left[g(x_i)+b g(x_j)+g(E-x_i)\right],\qquad j\neq i,
+ \label{eq:quality}
+\end{equation}
+where $a>0$ and $\theta>0$. The term $g(x_i)$ is the direct benefit of the firm's own common-layer R\&D. The term $b g(x_j)$ captures the fraction of the rival's common-layer improvement that becomes usable in firm $i$'s standard-compliant product as the mandated common scope expands. Proprietary R\&D, $g(E-x_i)$, benefits only the innovating firm. Thus $b$ changes the transferability of common innovation; it does not directly alter product substitutability.
+
+The representative consumer has quasi-linear utility over the two products,
+\begin{equation}
+ U(q_1,q_2)=A_1q_1+A_2q_2-\frac12(q_1^2+q_2^2)-\rho q_1q_2,
+ \label{eq:utility}
+\end{equation}
+with $q_i\geq0$ and $0<\rho<1$. Production has zero marginal cost. In the region where both products are consumed, demand is
+\begin{equation}
+ q_i=\frac{A_i-p_i-\rho(A_j-p_j)}{1-\rho^2}.
+ \label{eq:demand}
+\end{equation}
+
+The baseline equilibrium concept is subgame-perfect Nash equilibrium. Because the R\&D and policy choices are upstream of price competition, we require a well-defined price continuation at every feasible upstream history. Let
+\begin{equation}
+ A_{\min}=a+\theta E\left(1-\frac y2\right),\qquad
+ A_{\max}=a+\theta E\left(2-\frac{3y}{4}\right).
+\end{equation}
+We impose the sufficient regularity condition
+\begin{equation}
+ \frac{A_{\max}}{A_{\min}}
+ <
+ \frac{2}{\rho(3-\rho^2)}.
+ \tag{R}\label{eq:R}
+\end{equation}
+Condition~\eqref{eq:R} guarantees that the unique Bertrand equilibrium keeps both products active for every $b\in[0,1]$ and every $(x_1,x_2)\in[0,E]^2$, and that no nonnegative unilateral price deviation can profitably foreclose the rival. It is a global-continuation regularity condition rather than a condition needed for the economic mechanism itself.
+
+It is useful to define
+\begin{equation}
+ \nu\equiv\frac{\rho}{2-\rho^2}.
+ \label{eq:nu}
+\end{equation}
+Since $0<\rho<1$, we have $0<\nu<1$. The baseline interior R\&D region additionally imposes
+\begin{equation}
+ 0<\nu<y.
+ \label{eq:nuy}
+\end{equation}
+As shown below, $\nu$ measures the competitive harm from improving the rival relative to the private return from improving one's own product.
