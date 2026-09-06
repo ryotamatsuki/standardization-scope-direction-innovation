@@ -17,6 +17,14 @@ jobs:
       - run: make paper
       - name: Build IJIO title page
         run: pdflatex -interaction=nonstopmode -halt-on-error -output-directory=submission submission/ijio_title_page.tex
+      - name: Fail on unresolved LaTeX references or citations
+        run: |
+          if grep -E "(Citation .* undefined|Reference .* undefined|There were undefined references)" paper/main.log; then
+            echo "Unresolved LaTeX citation/reference detected"
+            exit 1
+          fi
+      - name: Stage 14 package QA
+        run: python scripts/stage14_package_qa.py
       - name: PDF preflight summaries
         run: |
           pdfinfo paper/main.pdf
