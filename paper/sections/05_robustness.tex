@@ -1,43 +1,42 @@
 \section{Approved Robustness and Interpretation}
 
-This section records only robustness results approved at the theory freeze. None changes the baseline strategic mechanism.
+This section records only robustness and interpretation statements authorized by the v2 theory freeze. It does not extend the exact selective-standardization theorem beyond the quadratic baseline.
 
 \subsection{General concave innovation technology}
 
-The directional reallocation results do not depend on the quadratic specification. Let $g$ be increasing and strictly concave on $[0,E]$. The private allocation satisfies
+Let $g$ be differentiable, increasing, and strictly concave on $[0,E]$. As Proposition~\ref{prop:wedge} states, the private objective has decreasing differences in $(x,b)$ and the coordinated symmetric objective has increasing differences. Therefore private common-layer R\&D is globally nonincreasing in scope, while coordinated symmetric common-layer R\&D is globally nondecreasing. Where the relevant optima are interior, the first-order conditions
 \begin{equation}
  (1-\nu b)g'(x^F)=g'(E-x^F),
+ \qquad
+ (1+b)g'(x^S)=g'(E-x^S)
 \end{equation}
-while the planner satisfies
-\begin{equation}
- (1+b)g'(x^S)=g'(E-x^S).
-\end{equation}
-Implicit differentiation gives $dx^F/db<0<dx^S/db$. Hence the private--social directional wedge is a property of the appropriability structure rather than of the quadratic technology.
+imply the strict signs $dx^F/db<0<dx^S/db$.
 
-The exact polynomial threshold in Proposition~\ref{prop:selective} uses the quadratic baseline. The interior-policy result is nevertheless locally robust: in the selective-standardization region the baseline inequalities $F'(0)>0$, $F'(1)<0$, and strict concavity are strict. They therefore persist for sufficiently small $C^2$ perturbations of the innovation technology. We do not claim that every globally concave technology generates an interior policy.
+The exact polynomial threshold and global uniqueness in Proposition~\ref{prop:selective} rely on the quadratic baseline. We make no generic claim that sufficiently small $C^2$ perturbations preserve strict concavity or uniqueness of the regulator's reduced objective: induced policy curvature can depend on higher-order features of the innovation technology. The general-technology robustness result is therefore the directional allocation response, not a general policy theorem.
 
 \subsection{Incomplete transferability}
 
-Suppose that the common-layer spillover is $\lambda b g(x_j)$ with $\lambda\in(0,1]$. Defining effective transferability $t=\lambda b$, the private and social first-order conditions become
+Suppose common-layer transferability is $t=\lambda b$ with $\lambda\in(0,1]$. Replacing $b$ by $t$ in the relevant quality spillover gives the interior conditions
 \begin{equation}
  (1-\nu t)g'(x^F)=g'(E-x^F),
  \qquad
  (1+t)g'(x^S)=g'(E-x^S).
 \end{equation}
-Thus the directional wedge is unchanged. If the unconstrained optimal effective transferability is $t^*\in(0,1)$, the regulator chooses $b^*=t^*/\lambda<1$ whenever $\lambda>t^*$; if technologically attainable transferability is too weak, $\lambda\leq t^*$, the regulator expands the standard to the feasible maximum. Selective scope therefore requires not only rivalry but a standard capable of making common innovation sufficiently transferable.
+Thus the same private-versus-coordinated relative-return wedge is indexed by effective transferability. This reparameterization is the approved robustness statement. We do not infer an additional global policy-uniqueness or persistence theorem from it.
 
 \subsection{Endogenous total R\&D}
 
-The fixed-capacity assumption isolates the composition margin. If firms can also choose total R\&D $E=x+z$ subject to a convex capacity cost, the relative first-order condition between common and proprietary effort still takes the form
+The fixed-capacity assumption isolates the composition margin. If firms also choose total R\&D and an interior optimum exists, the relative first-order condition between common and proprietary effort remains
 \begin{equation}
  (1-\nu b)g'(x)=g'(z).
+ \label{eq:endogenousErelative}
 \end{equation}
-Hence the private relative-return distortion survives. Total R\&D may itself respond to $b$, so an unrestricted global sign for $dx/db$ no longer follows without additional conditions. When the total-capacity cost is sufficiently steep, however, the endogenous-$E$ model is arbitrarily close to the fixed-$E$ baseline and the strict interior-policy inequalities persist by continuity. We therefore interpret fixed $E$ as a clean way to identify the innovation-composition effect rather than as a knife-edge source of the mechanism.
+This condition shows that broader scope still lowers the private relative return to common effort. It does not determine the response of total R\&D, the global sign of $dx/db$, or the optimal standardization scope. In particular, we do not claim that a steep capacity cost makes the selective-standardization policy theorem persist by continuity. Those questions require a separate model and are outside the frozen result set.
 
 \subsection{Institutional interpretation}
 
-The variable $b$ is best interpreted as the mandatory scope of a common technological layer or interface. It is not a generic compatibility index and it does not mean that all firm knowledge becomes legally disclosed. The reduced-form spillover in \eqref{eq:quality} represents the greater cross-product usability of improvements made within a standardized layer.
+The variable $b$ is the mandatory scope of a common technological layer or interface. It is not a generic compatibility index and does not mean that all firm knowledge becomes legally disclosed. The reduced-form spillover in \eqref{eq:quality} represents greater cross-product usability of improvements made within the standardized layer.
 
-Two application families illustrate the same mechanism without changing the theory. In digital systems, $x$ may represent protocol-, API-, or interface-facing innovation and $z$ proprietary implementation or service innovation. In modular manufacturing, $x$ may represent innovation in standardized external interfaces and $z$ innovation in internal modules or proprietary subsystems. Case evidence from Taiwan's machine-tool industry reports that external interface standards constrain product innovation and that innovative effort tends to concentrate on internal interfaces and modules \citep{ChenLiu2005}. We treat this as suggestive institutional consistency, not as causal validation of the model.
+Two application families illustrate the mechanism without changing the theory. In digital systems, $x$ may represent protocol-, API-, or interface-facing innovation and $z$ proprietary implementation or service innovation. In modular manufacturing, $x$ may represent innovation in standardized external interfaces and $z$ innovation in internal modules or proprietary subsystems. Case evidence from Taiwan's machine-tool industry reports that external interface standards shape product-innovation choices and that innovative effort can concentrate on internal interfaces and modules \citep{ChenLiu2005}. We treat this as suggestive institutional consistency, not causal validation.
 
-The model yields several empirical predictions. First, an expansion in standard scope should reduce the share of firm R\&D directed toward standardized/common technological classes. Second, this portfolio shift should be stronger where downstream products are closer substitutes, because $\nu$ rises with $\rho$. Third, industries with stronger rivalry should be more likely to exhibit selective rather than exhaustive common technical scope when policymakers internalize innovation incentives. These predictions concern the composition of innovation, not merely total R\&D expenditure.
+The empirical implications should respect the theorem's scope. In the quadratic interior baseline, broader standard scope strictly lowers private common-layer R\&D, and the response is stronger when the competitive penalty $\nu$ is larger. Under a general increasing strictly concave technology, the corresponding prediction is weak: private common-layer R\&D is nonincreasing and may be locally flat at corners. In the quadratic baseline, because $\nu$ rises with downstream substitutability $\rho$, stronger rivalry moves the economy toward the selective-standardization region characterized in Figure~\ref{fig:regime-map}. These predictions concern innovation composition rather than total R\&D expenditure. The model does not imply that the realized transferred improvement $b g(x^F(b))$ must itself rise monotonically with scope.
