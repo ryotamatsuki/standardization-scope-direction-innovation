@@ -8,7 +8,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "docs" / "EXPOSITION_OUTPUT_MANIFEST.json"
-EXPECTED_FREEZE = "SSDI-THEORY-FREEZE-2026-09-06-v2"
+EXPECTED_FREEZE = "SSDI-THEORY-FREEZE-2026-09-06-v3"
 EXPECTED_WORKFLOW = "v1.3"
 EXPECTED_RELEASE = "3e4e6a3f76d86058024d06f9710f942e21627386"
 
@@ -89,6 +89,6 @@ plt.close(fig)
 
 assert output.is_file() and output.stat().st_size > 0
 print(
-    "EXPOSITION_OUTPUTS: PASS; generated policy regime map; "
+    "EXPOSITION_OUTPUTS: PASS; generated unchanged policy regime map under freeze v3; "
     f"bar_nu(0.7)={check_07:.12f}, bar_nu(0.9)={check_09:.12f}"
 )

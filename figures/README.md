@@ -6,11 +6,11 @@ Stage 10R approves exactly one required quantitative manuscript figure under `re
 
 Provenance:
 
-- active freeze: `SSDI-THEORY-FREEZE-2026-09-06-v2`;
+- active freeze: `SSDI-THEORY-FREEZE-2026-09-06-v3`;
 - generator: `scripts/generate_exposition_outputs.py`;
 - manifest: `docs/EXPOSITION_OUTPUT_MANIFEST.json`;
 - manuscript hook: `fig:regime-map`;
 - representative check: `bar_nu(0.7)=0.3587285925190902`;
 - regeneration target: `make exposition` or `make paper`.
 
-The PDF is generated rather than hand edited. The figure communicates the proven threshold/regime structure only and must not be interpreted outside the quadratic baseline or outside the frozen parameter domain.
+The Stage-7R2 P2R repair does not alter Proposition 4, `H(y,nu)`, the threshold, or the figure. The PDF is generated rather than hand edited and must not be interpreted outside the quadratic baseline or frozen parameter domain.

@@ -43,22 +43,52 @@ Suppose \eqref{eq:yregion}, \eqref{eq:nuy}, and \eqref{eq:R} hold. In the quadra
 Thus broader scope redirects a fixed private R\&D budget from common-layer toward proprietary innovation.
 \end{proposition}
 
-The directional mechanism extends beyond the quadratic technology, but the correct global statement allows corners. Let $g$ be differentiable, increasing, and strictly concave on $[0,E]$. The private objective has decreasing differences in $(x,b)$ because its cross-partial is $-\nu g'(x)<0$. The coordinated symmetric objective
+The directional mechanism extends beyond the quadratic technology, but the correct general statement is an order comparison rather than a pointwise derivative theorem. Let $g$ be differentiable, increasing, and strictly concave on $[0,E]$. Define
 \begin{equation}
- \max_{x\in[0,E]} (1+b)g(x)+g(E-x)
+ f_F(x,b)=(1-\nu b)g(x)+g(E-x)
+ \label{eq:generalprivateobjective}
+\end{equation}
+and the coordinated symmetric objective
+\begin{equation}
+ f_S(x,b)=(1+b)g(x)+g(E-x).
  \label{eq:coordinatedproblem}
 \end{equation}
-has increasing differences because its cross-partial is $g'(x)>0$. Strict concavity gives unique maximizers.
+Strict concavity gives a unique maximizer of each problem for every $b$.
 
 \begin{proposition}[Directional private--coordinated wedge]\label{prop:wedge}
-For any differentiable increasing strictly concave $g$, the private common-layer allocation $x^F(b)$ is globally nonincreasing in $b$, while the coordinated symmetric allocation $x^S(b)$ is globally nondecreasing in $b$. On any interval where the relevant optimum is interior,
+Let $g$ be differentiable, increasing, and strictly concave on $[0,E]$. For any $b_2>b_1$,
 \begin{equation}
- \frac{dx^F}{db}<0<\frac{dx^S}{db}.
+ x^F(b_2)\leq x^F(b_1),
+ \qquad
+ x^S(b_2)\geq x^S(b_1).
+ \label{eq:generalweakordering}
 \end{equation}
-No globally strict comparative static is claimed when corner solutions bind.
+If the private optima at both $b_1$ and $b_2$ are interior, then
+\begin{equation}
+ x^F(b_2)<x^F(b_1).
+ \label{eq:generalstrictprivate}
+\end{equation}
+If the coordinated symmetric optima at both $b_1$ and $b_2$ are interior, then
+\begin{equation}
+ x^S(b_2)>x^S(b_1).
+ \label{eq:generalstrictcoordinated}
+\end{equation}
+No pointwise sign for $dx^F/db$ or $dx^S/db$ is asserted for arbitrary general $g$.
 \end{proposition}
 
-At interior optima the corresponding first-order conditions are
+To see the global ordering, for $b_2>b_1$,
+\begin{equation}
+ f_F(x,b_2)-f_F(x,b_1)=-\nu(b_2-b_1)g(x),
+ \label{eq:privatedifferences}
+\end{equation}
+which is decreasing in $x$, whereas
+\begin{equation}
+ f_S(x,b_2)-f_S(x,b_1)=(b_2-b_1)g(x),
+ \label{eq:coordinateddifferences}
+\end{equation}
+which is increasing in $x$. Decreasing and increasing differences therefore give the weak order statements, including at corners. The Appendix gives a direct proof of strict ordering when both compared optima are interior without invoking $g''$.
+
+At an interior optimum the corresponding first-order conditions are
 \begin{equation}
  (1-\nu b)g'(x^F)=g'(E-x^F),
  \label{eq:privategeneral}
@@ -68,12 +98,11 @@ and
  (1+b)g'(x^S)=g'(E-x^S).
  \label{eq:socialgeneral}
 \end{equation}
-Under the quadratic technology, the coordinated symmetric solution is
+These first-order conditions are used for the strict order comparison across two policy values, not to claim differentiability of the optimizer with respect to $b$. Under the quadratic technology, the coordinated symmetric solution is
 \begin{equation}
  x^S(b)=\frac{y+b}{\kappa(2+b)}.
  \label{eq:xsocial}
 \end{equation}
-The Appendix supplies the corner/KKT argument behind the global weak monotonicity statement.
 
 \subsection{The regulator's scope choice}
 
