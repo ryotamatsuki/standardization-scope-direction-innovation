@@ -44,11 +44,17 @@ Stage 10R synchronized the manuscript to the then-active v2 freeze and removed t
 
 ## Stage 11 hostile audit and Stage 7R2 rollback
 
-The Stage 11 hostile audit accepted the quadratic baseline, global price continuation, welfare formulas, Proposition 4 threshold theorem, Figure 1, and the core result-level novelty boundary. It identified one material theory-scope defect in P2R: v2 stated pointwise strict derivative signs at interior optima for arbitrary differentiable increasing strictly concave `g`, while the proof invoked `g''` without assuming twice differentiability.
+The first Stage 11 hostile audit accepted the quadratic baseline, global price continuation, welfare formulas, Proposition 4 threshold theorem, Figure 1, and the core result-level novelty boundary. It identified one material theory-scope defect in P2R: v2 stated pointwise strict derivative signs at interior optima for arbitrary differentiable increasing strictly concave `g`, while the proof invoked `g''` without assuming twice differentiability.
 
 Routing: `REOPEN STAGE 7R` for this defect only.
 
-Stage 7R2 working branch: `stage7r2-p2r-exact-monotonicity-repair`.
+## Stage 7R2 exact-monotonicity repair
+
+- Starting remote `main`: `2198864d1d762d1d84823ec9083536e12f1530d6`
+- Branch: `stage7r2-p2r-exact-monotonicity-repair`
+- Merge commit: `4d221158ed9d1b3375a8a5e970ea9e6f5cd2afcd`
+- Repair record: `docs/STAGE_07R2_P2R_EXACT_MONOTONICITY_REPAIR.md`
+- Active freeze after repair: `SSDI-THEORY-FREEZE-2026-09-06-v3`
 
 The repair:
 
@@ -61,8 +67,32 @@ The repair:
 7. synchronizes manuscript, exposition metadata, tests, and verification provenance;
 8. incorporates bounded Stage-11 clarifications on the welfare decomposition, endogenous-total-R&D relative FOC, and closest-literature boundary.
 
+## Stage 11R repeated hostile referee gate
+
+- Starting remote `main`: `4d221158ed9d1b3375a8a5e970ea9e6f5cd2afcd`
+- Branch: `stage11r-v3-hostile-referee-regate`
+- Audit record: `docs/STAGE_11R_V3_HOSTILE_REFEREE_REGATE.md`
+- Independent continuation implementation: `scripts/stage11_independent_continuation_audit.py`
+- Active theory remains v3; no new theory change is authorized.
+
+The repeated gate independently re-audits novelty, assumptions, P2R, the quadratic policy theorem, welfare, benchmark interpretation, exposition, and the full pure-price continuation over off-path histories. The continuation audit reconstructs consumer KKT allocations directly, includes boundary R&D/scope histories and large finite price deviations, and fails closed on unresolved active sets.
+
+Stage-11R classification:
+
+- P2R v3 repair: `PASS`;
+- P1/P3R/P4/P5R: `PASS`;
+- welfare and no-first-best discipline: `PASS`;
+- independent pure-price continuation: `PASS`;
+- unresolved continuation count: `0`;
+- result-level novelty: `DISTINCT BUT NARROW`;
+- unresolved fatal attacks: `0`;
+- unresolved major attacks: `0`;
+- final verdict: `GO TO JOURNAL POSITIONING`.
+
+Minor carry-forward items are limited to copy/positioning: clarify pure-strategy uniqueness wording, optionally mention `(R)` in the figure caption, and consider adjacent 2026 empirical standards/innovation evidence during journal-specific integration. None changes the frozen theory.
+
 Authorized forward route after successful CI and merge:
 
-`Stage 7R2 repair -> amended freeze v3 -> downstream synchronization -> Stage 11 re-gate`.
+`Stage 11R complete -> Stage 12 journal positioning`.
 
-Stage 12 is not authorized until the repeated Stage 11 gate passes.
+Stage 12 must select a journal for the surviving contribution rather than reshape the result to fit a preferred outlet.
