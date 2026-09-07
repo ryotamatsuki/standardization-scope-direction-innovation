@@ -14,6 +14,8 @@ or the existence/uniqueness theorem for the endogenous policy threshold.
 
 namespace SSDI
 
+noncomputable section
+
 /-- Competitive-harm parameter, equation (nu). -/
 def nu (rho : ℝ) : ℝ := rho / (2 - rho ^ 2)
 
@@ -122,6 +124,8 @@ theorem dxPrivate_neg
     (hden : 0 < 2 - nu * b) :
     dxPrivate kappa y nu b < 0 := by
   unfold dxPrivate
+  rw [neg_div]
+  apply neg_lt_zero.mpr
   positivity
 
 /-- Exact two-policy difference identity for the coordinated allocation. -/
@@ -172,7 +176,8 @@ theorem H_at_zero_neg {y : ℝ} (hy0 : 0 < y) (hy1 : y < 1) :
     H y 0 < 0 := by
   rw [H_at_zero]
   have hy4 : y - 4 < 0 := by linarith
-  positivity
+  have h2y : 0 < 2 * y := by positivity
+  exact mul_neg_of_pos_of_neg h2y hy4
 
 /-- Upper endpoint has the sign used in the P4 threshold argument. -/
 theorem H_at_diag_pos {y : ℝ} (hy0 : 0 < y) (hy1 : y < 1) :
@@ -189,7 +194,7 @@ theorem Hnu_lower_bound
     {y nu : ℝ}
     (hyhalf : (1 / 2 : ℝ) < y)
     (hy1 : y < 1)
-    (hnu0 : 0 < nu)
+    (_hnu0 : 0 < nu)
     (hnuy : nu < y) :
     5 * (y - 2) ^ 2 < Hnu y nu := by
   have hy0 : 0 < y := by linarith
@@ -240,5 +245,7 @@ theorem bertrandGap_pos
   positivity
 
 end Welfare
+
+end
 
 end SSDI
