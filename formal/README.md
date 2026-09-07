@@ -18,9 +18,11 @@ lake exe cache get
 lake build
 ```
 
-## Initial formalized claims
+## Formalized claims
 
-`SSDI/Core.lean` currently verifies, without `sorry`:
+All current Lean proofs compile without `sorry`.
+
+### `SSDI/Core.lean`
 
 1. `0 < rho < 1` implies `0 < nu(rho) < 1` for `nu = rho/(2-rho^2)`.
 2. The closed-form private allocation satisfies the exact two-policy difference identity and is strictly decreasing in scope on its interior domain.
@@ -31,14 +33,30 @@ lake build
 7. The algebraic lower bound `H_nu > 5(y-2)^2`, hence `H_nu>0`, on the frozen region `1/2<y<1` and `0<nu<y`.
 8. Positivity of the symmetric-Bertrand welfare multiplier and strict positivity of the Bertrand quantity-control welfare gap for nonzero symmetric quality.
 
+### `SSDI/Threshold.lean`
+
+9. Exact two-point factorization of `H(y,nu2)-H(y,nu1)`.
+10. Strict positivity of the secant factor on `0 <= nu1 < nu2 <= y < 1` in the frozen region.
+11. Strict monotonicity of `H(y,nu)` in `nu` on `[0,y]`.
+12. By continuity and the endpoint signs, existence of a root `bar_nu(y)` strictly inside `(0,y)`.
+13. Uniqueness of that root, yielding `exists_unique_threshold_root`.
+14. Exact sign classification: `H(y,nu) <= 0` at/below the threshold and `H(y,nu) > 0` above it.
+
+### `SSDI/PolicySigns.lean`
+
+15. Positivity of the paper's `F'(0)` expression.
+16. Negativity of the paper's `F''(b)` expression on `b in [0,1]` under the frozen quadratic restrictions.
+17. Positivity of the denominator in the complete-scope endpoint expression `F'(1)=-H/[2(2-nu)^3]`.
+18. The complete-scope endpoint slope is nonnegative at/below the unique rivalry threshold and strictly negative above it.
+19. The corresponding iff characterizations of the endpoint-slope regime.
+
 ## Not yet formalized
 
-The first Lean layer does **not** yet claim a complete machine proof of the paper. In particular, the following remain analytic-manuscript results pending later formalization:
+The current Lean layer does **not** yet claim a complete machine proof of the paper. The main remaining targets are:
 
+- connect the reported `F'`/`F''` expressions to the actual normalized policy objective by formal differentiation, then close the full regulator argmax theorem `b*=1` versus a unique interior optimum;
 - global price-continuation uniqueness at every feasible upstream history;
 - the full general-technology P2R revealed-preference theorem with arbitrary differentiable, increasing, strictly concave `g` and corner solutions;
-- existence and uniqueness of `bar_nu(y)` via continuity/monotonicity;
-- the full regulator optimization theorem mapping the sign of `F'(1)` into `b*=1` versus a unique interior optimum;
 - the complete subgame-perfect equilibrium construction.
 
-The intended progression is to formalize these in that order, while keeping the active economic theory freeze unchanged.
+The next priority is the formal differentiation plus regulator argmax layer, because the threshold existence/uniqueness and policy-sign architecture of P4 are now machine checked.
