@@ -9,18 +9,23 @@ Historical production workflow: `ryotamatsuki/research-paper-workflow` v1.3 at `
 
 Latest-workflow compatibility authority: `ryotamatsuki/research-paper-workflow@f48984013898696f010f0437a8cfed6b5b54bdc2`.
 
-Latest compatibility gates already closed:
+Latest compatibility gates closed:
 
 - Stage 4A: `GO — MATHEMATICAL ADVERSARIAL CERTIFICATION PASS`;
 - Stage 7.5A: `GO — GENERALITY / QUANTIFIER CERTIFICATION PASS`;
 - Formal Verification Gate: `FORMAL VERIFICATION PASS`;
 - Stage 8: `THEORY FROZEN — GO TO REPRODUCIBILITY SETUP`;
+- Stage 9: `REPRODUCIBILITY BASELINE READY`;
 - active freeze: `SSDI-THEORY-FREEZE-2026-09-10-v4`.
 
 The v4 refreeze is certification-only. Scientific delta from v3 is `NONE`: no model primitive, proposition conclusion, threshold, welfare result, or contribution claim changed.
 
-Current Stage-9 synchronization record: `docs/STAGE_09_V4_FORMAL_REPRODUCIBILITY_SYNC.md`.  
+Canonical Stage-9 synchronization record: `docs/STAGE_09_V4_FORMAL_REPRODUCIBILITY_SYNC.md`.  
 Machine-readable reproducibility map: `docs/REPRODUCIBILITY_MANIFEST.json`.
+
+Qualified Stage-9 implementation head: `fd650e6a3a925e7ae0d24e8981bb38a357a33f09`.  
+Clean full reproducibility run: `34478441732` — success.  
+Clean focused formal run: `34478441787` — success.
 
 ## Reproducibility
 
@@ -30,7 +35,7 @@ Install the Python packages in `requirements.txt`, a TeX Live environment with `
 make all
 ```
 
-`make all` is now the canonical Stage-9 reproducibility command. It runs:
+`make all` is the canonical Stage-9 reproducibility command. It runs:
 
 - `make verify`: symbolic identities, numerical checks, the retroactive Stage-4A independent equilibrium-set/globality audit, the independent Stage-11 continuation audit, and pytest regressions;
 - `make exposition`: deterministic regeneration and validation of `figures/policy_regime_map.pdf`;
@@ -83,7 +88,7 @@ This keeps analytic proof maturity separate from bounded formal-proof coverage.
 
 The Stage-8 refreeze changed certification/provenance material only. Comparing pre-refreeze main `3648ac2d4917986f1f09873a30bbd5948fceb8b3` with Stage-8 merge `4c923f9e8e236ea18added57dfefa401f8c406e3` shows no change to `paper/`, `formal/`, the core model verification scripts, bibliography, threshold equation, or figure-generation source.
 
-Stage 9 therefore synchronizes active reproducibility metadata to v4 without changing the scientific output. `docs/EXPOSITION_OUTPUT_MANIFEST.json` explicitly records inheritance from v3 and `scientific_source_delta = NONE`.
+Stage 9 synchronizes active reproducibility metadata to v4 without changing the scientific output. `docs/EXPOSITION_OUTPUT_MANIFEST.json` explicitly records inheritance from v3 and `scientific_source_delta = NONE`.
 
 The policy-regime figure remains generated from the same quadratic threshold equation and retains the representative values:
 
@@ -139,7 +144,7 @@ with *The Journal of Industrial Economics* retained as an optional higher-risk s
 
 Historical Stage 13 integration, Stage 14 QA, and Stage 15 submission-freeze records are preserved. They predate the latest-workflow certification migration and therefore are not the final latest-workflow submission certification.
 
-After Stage 9 is cleanly certified, the remaining compatibility route is:
+With Stage 9 now certified, the remaining compatibility route is:
 
 `Stage 11 certification-regression recheck -> current Journal Requirements Ledger -> refreshed Stage 14 QA -> new Stage 15 submission freeze`.
 
