@@ -4,4 +4,5 @@ import SSDI.PolicySigns
 import SSDI.Generality
 import SSDI.Continuation
 import SSDI.WelfareIdentities
+import SSDI.PolicyObjective
 import SSDI.Assurance
