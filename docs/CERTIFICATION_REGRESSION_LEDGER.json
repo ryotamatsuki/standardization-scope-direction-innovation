@@ -1,0 +1,59 @@
+{
+  "stage": "Stage 11 — certification-regression recheck",
+  "date": "2026-09-10",
+  "repository": "ryotamatsuki/standardization-scope-direction-innovation",
+  "active_freeze": "SSDI-THEORY-FREEZE-2026-09-10-v4",
+  "workflow_authority": "f48984013898696f010f0437a8cfed6b5b54bdc2",
+  "regressions": [
+    {
+      "id": "CR-01",
+      "class": "CERTIFICATION REGRESSION",
+      "status": "CLOSED_PERMANENTLY_GUARDED",
+      "defect": "Historical P2R pointwise optimizer-derivative claim exceeded the stated differentiable increasing strictly concave function class and implicitly relied on second-derivative reasoning.",
+      "discovery_stage": "historical Stage 11",
+      "earlier_obligation_that_should_have_caught_it": "Stage 7.5A generality / quantifier certification",
+      "earliest_historical_rollback": "Stage 7R / generality theorem construction",
+      "repair": "Replace general pointwise derivative theorem by weak global order comparative statics, with strict order only when both compared optima are interior.",
+      "permanent_artifacts": [
+        "docs/CERTIFICATION_REGRESSION_P2R.md",
+        "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
+        "formal/SSDI/Generality.lean",
+        "tests/test_p2r_order_monotonicity.py",
+        "tests/test_stage11_certification_regressions.py"
+      ]
+    },
+    {
+      "id": "CR-02",
+      "class": "CLAIM_SCOPE REGRESSION",
+      "status": "CLOSED_PERMANENTLY_GUARDED",
+      "defect": "Historical prose used unqualified price-equilibrium uniqueness language although the independent equilibrium-set certificate establishes uniqueness only in pure strategies.",
+      "discovery_stage": "historical Stage 11 / retroactive Stage 7.5A",
+      "earlier_obligation_that_should_have_caught_it": "Stage 4A equilibrium-set certificate plus Stage 7.5A manuscript claim-scope ledger",
+      "earliest_historical_rollback": "Stage 7.5A wording/scope certification; no theory rollback",
+      "repair": "Manuscript now states unique pure-strategy Bertrand / price equilibrium and explicitly declines mixed-strategy uniqueness.",
+      "permanent_artifacts": [
+        "docs/STAGE_04A_RETROACTIVE_MATH_ADVERSARIAL_CERTIFICATION.md",
+        "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
+        "scripts/stage4a_independent_equilibrium_set_audit.py",
+        "scripts/stage11_independent_continuation_audit.py",
+        "tests/test_stage11_certification_regressions.py"
+      ]
+    },
+    {
+      "id": "CR-03",
+      "class": "REPRODUCIBILITY PROVENANCE REGRESSION",
+      "status": "REPAIRED_IN_CURRENT_STAGE11_RECHECK",
+      "defect": "Appendix computational-verification note still described v3 as the active frozen theory after Stage 9 synchronized the project to certification-only v4.",
+      "discovery_stage": "current Stage 11 certification-regression recheck",
+      "earlier_obligation_that_should_have_caught_it": "Stage 9 active-metadata/manuscript provenance synchronization",
+      "earliest_historical_rollback": "Stage 9 metadata/exposition only; no theory or formal rollback",
+      "repair": "Appendix now names SSDI-THEORY-FREEZE-2026-09-10-v4 and explains unchanged v3 scientific inheritance.",
+      "permanent_artifacts": [
+        "paper/sections/appendix.tex",
+        "tests/test_stage11_certification_regressions.py"
+      ]
+    }
+  ],
+  "unresolved_material_regressions": 0,
+  "theory_rollback_required": false
+}
