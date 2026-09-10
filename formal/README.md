@@ -1,23 +1,37 @@
 # Lean formal verification
 
-This directory contains the Lean 4 + mathlib proof-assurance layer for the active scientific theory `SSDI-THEORY-FREEZE-2026-09-06-v3`.
+This directory contains the Lean 4 + mathlib proof-assurance layer inherited by the active canonical theory `SSDI-THEORY-FREEZE-2026-09-10-v4`.
 
-The formal layer is complementary to the analytic proof, Stage-4A independent adversarial certification, Python/SymPy checks, and direct-KKT continuation audit. It is **not** a claim that the complete economic model or complete SPNE correspondence has been machine formalized.
+The v4 freeze is a certification-only refreeze of `SSDI-THEORY-FREEZE-2026-09-06-v3`; no Lean theorem, economic primitive, proposition conclusion, threshold, or welfare result changed at Stage 8. The formal layer is complementary to the analytic proof, Stage-4A independent adversarial certification, Python/SymPy checks, and direct-KKT continuation audit. It is **not** a claim that the complete economic model or complete SPNE correspondence has been machine formalized.
+
+Canonical formal-verification certificate:
+
+`theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md`
+
+Current reproducibility manifest:
+
+`docs/REPRODUCIBILITY_MANIFEST.json`
 
 ## Toolchain and clean build
 
 - Lean: `v4.32.1`, pinned by `formal/lean-toolchain`.
-- mathlib: `v4.32.1`, pinned in `formal/lakefile.toml`; clean CI records the resolved mathlib commit.
+- mathlib exact revision: `520045ab14e26149ee970e2e617ca04b09bde5d6`, pinned in `formal/lakefile.toml`.
 - project root: `formal/`.
-- build command:
+- canonical repository-level build target: `make formal`.
+- proof-escape-hatch audit target: `make formal-audit`.
+- complete local reproducibility target: `make all`.
+
+The underlying formal build is:
 
 ```bash
+cd formal
+elan default "$(cat lean-toolchain)"
 lake update
 lake exe cache get
 lake build
 ```
 
-`.github/workflows/lean.yml` executes this build from a clean Ubuntu runner and fails if project Lean source contains `sorry`, `admit`, or a project-specific `axiom` declaration. `SSDI/Assurance.lean` emits `#print axioms` dependency reports for the principal certified theorems.
+`.github/workflows/lean.yml` calls the same Makefile targets from a clean Ubuntu runner. `.github/workflows/verify.yml` also includes the formal targets inside the complete `make all` Stage-9 reproducibility gate. The formal audit fails if project Lean source contains `sorry`, `admit`, or a project-specific `axiom` declaration. `SSDI/Assurance.lean` emits `#print axioms` dependency reports for the principal certified theorems.
 
 ## Selected Stage-7.5A proof-critical targets
 
@@ -101,4 +115,4 @@ Those components are covered, where claimed, by the analytic manuscript, Stage-4
 
 ## Formal gate status
 
-The canonical Stage-7.5A formal certificate is `formal/FORMAL_VERIFICATION_CERTIFICATE.md`. Its final `FORMAL VERIFICATION PASS` state applies only to the selected proof-critical core documented above and must be invalidated if the corresponding paper theorem, assumptions, parameter domain, or formal source changes materially.
+The canonical Stage-7.5A formal certificate is `theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md`. Its final state is `FORMAL VERIFICATION PASS` for the selected proof-critical core documented above. The v4 certification-only refreeze inherits that certificate without changing its formal source. Any material change to the corresponding paper theorem, assumptions, parameter domain, or formal source makes the affected certificate stale and requires Stage-7.5A formal recertification before any later theory refreeze.

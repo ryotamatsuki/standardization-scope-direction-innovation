@@ -1,8 +1,19 @@
 {
-  "freeze_id": "SSDI-THEORY-FREEZE-2026-09-06-v3",
+  "freeze_id": "SSDI-THEORY-FREEZE-2026-09-10-v4",
+  "inherited_scientific_freeze_id": "SSDI-THEORY-FREEZE-2026-09-06-v3",
+  "certification_only_refreeze": true,
+  "stage8_merge_commit": "4c923f9e8e236ea18added57dfefa401f8c406e3",
   "workflow_version": "v1.3",
   "workflow_release_commit": "3e4e6a3f76d86058024d06f9710f942e21627386",
-  "stage": "10R",
+  "latest_workflow_compatibility_commit": "f48984013898696f010f0437a8cfed6b5b54bdc2",
+  "stage": "10R output architecture synchronized at latest-workflow Stage 9",
+  "scientific_output_invariance": {
+    "status": "PASS",
+    "comparison_base": "3648ac2d4917986f1f09873a30bbd5948fceb8b3",
+    "comparison_head": "4c923f9e8e236ea18added57dfefa401f8c406e3",
+    "scientific_source_delta": "NONE",
+    "note": "The v4 refreeze changed certification/provenance records only. No paper, model-verification, formal theorem, threshold, or figure-generation source changed in the Stage-8 refreeze."
+  },
   "approved_quantitative_outputs": [
     {
       "id": "policy-regime-map",
@@ -17,9 +28,10 @@
         "bar_nu_at_y_0_7": 0.3587285925190902,
         "bar_nu_at_y_0_9": 0.4755546783510237
       },
-      "required_in_final_paper": true
+      "required_in_final_paper": true,
+      "v3_to_v4_scientific_change": "NONE"
     }
   ],
-  "status": "STAGE_10_ARCHITECTURE_REVALIDATED_UNDER_V3",
-  "note": "The Stage-11 P2R repair does not alter Proposition 4 or the regime map. No quantitative table is required."
+  "status": "STAGE_9_V4_REPRODUCIBILITY_SYNCHRONIZED",
+  "note": "The quantitative output is scientifically identical to the v3 artifact; Stage 9 changes only active freeze/provenance metadata and reproducibility integration."
 }
