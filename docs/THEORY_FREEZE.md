@@ -1,225 +1,541 @@
 # Canonical Theory Freeze
 
-Freeze ID: `SSDI-THEORY-FREEZE-2026-09-06-v3`
+Freeze ID: `SSDI-THEORY-FREEZE-2026-09-10-v4`
 
-Freeze date: 2026-09-06
+Freeze date: 2026-09-10
 
-Status: **ACTIVE CANONICAL FREEZE**
+Status: **ACTIVE CANONICAL FREEZE — CERTIFICATION-ONLY REFREEZE**
 
-Supersedes: `SSDI-THEORY-FREEZE-2026-09-06-v2` (preserved in `docs/THEORY_FREEZE_v2.md`).
+Scientific baseline inherited from: `SSDI-THEORY-FREEZE-2026-09-06-v3`, preserved in `docs/THEORY_FREEZE_v3.md`.
 
-Canonical workflow authority: `ryotamatsuki/research-paper-workflow` v1.3, release SHA `3e4e6a3f76d86058024d06f9710f942e21627386`.
+Scientific baseline commit entering this refreeze: `main@3648ac2d4917986f1f09873a30bbd5948fceb8b3`.
 
-Rollback trigger: Stage 11 hostile referee audit found one bounded defect in P2R. The v2 freeze correctly stated global weak monotonicity for general `g` but overclaimed pointwise strict derivative signs at interior optima and used `g''` without assuming twice differentiability. Stage 7R was reopened only for this repair.
+Latest-workflow authority: `ryotamatsuki/research-paper-workflow@f48984013898696f010f0437a8cfed6b5b54bdc2`.
+
+Historical production workflow: `v1.3@3e4e6a3f76d86058024d06f9710f942e21627386`.
+
+Stage-4A state: `GO — MATHEMATICAL ADVERSARIAL CERTIFICATION PASS`.
+
+Stage-7.5A state: `GO — GENERALITY / QUANTIFIER CERTIFICATION PASS`.
+
+Formal-verification state: `FORMAL VERIFICATION PASS`.
+
+This v4 freeze is certification-only. It does not alter any primitive, payoff, timing assumption, equilibrium condition, proposition conclusion, parameter restriction, welfare comparison, threshold, numerical result, or contribution claim inherited from v3. It records the current theory under the latest workflow after the retroactive Stage 4A and Stage 7.5A/Formal Verification gates were closed. The only manuscript fidelity changes preceding this freeze were narrower `pure-strategy` uniqueness wording and bounded-domain alignment of the Lean P2R statement; neither changes the scientific result set.
 
 ## 1. Research question
 
 How does the scope of a mandatory common technical standard affect firms' endogenous allocation of a fixed R&D capacity between common-layer and proprietary innovation, and when can this endogenous portfolio response make selective rather than complete standardization welfare-optimal?
 
-## 2. Contribution boundary
+## 2. Contribution statement
 
 The contribution is the whole-game/result combination in which a regulator chooses continuous standardization scope before firms allocate a fixed innovation capacity across common and proprietary layers; greater transferability lowers the private relative return to common innovation because it strengthens rivals; and this endogenous portfolio response changes the policy conclusion from complete scope under fixed positive symmetric R&D to a unique interior scope when rivalry is sufficiently strong in the quadratic baseline.
 
 No broader claim that standards affect innovation, that partial standardization can be optimal, or that innovation portfolios are endogenous is authorized as novel by itself.
 
-## 3. Players, timing, and equilibrium concept
+## 3. Players, objectives, timing, and information
 
 Players: one benevolent regulator, two symmetric firms `i in {1,2}`, and a representative consumer.
 
 Timing:
-1. Regulator chooses standardization scope `b in [0,1]`.
-2. Firms simultaneously choose common-layer R&D `x_i in [0,E]`; proprietary R&D is `z_i=E-x_i`.
-3. Firms simultaneously choose nonnegative prices `p_i >= 0`.
 
-Equilibrium concept: subgame-perfect Nash equilibrium with a valid price continuation at every feasible upstream history.
+1. The regulator chooses mandatory standardization scope `b in [0,1]`.
+2. Firms simultaneously allocate fixed R&D capacity by choosing `x_i in [0,E]`; proprietary R&D is `z_i=E-x_i`.
+3. Firms simultaneously choose nonnegative prices `p_i>=0`.
+4. The consumer chooses quantities subject to `q_i>=0`.
 
-## 4. Baseline technology and quality
+The model is complete-information and solved by backward induction.
 
-Fixed R&D capacity: `E>0`.
+The regulator maximizes total surplus on the equilibrium path. Each firm maximizes operating profit; fixed total R&D capacity is policy-invariant in the baseline.
 
-Quadratic innovation technology:
-`g(r)=r-kappa*r^2/2`, with `kappa>0`.
+## 4. Complete strategy and choice sets
 
-Define `y=kappa E` and impose `1/2<y<1`, so `g` is increasing and strictly concave on `[0,E]`.
+- Policy: `b in [0,1]`.
+- Firm common-layer R&D: `x_i in [0,E]`.
+- Firm proprietary R&D: `z_i=E-x_i in [0,E]`.
+- Prices: `p_i in [0,infinity)`.
+- Consumer quantities: `(q_1,q_2) in R_+^2`.
 
-Quality:
-`A_i = a + theta [ g(x_i) + b g(x_j) + g(E-x_i) ]`, `j != i`, with `a>0`, `theta>0`.
+No price floor, no loss-exclusion refinement, no tie-breaking equilibrium selection, and no restriction to on-path R&D histories is part of the game.
 
-The policy `b` changes transferability of the rival's common-layer innovation; it does not directly change product substitutability.
+## 5. Utility, demand, technology, costs, transfers
 
-## 5. Consumer side and price competition
+Consumer utility is
 
-Utility:
-`U(q_1,q_2)=A_1 q_1+A_2 q_2-(q_1^2+q_2^2)/2-rho q_1 q_2`, with `0<rho<1`.
+`U(q_1,q_2)=A_1 q_1+A_2 q_2-(q_1^2+q_2^2)/2-rho q_1 q_2`,
+
+with `0<rho<1`.
 
 Production marginal cost is zero.
 
-Interior demand:
+When both products are active, demand is
+
 `q_i=[A_i-p_i-rho(A_j-p_j)]/(1-rho^2)`.
 
-Define `nu=rho/(2-rho^2)` and impose `0<nu<y`.
+Fixed R&D capacity satisfies `E>0`. The quadratic baseline innovation technology is
 
-All-history regularity condition:
-`A_max/A_min < 2/[rho(3-rho^2)]`, where
+`g(r)=r-kappa*r^2/2`, `kappa>0`.
+
+Quality is
+
+`A_i=a+theta[g(x_i)+b g(x_j)+g(E-x_i)]`, `j!=i`,
+
+with `a>0`, `theta>0`.
+
+The term `b g(x_j)` is technological transferability/usability inside the common layer. There are no monetary transfers, licenses, subsidies, disclosure payments, or contracting instruments in the baseline game.
+
+## 6. Parameter and function-class restriction register
+
+Baseline quadratic restrictions:
+
+- `E>0`, `kappa>0`, `a>0`, `theta>0`;
+- `y=kappa E`;
+- `1/2<y<1`;
+- `0<rho<1`;
+- `nu=rho/(2-rho^2)`;
+- `0<nu<y`;
+- `b in [0,1]`.
+
+All-history price-continuation restriction:
+
+`A_max/A_min < 2/[rho(3-rho^2)]`, tagged `(R)`, where
+
 `A_min=a+theta E(1-y/2)` and
 `A_max=a+theta E(2-3y/4)`.
 
-This condition is frozen as a sufficient global-continuation restriction ensuring the intended active-product differentiated-Bertrand equilibrium over all feasible upstream histories.
+General-technology P2R function class:
 
-## 6. Baseline equilibrium objects
+`g` is differentiable, increasing, and strictly concave on `[0,E]`. The general theorem is an order-comparative-static theorem; it does not assume or infer a pointwise derivative of the optimizer with respect to `b`.
 
-Price equilibrium:
+## 7. Equilibrium concept and continuation specification
+
+The equilibrium concept is subgame-perfect Nash equilibrium built on the certified global **pure-strategy** downstream price continuation under `(R)` at every feasible upstream history.
+
+The paper does not claim uniqueness among mixed-strategy price equilibria. All global price-uniqueness language is restricted to pure strategies.
+
+Condition `(R)` is a primitive sufficient parameter restriction ensuring the intended continuation. It is not an ex post equilibrium-selection rule.
+
+## 8. Baseline equilibrium objects
+
+Price continuation:
+
 `p_i^*=[(2-rho^2)A_i-rho A_j]/(4-rho^2)`.
 
 Private R&D problem:
+
 `max_{x_i in [0,E]} (1-nu b)g(x_i)+g(E-x_i)`.
 
-Under the baseline parameter restrictions the unique private optimum is interior:
+Quadratic private allocation:
+
 `x^F(b)=(y-nu b)/[kappa(2-nu b)]`.
 
-Quadratic coordinated symmetric-R&D benchmark:
-`max_{x in [0,E]} (1+b)g(x)+g(E-x)`, yielding
+Coordinated symmetric-R&D problem:
+
+`max_{x in [0,E]} (1+b)g(x)+g(E-x)`.
+
+Quadratic coordinated allocation:
+
 `x^S(b)=(y+b)/[kappa(2+b)]`.
 
-This coordinated benchmark retains decentralized Bertrand pricing and is **not** an unconstrained first best.
+## 9. Proposition register with proof maturity and formal coverage
 
-## 7. Proposition register
+### E0 — Global downstream price continuation
+
+Analytic maturity: `PROVED`.
+
+Exact scope: for every feasible `b in [0,1]` and `(x_1,x_2) in [0,E]^2`, under `(R)` the downstream price game has the certified unique global pure-strategy equilibrium with both products active.
+
+Formal coverage: `PROOF-CRITICAL CORE`.
+
+Lean certifies the active FOC identity, positive denominator/candidate-price implications, foreclosure-threshold algebra and sign, and positive re-entry margin. The complete consumer KKT correspondence and full pure-equilibrium exhaustion remain analytic/Stage-4A objects. Mixed-strategy uniqueness is not certified or claimed.
 
 ### P1 — Private R&D reallocation
-Status: `PROVED`.
 
-In the quadratic baseline,
+Analytic maturity: `PROVED`.
+
+For every baseline quadratic parameter vector and `b in [0,1]`,
+
 `dx^F/db=-nu(2-y)/[kappa(2-nu b)^2] < 0`.
-Hence broader scope shifts the fixed private R&D portfolio from common-layer toward proprietary innovation.
+
+Broader scope reallocates the fixed private R&D budget from common-layer to proprietary innovation.
+
+Formal coverage: `PROOF-CRITICAL CORE`, including the exact closed-form order/sign result.
 
 ### P2R — Directional private/coordinated wedge under general concave technology
-Status: `PROVED AFTER STAGE-11 REPAIR`.
 
-Let `g` be differentiable, increasing, and strictly concave on `[0,E]`. Here `increasing` may be read weakly; together with differentiability and strict concavity it implies `g'(x)>0` for every interior `x in (0,E)`.
+Analytic maturity: `PROVED`.
 
-For any `b_2>b_1`:
+For every differentiable increasing strictly concave `g` on `[0,E]` and every `b_2>b_1`:
 
-- private allocation: `x^F(b_2) <= x^F(b_1)`;
-- coordinated symmetric allocation: `x^S(b_2) >= x^S(b_1)`.
+- `x^F(b_2)<=x^F(b_1)`;
+- `x^S(b_2)>=x^S(b_1)`.
 
-These global weak order statements include corner solutions.
+If both compared private optima are interior, the private inequality is strict. If both compared coordinated optima are interior, the coordinated inequality is strict.
 
-If both private optima at `b_1` and `b_2` are interior, then
-`x^F(b_2) < x^F(b_1)`.
+No pointwise sign for `dx^F/db` or `dx^S/db` is claimed for arbitrary general `g`.
 
-If both coordinated symmetric optima at `b_1` and `b_2` are interior, then
-`x^S(b_2) > x^S(b_1)`.
+Formal coverage: `PROOF-CRITICAL CORE`. Lean formalizes the decreasing/increasing-differences revealed-preference order logic on the actual bounded choice set `[0,E]` and the contradiction core for equal interior optima conditional on the relevant FOCs. The analytic regularity-to-unique-argmax and FOC derivations remain outside Lean.
 
-The strict statements are order comparisons across two scope values. **No pointwise derivative claim `dx^F/db<0<dx^S/db` is frozen for arbitrary general `g`.** No `C^2` assumption is added.
+### P3R — Fixed symmetric-allocation benchmark
 
-Proof architecture:
-`f_F(x,b_2)-f_F(x,b_1)=-nu(b_2-b_1)g(x)` is decreasing in `x`, so the private problem has decreasing differences; `f_S(x,b_2)-f_S(x,b_1)=(b_2-b_1)g(x)` is increasing in `x`, so the coordinated problem has increasing differences. Strict concavity gives unique maximizers and the global weak ordering. If two compared interior optima were equal, their first-order conditions at `b_1` and `b_2` would imply `nu(b_2-b_1)g'(x)=0` in the private problem or `(b_2-b_1)g'(x)=0` in the coordinated problem, contradicting `nu>0`, `b_2>b_1`, and `g'(x)>0` at an interior point.
+Analytic maturity: `PROVED`.
 
-### P3R — Fixed symmetric allocation benchmark
-Status: `PROVED`.
+For each fixed symmetric common allocation `x_1=x_2=bar{x}>0`, welfare is strictly increasing in `b`, so `b^FIX=1`. If `bar{x}=0`, the regulator is indifferent.
 
-For a fixed symmetric common-R&D allocation `x_1=x_2=bar{x}>0`, welfare is strictly increasing in scope, so `b=1` is optimal. If `bar{x}=0`, the regulator is indifferent over scope.
+No asymmetric fixed-allocation theorem is frozen.
 
-No asymmetric fixed-allocation welfare benchmark is frozen.
+Formal coverage: `PARTIAL / SUPPORTING IDENTITIES`; the policy monotonicity argument remains analytic.
 
 ### P4 — Selective standardization
-Status: `PROVED` and headline theorem; **UNCHANGED BY v3**.
+
+Analytic maturity: `PROVED` and headline theorem.
 
 Let
+
 `H(y,nu)=nu^3+2nu^2 y^2-8nu^2 y+2nu^2+nu y^2-4nu y+16nu+2y^2-8y`.
 
-For each `y in (1/2,1)` there is a unique `bar_nu(y) in (0,y)` satisfying `H(y,bar_nu(y))=0`. In the frozen region:
-- if `nu <= bar_nu(y)`, the unique optimum is `b*=1`;
-- if `bar_nu(y) < nu < y`, the unique optimum satisfies `0<b*<1`.
+For every `y in (1/2,1)` there exists a unique `bar_nu(y) in (0,y)` with `H(y,bar_nu(y))=0`.
 
-Equivalently, within the frozen region, a unique interior scope occurs iff `nu>bar_nu(y)`.
+Within the frozen quadratic domain:
 
-The global uniqueness result is frozen only for the quadratic baseline.
+- `nu<=bar_nu(y) => b*=1`;
+- `bar_nu(y)<nu<y =>` a unique `b*` satisfies `0<b*<1`.
+
+Formal coverage: `PROOF-CRITICAL CORE`. Lean certifies threshold existence/uniqueness/sign partition, positivity of `F'(0)` expression, negativity of the displayed `F''` expression, the `F'(1)` threshold-sign equivalence, and exact equality between the substituted quadratic policy objective and its rational closed form. Formal differentiation from the objective to all derivative formulas and the complete argmax theorem remain analytic.
 
 ### P5R — Coordinated symmetric-R&D benchmark
-Status: `PROVED` as a constrained benchmark; **UNCHANGED BY v3**.
 
-When the regulator directly chooses `b` and the symmetric R&D composition `x` while decentralized Bertrand pricing remains in place, complete standardization `b=1` is optimal.
+Analytic maturity: `PROVED` as a constrained benchmark.
 
-This result must not be labeled `first best`.
+When the regulator chooses `b` and the symmetric R&D composition while differentiated Bertrand pricing remains decentralized, `b^COORD=1`.
 
-## 8. Welfare register
+This is not an unconstrained first best.
 
-At a symmetric Bertrand equilibrium with common quality `A`,
+Formal coverage: `SUPPORTING WELFARE CORE`; the complete coordinated argmax proof remains analytic.
+
+No headline result is `NUMERICALLY SUPPORTED ONLY`, `CONJECTURE`, or unresolved.
+
+## 10. Welfare and benchmark register
+
+At the symmetric Bertrand equilibrium with common quality `A`,
+
+`CS(A,rho)=A^2/[(2-rho)^2(1+rho)]`,
+
+`PS(A,rho)=2A^2(1-rho)/[(2-rho)^2(1+rho)]`,
+
 `W(A,rho)=A^2(3-2rho)/[(2-rho)^2(1+rho)]`.
 
+Hence symmetric welfare ranks `A` monotonically.
+
 Along the decentralized quadratic R&D equilibrium,
+
 `A(b)=a+theta[(1+b)g(x^F(b))+g(E-x^F(b))]`.
 
-In the quadratic interior baseline, the quality/welfare derivative decomposes into:
-- a positive direct diffusion term from broader transferability; and
-- an endogenous innovation-composition term proportional to `b dx^F/db`, which is zero at `b=0` and strictly negative for `b>0`.
+The policy derivative separates a positive direct diffusion term from a negative endogenous portfolio-response term for positive scope in the quadratic interior baseline.
 
-The selective-standardization theorem is therefore a policy result generated by an endogenous innovation-composition distortion inside the differentiated-Bertrand environment.
+Benchmark definitions:
 
-Fixed R&D-capacity resource cost, if represented, is policy-invariant in the baseline and may be omitted from policy comparisons only as a constant.
+- `FIX`: R&D composition fixed symmetrically; prices decentralized.
+- `COORD`: regulator chooses scope and symmetric R&D composition; prices decentralized.
+- `EFF`: fixed-quality quantity-control benchmark only.
+- unrestricted first best: not solved and not claimed.
 
-## 9. Approved robustness scope
+At fixed symmetric quality,
+
+`W^EFF=A^2/(1+rho)` and
+
+`W^EFF-W=A^2(1-rho)^2/[(2-rho)^2(1+rho)]>0`.
+
+Lean formalizes the exact CS/PS/W identities and fixed-quality quantity-control gap.
+
+## 11. Approved robustness scope
 
 Only the following robustness statements are authorized:
 
-1. General differentiable increasing strictly concave `g`: global weak order monotonicity and strict order comparisons when both compared optima are interior; no pointwise derivative theorem for arbitrary general `g`.
-2. Incomplete transferability: effective transferability may be written as `t=lambda b` to the extent already algebraically established.
-3. Endogenous total R&D: only the conditional relative-return FOC `(1-nu b)g'(x)=g'(z)` may be stated, and only for an extension in which common and proprietary effort face the same marginal total-capacity cost, e.g. a cost `C(x+z)` whose common marginal term cancels from the two interior FOCs. No policy persistence theorem is authorized.
-4. Institutional applications may illustrate the common/proprietary-layer interpretation but do not establish causal validation.
+1. General differentiable increasing strictly concave `g`: private common-layer R&D is globally nonincreasing in scope and coordinated symmetric common-layer R&D globally nondecreasing; strict order only when both compared optima are interior.
+2. Incomplete transferability `t=lambda b`: approved as a reparameterization of the relative-return wedge only.
+3. Endogenous total R&D: only the conditional relative interior FOC `(1-nu b)g'(x)=g'(z)` under a common marginal total-capacity cost is authorized. No global total-R&D or optimal-scope result follows.
+4. Institutional applications are interpretations, not causal validation.
 
-## 10. Explicit exclusions / nonclaims
+## 12. Empirical and institutional interpretation
 
-The following are explicitly outside the v3 freeze:
+`b` is the mandatory scope of a common technological layer/interface. It is not a generic compatibility index and not a legal disclosure share.
 
-- no unconstrained first-best result;
-- no generic `C^2` perturbation result preserving policy-objective strict concavity or uniqueness;
-- no general policy-uniqueness theorem for arbitrary concave innovation technologies;
-- no proof that selective standardization persists under endogenous total R&D;
-- no asymmetric fixed-allocation welfare theorem;
-- no novelty claim broader than the scope → endogenous R&D portfolio → selective-policy threshold architecture;
-- no claim that realized transferred innovation `b g(x^F(b))` is globally increasing in scope;
-- no pointwise strict derivative comparative static for arbitrary general `g`;
-- no use of numerical verification as a substitute for analytic proof.
+Permitted application families include digital protocols/APIs/interfaces and modular industrial interfaces. Empirical implications concern innovation composition rather than total R&D expenditure.
 
-## 11. Verification status
+Outside the quadratic/interior baseline, wording must use the certified order statements rather than pointwise derivative language.
 
-Analytic/symbolic verification of the quadratic baseline continues to cover the private allocation formula and derivative, coordinated symmetric allocation formula and derivative, reduced policy curvature, endpoint derivative, threshold polynomial identities, price equilibrium, and profit formula. These objects are unchanged from v2.
+## 13. Closest-paper distinction
 
-Independent numerical verification continues to check the canonical selective-standardization example, private R&D global maximization on a grid, and unilateral price deviations.
+The closest-literature boundary remains narrow and result-level. Existing work already covers compatibility and endogenous product design, standards and innovation incentives, partial/constrained standardization, and scarce-research-resource allocation. Bryan and Lemus (2017) are close on innovation direction with scarce research resources and underappropriation, while Acemoglu, Gancia, and Zilibotti (2012) already show constrained optimal standardization in a dynamic growth setting. The frozen distinction is the specific architecture:
 
-Stage 7R2 adds regression checks for the repaired P2R wording and numerical kill tests using differentiable strictly concave technologies, including a technology that is not twice differentiable at an interior point, to ensure the order theorem does not rely on `g''`.
+`regulator-chosen continuous scope -> cross-product transferability -> endogenous common/proprietary fixed-capacity portfolio response -> differentiated Bertrand rivalry -> exact complete-to-selective policy reversal and rivalry threshold in the quadratic baseline`.
 
-## 12. Closest-literature distinction
+No generic second-best-standardization claim is frozen as novel.
 
-Existing literature already covers compatibility/product-design responses, standards and innovation incentives, partial standardization, and allocation of innovative effort. Bryan and Lemus (2017) are especially close on scarce research-resource allocation and underappropriation-driven innovation direction; their trade-expansion application operates through market expansion, entry, and research competition rather than mandatory standard scope, cross-product transferability, a fixed two-firm common/proprietary portfolio, and scope optimization. Acemoglu, Gancia, and Zilibotti (2012) already study constrained optimal standardization in a dynamic growth environment, so a generic “second-best restriction of standardization” is not claimed as the contribution here. The frozen distinction remains the scope-to-portfolio-to-policy-reversal architecture and exact rivalry threshold in the quadratic baseline.
+## 14. Explicit exclusions and prohibited stronger claims
 
-## 13. Institutional and empirical interpretation
+The following are not authorized:
 
-`b` is the mandatory scope of a common technical layer/interface, not a generic compatibility index and not a legal disclosure share.
+- unrestricted first-best claims;
+- mixed-strategy price-equilibrium uniqueness;
+- a generic policy-uniqueness theorem for arbitrary concave `g`;
+- pointwise `dx/db` signs for arbitrary differentiable concave `g`;
+- generic small-`C^2` perturbation persistence of P4;
+- selective-standardization persistence with endogenous total R&D;
+- asymmetric fixed-allocation welfare theorem;
+- global monotonicity of realized transferred innovation `b g(x^F(b))`;
+- causal validation from the cited empirical examples;
+- a claim that Lean certifies the complete economic game or full SPNE correspondence;
+- use of numerical verification as a substitute for analytic proof.
 
-Permitted application families include digital protocols/APIs/interfaces and modular manufacturing interfaces, provided they are presented as interpretations.
+## 15. Stage-4A theorem-certificate register
 
-Baseline empirical implications may include a lower private share of common-layer innovation after scope expansion and a stronger composition response under greater downstream substitutability. Outside the quadratic/interior baseline, general-language claims must use order monotonicity rather than pointwise derivative language.
+Canonical Stage-4A record:
 
-## 14. Theory change record from v2 to v3
+`docs/STAGE_04A_RETROACTIVE_MATH_ADVERSARIAL_CERTIFICATION.md`.
 
-Withdrawn statement:
-`At interior optima, dx^F/db<0<dx^S/db for arbitrary differentiable increasing strictly concave g.`
+Canonical theorem-certificate bundle:
 
-Repaired statement:
-For `b_2>b_1`, `x^F(b_2)<=x^F(b_1)` and `x^S(b_2)>=x^S(b_1)` globally; if both compared optima are interior, the inequalities are strict in the order sense. No pointwise derivative statement is frozen for general `g`.
+`theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md`.
 
-Assumptions: unchanged. No `C^2`, strong-concavity, Inada, or higher-order smoothness assumption is added.
+Verdict:
 
-Affected result: P2R only.
+`GO — MATHEMATICAL ADVERSARIAL CERTIFICATION PASS`.
 
-Unaffected results: P1, P3R, P4, P5R, the global price continuation, welfare formulas, policy-regime figure, contribution boundary, and all quadratic-baseline equations.
+Certified Stage-4A scope includes E0 price continuation, P1, P2R, P3R, P4, P5R/W1, with D1 candidate-deviation, D2 multiplicity/alternative-equilibrium, and D3 indifference/zero-payoff audits separated where relevant.
 
-## 15. Downstream contract
+Permanent independent evaluator:
 
-All manuscript sections, provenance, tests, and exposition metadata that refer to the active freeze or general-`g` strict comparative statics must be synchronized to v3. The repaired paper must return to Stage 11 for a repeated hostile referee gate. It may not proceed directly to Stage 12.
+`scripts/stage4a_independent_equilibrium_set_audit.py`.
+
+Recorded audit summary:
+
+`parameter_sets=126; histories=2142; player_histories=4284; unresolved=0; profitable_price_deviations=0; alternative_pure_price_equilibria=0; rd_corner_failures=0; policy_regime_failures=0; welfare_failures=0`.
+
+## 16. Stage-7.5A claim-scope / quantifier register
+
+Canonical record:
+
+`docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md`.
+
+Verdict:
+
+`GO — GENERALITY / QUANTIFIER CERTIFICATION PASS`.
+
+The maximum defensible wording is exactly the proposition and exclusion scope stated in Sections 9–14 of this freeze. In particular, P2R is a global order theorem with strictness only for two compared interior optima; P4 is quadratic-specific; price uniqueness is pure-strategy only; and P5R is constrained rather than first best.
+
+## 17. Formal-verification applicability, certificate, and toolchain
+
+Applicability: `FORMALIZATION APPLICABLE`.
+
+Final state: `FORMAL VERIFICATION PASS`.
+
+Canonical certificate:
+
+`theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md`.
+
+Certified formal-source commit: `5078719c57495c510405aa0cd33e621f3a7a2ab0`.
+
+Formal source paths:
+
+- `formal/SSDI/Core.lean`
+- `formal/SSDI/Generality.lean`
+- `formal/SSDI/Continuation.lean`
+- `formal/SSDI/Threshold.lean`
+- `formal/SSDI/PolicySigns.lean`
+- `formal/SSDI/PolicyObjective.lean`
+- `formal/SSDI/WelfareIdentities.lean`
+- `formal/SSDI/Assurance.lean`
+- umbrella `formal/SSDI.lean`
+
+Toolchain/build provenance:
+
+- Lean 4 `v4.32.1`;
+- Lean executable commit `f054605aea4b840552cca2e725580bffd1e1b704`;
+- mathlib exact commit `520045ab14e26149ee970e2e617ca04b09bde5d6`;
+- build sequence: `lake update`; `lake exe cache get`; `lake build`;
+- clean Lean CI run `34469130983`: success, 8664 build jobs;
+- PR-head Lean CI `34471931934`: success;
+- merged-main Lean CI `34472224655`: success.
+
+Axiom/placeholder state:
+
+- no project `sorry`;
+- no project `admit`;
+- no project-specific axiom;
+- certified theorem dependency reports contain only standard Lean/mathlib foundations `propext`, `Classical.choice`, and `Quot.sound`.
+
+## 18. Paper-claim ↔ formal-theorem map
+
+The detailed mapping is authoritative in `theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md`.
+
+Frozen summary:
+
+- P1 -> `xPrivate_strict_decrease` and supporting Core identities;
+- P2R private weak order -> `privateObjective_scope_diff`, `private_argmax_nonincreasing`;
+- P2R coordinated weak order -> `coordinatedObjective_scope_diff`, `coordinated_argmax_nondecreasing`;
+- P2R strict interior contradiction core -> `private_same_interior_foc_impossible`, `coordinated_same_interior_foc_impossible`;
+- E0 algebraic continuation core -> `candidatePrice_foc`, `foreclosureThreshold_eq`, `foreclosureThreshold_neg`, `reentry_margin_pos`, `candidatePrice_pos`;
+- P4 threshold -> `exists_unique_threshold_root` and threshold sign/monotonicity lemmas;
+- P4 policy signs -> `Fp0Expr_pos`, `FppExpr_neg`, `Fp1Expr_nonneg_iff_le_threshold`, `Fp1Expr_neg_iff_threshold_lt`;
+- P4 policy-objective fidelity -> `policyObjective_eq_closed`, `policyObjective_den_pos`;
+- welfare -> `consumerSurplus_identity`, `producerSurplus_identity`, `welfare_identity`, `efficientWelfare_identity`, `efficient_minus_bertrand_identity`.
+
+## 19. Assumptions encoded but not proved inside Lean
+
+The formal layer intentionally receives or leaves outside the kernel proof the following economic/analytic bridges where indicated:
+
+- primitive interpretation of utility, quality, and policy objects;
+- complete consumer KKT allocation correspondence;
+- full derivation of the price best-response correspondence from primitive consumer optimization;
+- analytic implication from global `(R)` to every pointwise continuation inequality supplied to selected Lean lemmas;
+- complete global pure-strategy equilibrium exhaustion;
+- differentiability/strict-concavity regularity steps establishing unique general-`g` maximizers;
+- derivation of interior FOCs from the optimization problem;
+- formal differentiation connecting the policy objective to every displayed derivative formula;
+- complete regulator argmax theorem;
+- unrestricted planner optimization.
+
+These supplied/excluded components are not described in the manuscript as machine-proved.
+
+## 20. Continuation-completeness register
+
+Relevant off-path history class:
+
+all `b in [0,1]` and `(x_1,x_2) in [0,E]^2`.
+
+Continuation status under `(R)`:
+
+`CERTIFIED UNIQUE GLOBAL PURE-STRATEGY PRICE EQUILIBRIUM WITH BOTH PRODUCTS ACTIVE`.
+
+The Stage-4A proof separately establishes inactive-product profitable re-entry, excludes active zero-price equilibria, derives the unique active FOC candidate, and establishes globality by foreclosure-threshold sign and strict concavity on the active region.
+
+Independent direct-payoff/allocation verification is supplied by:
+
+- `scripts/stage4a_independent_equilibrium_set_audit.py`;
+- `scripts/stage11_independent_continuation_audit.py`.
+
+## 21. Active-set, corner, participation, and solver taxonomy
+
+Consumer allocation regimes explicitly audited:
+
+- active-active;
+- product 1 only;
+- product 2 only;
+- both inactive / zero-demand behavior.
+
+Upstream corners explicitly audited:
+
+- `b=0`, `b=1`, near-boundary scope;
+- `x_i=0`, `x_i=E`, symmetric and asymmetric R&D corners;
+- near `y=1/2`, `y=1`, `nu=0`, `nu=y`;
+- policy-threshold neighborhood `H=0`.
+
+Solver/evaluator taxonomy is fail-closed: an unclassified KKT regime is `UNRESOLVED`, not an unprofitable deviation.
+
+Stage-4A permanent evaluator result:
+
+- unresolved: `0`;
+- profitable price deviations: `0`;
+- alternative pure price equilibria: `0`;
+- R&D corner failures: `0`;
+- policy regime failures: `0`;
+- welfare failures: `0`.
+
+Stage-11 independent continuation result:
+
+- upstream histories: `73`;
+- player-history deviation problems: `146`;
+- tested nonnegative deviation prices per player-history: `10001`;
+- `UNRESOLVED=0`;
+- numerical failures `=0`;
+- profitable finite deviations `=0`;
+- pure boundary-equilibrium counterexamples `=0`.
+
+## 22. Multiplicity, nonexistence, and selection assumptions
+
+Within the paper's claimed pure-strategy scope under `(R)`:
+
+- downstream price equilibrium: unique;
+- quadratic private R&D equilibrium: unique;
+- P4 regulator optimum: unique in the stated threshold regimes.
+
+No continuation-selection assumption is needed within that scope.
+
+No claim is made about mixed-strategy equilibrium uniqueness. No mixed-equilibrium selection is used for welfare.
+
+## 23. Counterexample and regression-test register
+
+Permanent regression evidence includes:
+
+- `scripts/stage4a_independent_equilibrium_set_audit.py`;
+- `scripts/stage11_independent_continuation_audit.py`;
+- `scripts/symbolic_verify.py`;
+- `scripts/numerical_verify.py`;
+- `tests/test_p2r_order_monotonicity.py`;
+- `tests/test_freeze_regressions.py`;
+- `tests/test_stage9r_metadata.py`.
+
+Historical counterexample discipline is part of the freeze: the former pointwise derivative formulation of general-`g` P2R was rejected and replaced by the current order theorem. Regression tests include corner plateaus and a differentiable strictly concave technology that is not twice differentiable at an interior point.
+
+## 24. Verification status
+
+Analytic proof status: PASS for all claims actually presented as theorems/propositions.
+
+Stage-4A independent adversarial certification: PASS.
+
+Stage-7.5A generality/quantifier certification: PASS.
+
+Formal Verification Gate: PASS for the explicitly bounded proof-critical core.
+
+Symbolic/numerical/regression verification: PASS on the current certified object.
+
+Latest merged-main evidence before refreeze:
+
+- normal verify/package run `34472224636`: success;
+- formal-verification run `34472224655`: success.
+
+No material unresolved continuation, solver failure, theorem mismatch, benchmark mismatch, proof escape hatch, or stale formal certificate remains at entry to v4.
+
+## 25. Certification-only change record from v3 to v4
+
+Scientific changes: `NONE`.
+
+Administrative/certification changes:
+
+1. v3 preserved as `docs/THEORY_FREEZE_v3.md`;
+2. current latest-workflow authority recorded;
+3. Stage-4A theorem certificate inheritance recorded;
+4. Stage-7.5A claim-scope certificate inheritance recorded;
+5. Formal Verification PASS, theorem mapping, toolchain, assumptions, and model boundary recorded;
+6. continuation/multiplicity/solver/counterexample registers expanded to current Stage-8 requirements;
+7. pre-existing manuscript wording is frozen at the narrower `pure-strategy` uniqueness scope certified in Stage 7.5A.
+
+The formal P2R bounded-domain correction and manuscript pure-strategy wording repair occurred before the v4 refreeze and were classified at Stage 7.5A as statement-fidelity/certification repairs, not changes to theorem conclusions.
+
+## 26. Downstream synchronization contract
+
+The active theory identifier is now `SSDI-THEORY-FREEZE-2026-09-10-v4`.
+
+Historical Stage-9/10 artifacts that still identify v3 remain historical until the next authorized step, **Stage 9 formal-artifact reproducibility synchronization**. They must not be silently rewritten as if they were produced under v4. Stage 9 must explicitly record inherited scientific identity and update active reproducibility metadata to v4 without changing quantitative outputs.
+
+After Stage 9 sync, the project must run the latest-workflow Stage-11 certification-regression recheck before relying on the migrated certificates for refreshed submission QA.
+
+## 27. Theory change control
+
+Any substantive post-v4 theoretical change must record what changed, why, affected equations/propositions/quantifiers/benchmarks/formal theorems/verifications/literature claims, and the earliest workflow stage to reopen.
+
+- equilibrium/globality change -> reopen Stage 4/4A and all affected downstream gates;
+- function-class, quantifier, benchmark, or claim-scope change -> reopen Stage 7.5A and earlier affected analytic stages;
+- material change to a formally certified theorem, encoded hypothesis, policy objective, continuation inequality, or welfare identity -> mark Formal Verification Certificate stale and rerun the Formal Verification Gate before refreeze;
+- substantive theory changes after freeze require a new versioned freeze; no silent edits to v4 are permitted.
+
+Certification-only metadata synchronization that does not change the scientific object may proceed at the appropriate downstream stage with explicit provenance.
 
 ## Final verdict
 
-`THEORY REFROZEN AS v3 — DOWNSTREAM SYNCHRONIZATION REQUIRED BEFORE STAGE 11 RE-GATE`
+`THEORY FROZEN — GO TO REPRODUCIBILITY SETUP`
+
+Authorized next step under the latest-workflow migration:
+
+`Stage 9 — formal-artifact reproducibility synchronization on SSDI-THEORY-FREEZE-2026-09-10-v4`.
