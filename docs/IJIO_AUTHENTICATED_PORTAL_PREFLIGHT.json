@@ -1,0 +1,58 @@
+{
+  "stage": "Authenticated IJIO Guide / Editorial Manager preflight",
+  "date": "2026-09-11",
+  "repository": "ryotamatsuki/standardization-scope-direction-innovation",
+  "baseline": "12140b079fa315d012b07d8ec45d3c7130863b7f",
+  "active_theory_freeze": "SSDI-THEORY-FREEZE-2026-09-10-v4",
+  "target_journal": "International Journal of Industrial Organization",
+  "submission_system": "Editorial Manager",
+  "verdict": "CONDITIONAL PASS — AUTHENTICATED PORTAL OBSERVATION REQUIRED",
+  "scientific_delta": "NONE",
+  "public_official_refresh": "PASS",
+  "authenticated_current_submission_observed": false,
+  "historical_supporting_evidence": {
+    "article_type": {
+      "value": "Research Paper",
+      "observed_in_other_ijio_submission_confirmation": "2026-09-05",
+      "authority": "HISTORICAL_ACCOUNT_EVIDENCE_ONLY",
+      "closes_current_requirement": false
+    },
+    "generated_pdf_approval": {
+      "observed_in_other_ijio_submission_message": "2026-09-08",
+      "authority": "HISTORICAL_ACCOUNT_EVIDENCE_ONLY",
+      "closes_current_requirement": false
+    }
+  },
+  "portal_items": {
+    "AP01": "UNVERIFIED",
+    "AP02": "UNVERIFIED",
+    "AP03": "UNVERIFIED",
+    "AP04": "UNVERIFIED",
+    "AP05": "UNVERIFIED",
+    "AP06": "UNVERIFIED",
+    "AP07": "UNVERIFIED",
+    "AP08": "UNVERIFIED",
+    "AP09": "UNVERIFIED",
+    "AP10": "UNVERIFIED",
+    "AP11": "UNVERIFIED",
+    "AP12": "UNVERIFIED",
+    "AP13": "UNVERIFIED"
+  },
+  "material_current_questions": [
+    "current IJIO article type",
+    "current review/anonymization model",
+    "current file designations",
+    "PDF-only versus editable-source requirement at initial submission",
+    "title-page and figure upload roles",
+    "abstract/keyword/JEL/format fields",
+    "reviewer nomination rule",
+    "data/code/preprint/AI/declaration questions",
+    "submission-stage payment requirement",
+    "generated PDF for this manuscript",
+    "page-by-page generated-PDF inspection",
+    "final file inventory"
+  ],
+  "stage14_full_pass_allowed": false,
+  "next_action": "AUTHENTICATED_CURRENT_IJIO_PORTAL_OBSERVATION",
+  "downstream_route": "reconcile Journal Requirements Ledger -> exact source-archive qualification if required -> refreshed Stage 14 QA -> new Stage 15 submission freeze"
+}
