@@ -4,6 +4,7 @@ import json
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER_MD = ROOT / "docs" / "JOURNAL_REQUIREMENTS_LEDGER.md"
 LEDGER_JSON = ROOT / "docs" / "JOURNAL_REQUIREMENTS_LEDGER.json"
+CLOSEOUT = ROOT / "docs" / "JOURNAL_REQUIREMENTS_LEDGER_CLOSEOUT.md"
 ACTIVE_FREEZE = "SSDI-THEORY-FREEZE-2026-09-10-v4"
 BASELINE = "24f6f357277a8721ff95b12382891c7b69454863"
 WORKFLOW = "f48984013898696f010f0437a8cfed6b5b54bdc2"
@@ -63,3 +64,12 @@ def test_current_package_strengths_do_not_close_portal_requirements():
     assert "separate author title page already prepared" in strengths
     assert "four Highlights prepared and each below 85 characters" in strengths
     assert data["stage14_full_pass_allowed"] is False
+
+
+def test_ledger_construction_is_closed_without_falsely_closing_requirements():
+    closeout = CLOSEOUT.read_text(encoding="utf-8")
+    assert "LEDGER ESTABLISHED — MATERIAL UNVERIFIED ITEMS RETAINED — AUTHENTICATED PREFLIGHT REQUIRED" in closeout
+    assert "Current-source refresh: 2026-09-11" in closeout
+    assert "Stage 14 SUBMISSION QA PASS" in closeout
+    assert "CONDITIONAL PASS — AUTHENTICATED PORTAL PREFLIGHT REQUIRED" in closeout
+    assert load_json()["stage14_full_pass_allowed"] is False
