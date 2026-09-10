@@ -1,16 +1,19 @@
 PYTHON ?= python
 
-.PHONY: all verify symbolic numerical continuation test exposition figures tables paper clean
+.PHONY: all verify symbolic numerical stage4a continuation test exposition figures tables paper clean
 
 all: verify paper
 
-verify: symbolic numerical continuation test
+verify: symbolic numerical stage4a continuation test
 
 symbolic:
 	$(PYTHON) scripts/symbolic_verify.py
 
 numerical:
 	$(PYTHON) scripts/numerical_verify.py
+
+stage4a:
+	$(PYTHON) scripts/stage4a_independent_equilibrium_set_audit.py
 
 continuation:
 	$(PYTHON) scripts/stage11_independent_continuation_audit.py
