@@ -4,11 +4,11 @@ import SSDI.Core
 # General-technology order core for P2R
 
 This file formalizes the revealed-preference / decreasing-differences logic
-behind the repaired general-technology Proposition P2R.  It deliberately does
-not encode the complete function-class theorem that differentiability plus
-strict concavity implies unique maximizers on `[0,E]`; uniqueness of the
-one-dimensional maximizers is supplied as an explicit hypothesis here and is
-proved analytically in the paper.
+behind the repaired general-technology Proposition P2R on the paper's actual
+choice domain `[0,E]`. It deliberately does not encode the complete theorem
+that differentiability plus strict concavity implies existence/uniqueness of
+the one-dimensional maximizers; those facts are supplied here as explicit
+hypotheses and proved analytically in the paper.
 -/
 
 namespace SSDI
@@ -40,25 +40,30 @@ theorem coordinatedObjective_scope_diff
   ring
 
 /--
-Abstract revealed-preference core of the private global order theorem.
-If `x1` and `x2` are the unique maximizers at `b1<b2` and `g` is monotone,
-then the higher-scope private maximizer cannot lie to the right.
+Abstract revealed-preference core of the private global order theorem on
+`[0,E]`. If `x1` and `x2` are unique maximizers at `b1<b2` and `g` is monotone
+on the feasible R&D interval, the higher-scope private maximizer cannot lie to
+the right.
 -/
 theorem private_argmax_nonincreasing
     {g : ℝ → ℝ} {E nu b1 b2 x1 x2 : ℝ}
     (hnu : 0 < nu)
     (hb : b1 < b2)
-    (hg : Monotone g)
-    (hmax1 : ∀ x, privateObjective g E nu b1 x ≤ privateObjective g E nu b1 x1)
-    (hmax2 : ∀ x, privateObjective g E nu b2 x ≤ privateObjective g E nu b2 x2)
-    (huniq1 : ∀ x,
+    (hx1 : x1 ∈ Set.Icc (0 : ℝ) E)
+    (hx2 : x2 ∈ Set.Icc (0 : ℝ) E)
+    (hg : MonotoneOn g (Set.Icc (0 : ℝ) E))
+    (hmax1 : ∀ x ∈ Set.Icc (0 : ℝ) E,
+      privateObjective g E nu b1 x ≤ privateObjective g E nu b1 x1)
+    (hmax2 : ∀ x ∈ Set.Icc (0 : ℝ) E,
+      privateObjective g E nu b2 x ≤ privateObjective g E nu b2 x2)
+    (huniq1 : ∀ x ∈ Set.Icc (0 : ℝ) E,
       privateObjective g E nu b1 x = privateObjective g E nu b1 x1 → x = x1) :
     x2 ≤ x1 := by
   by_contra hnot
   have hx : x1 < x2 := lt_of_not_ge hnot
-  have h1 := hmax1 x2
-  have h2 := hmax2 x1
-  have hg12 : g x1 ≤ g x2 := hg (le_of_lt hx)
+  have h1 := hmax1 x2 hx2
+  have h2 := hmax2 x1 hx1
+  have hg12 : g x1 ≤ g x2 := hg hx1 hx2 (le_of_lt hx)
   have hc : -nu * (b2 - b1) ≤ 0 := by nlinarith
   have hdelta :
       privateObjective g E nu b2 x2 - privateObjective g E nu b1 x2 ≤
@@ -69,32 +74,37 @@ theorem private_argmax_nonincreasing
       privateObjective g E nu b2 x1 - privateObjective g E nu b1 x1 ≤
         privateObjective g E nu b2 x2 - privateObjective g E nu b1 x2 := by
     linarith
-  have heq := le_antisymm hdelta hreverse
+  have _heq := le_antisymm hdelta hreverse
   have hf1eq :
       privateObjective g E nu b1 x2 = privateObjective g E nu b1 x1 := by
     linarith
-  have hxeq := huniq1 x2 hf1eq
+  have hxeq := huniq1 x2 hx2 hf1eq
   linarith
 
 /--
-Abstract revealed-preference core of the coordinated global order theorem.
-If `x1` and `x2` are the unique maximizers at `b1<b2` and `g` is monotone,
-then the higher-scope coordinated maximizer cannot lie to the left.
+Abstract revealed-preference core of the coordinated global order theorem on
+`[0,E]`. If `x1` and `x2` are unique maximizers at `b1<b2` and `g` is monotone
+on the feasible R&D interval, the higher-scope coordinated maximizer cannot lie
+to the left.
 -/
 theorem coordinated_argmax_nondecreasing
     {g : ℝ → ℝ} {E b1 b2 x1 x2 : ℝ}
     (hb : b1 < b2)
-    (hg : Monotone g)
-    (hmax1 : ∀ x, coordinatedObjective g E b1 x ≤ coordinatedObjective g E b1 x1)
-    (hmax2 : ∀ x, coordinatedObjective g E b2 x ≤ coordinatedObjective g E b2 x2)
-    (huniq1 : ∀ x,
+    (hx1 : x1 ∈ Set.Icc (0 : ℝ) E)
+    (hx2 : x2 ∈ Set.Icc (0 : ℝ) E)
+    (hg : MonotoneOn g (Set.Icc (0 : ℝ) E))
+    (hmax1 : ∀ x ∈ Set.Icc (0 : ℝ) E,
+      coordinatedObjective g E b1 x ≤ coordinatedObjective g E b1 x1)
+    (hmax2 : ∀ x ∈ Set.Icc (0 : ℝ) E,
+      coordinatedObjective g E b2 x ≤ coordinatedObjective g E b2 x2)
+    (huniq1 : ∀ x ∈ Set.Icc (0 : ℝ) E,
       coordinatedObjective g E b1 x = coordinatedObjective g E b1 x1 → x = x1) :
     x1 ≤ x2 := by
   by_contra hnot
   have hx : x2 < x1 := lt_of_not_ge hnot
-  have h1 := hmax1 x2
-  have h2 := hmax2 x1
-  have hg21 : g x2 ≤ g x1 := hg (le_of_lt hx)
+  have h1 := hmax1 x2 hx2
+  have h2 := hmax2 x1 hx1
+  have hg21 : g x2 ≤ g x1 := hg hx2 hx1 (le_of_lt hx)
   have hc : 0 ≤ b2 - b1 := by linarith
   have hdelta :
       coordinatedObjective g E b2 x2 - coordinatedObjective g E b1 x2 ≤
@@ -105,16 +115,17 @@ theorem coordinated_argmax_nondecreasing
       coordinatedObjective g E b2 x1 - coordinatedObjective g E b1 x1 ≤
         coordinatedObjective g E b2 x2 - coordinatedObjective g E b1 x2 := by
     linarith
-  have heq := le_antisymm hdelta hreverse
+  have _heq := le_antisymm hdelta hreverse
   have hf1eq :
       coordinatedObjective g E b1 x2 = coordinatedObjective g E b1 x1 := by
     linarith
-  have hxeq := huniq1 x2 hf1eq
+  have hxeq := huniq1 x2 hx2 hf1eq
   linarith
 
 /--
-FOC contradiction used for strict private ordering when two compared optima
-are both interior and coincide at the same `x`.
+FOC contradiction used for strict private ordering when two compared interior
+optima coincide at the same `x`; positivity of the derivative is passed in
+explicitly rather than smuggled into the conclusion.
 -/
 theorem private_same_interior_foc_impossible
     {gp : ℝ → ℝ} {nu b1 b2 x rhs : ℝ}
