@@ -20,12 +20,21 @@ jobs:
         run: |
           curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
-      - name: Resolve Lean dependencies
+      - name: Resolve pinned Lean dependencies
         working-directory: formal
         run: |
           elan default "$(cat lean-toolchain)"
           lake update
           lake exe cache get
+          lean --version
+          echo "MATHLIB_COMMIT=$(git -C .lake/packages/mathlib rev-parse HEAD)"
       - name: Build Lean formalization
         working-directory: formal
         run: lake build
+      - name: Fail on project proof escape hatches or project axioms
+        run: |
+          if grep -RInE '(^|[^A-Za-z])(sorry|admit)([^A-Za-z]|$)|^[[:space:]]*axiom[[:space:]]' formal/SSDI formal/SSDI.lean --include='*.lean'; then
+            echo "Lean proof escape hatch or project-specific axiom detected"
+            exit 1
+          fi
+          echo "PROJECT_LEAN_ESCAPE_HATCH_AUDIT=PASS"
