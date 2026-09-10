@@ -4,6 +4,7 @@ import SSDI.PolicySigns
 import SSDI.Generality
 import SSDI.Continuation
 import SSDI.WelfareIdentities
+import SSDI.PolicyObjective
 
 /-!
 # Kernel-dependency report
@@ -19,6 +20,7 @@ logical foundations; the project source declares no project-specific axioms.
 #print axioms SSDI.exists_unique_threshold_root
 #print axioms SSDI.FppExpr_neg
 #print axioms SSDI.Fp1Expr_nonneg_iff_le_threshold
+#print axioms SSDI.policyObjective_eq_closed
 #print axioms SSDI.foreclosureThreshold_neg
 #print axioms SSDI.reentry_margin_pos
 #print axioms SSDI.welfare_identity
