@@ -5,7 +5,7 @@ import SSDI.Core
 
 This file connects the paper's symmetric Bertrand price and quantity objects
 directly to consumer surplus, producer surplus, total surplus, and the efficient
-quantity benchmark.  It protects the benchmark taxonomy used in P3R/P5R.
+quantity benchmark. It protects the benchmark taxonomy used in P3R/P5R.
 -/
 
 namespace SSDI
@@ -51,8 +51,7 @@ theorem consumerSurplus_identity
   have h1p : 1 + rho ≠ 0 := ne_of_gt (by linarith)
   unfold consumerSurplusDirect symmetricPrice symmetricQuantity
   dsimp
-  field_simp [h2, h1p]
-  ring
+  field_simp [h2, h1p] <;> ring
 
 /-- Exact aggregate producer-surplus identity in the manuscript. -/
 theorem producerSurplus_identity
@@ -64,8 +63,7 @@ theorem producerSurplus_identity
   have h2 : 2 - rho ≠ 0 := ne_of_gt (by linarith)
   have h1p : 1 + rho ≠ 0 := ne_of_gt (by linarith)
   unfold producerSurplusDirect symmetricPrice symmetricQuantity
-  field_simp [h2, h1p]
-  ring
+  field_simp [h2, h1p] <;> ring
 
 /-- Exact total-surplus identity in the manuscript. -/
 theorem welfare_identity
@@ -78,8 +76,7 @@ theorem welfare_identity
   rw [consumerSurplus_identity hrho0 hrho1, producerSurplus_identity hrho0 hrho1]
   have h2 : 2 - rho ≠ 0 := ne_of_gt (by linarith)
   have h1p : 1 + rho ≠ 0 := ne_of_gt (by linarith)
-  field_simp [h2, h1p]
-  ring
+  field_simp [h2, h1p] <;> ring
 
 /-- Exact efficient fixed-quality welfare identity. -/
 theorem efficientWelfare_identity
@@ -90,8 +87,7 @@ theorem efficientWelfare_identity
   have h1p : 1 + rho ≠ 0 := ne_of_gt (by linarith)
   unfold efficientWelfareDirect efficientQuantity
   dsimp
-  field_simp [h1p]
-  ring
+  field_simp [h1p] <;> ring
 
 /-- The exact Bertrand quantity-control gap equals the Core expression. -/
 theorem efficient_minus_bertrand_identity
@@ -103,8 +99,7 @@ theorem efficient_minus_bertrand_identity
   unfold bertrandGap
   have h2 : 2 - rho ≠ 0 := ne_of_gt (by linarith)
   have h1p : 1 + rho ≠ 0 := ne_of_gt (by linarith)
-  field_simp [h2, h1p]
-  ring
+  field_simp [h2, h1p] <;> ring
 
 end
 
