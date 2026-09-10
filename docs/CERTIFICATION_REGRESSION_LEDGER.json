@@ -4,6 +4,9 @@
   "repository": "ryotamatsuki/standardization-scope-direction-innovation",
   "active_freeze": "SSDI-THEORY-FREEZE-2026-09-10-v4",
   "workflow_authority": "f48984013898696f010f0437a8cfed6b5b54bdc2",
+  "qualified_implementation_head": "4b11aabb582e5d777c2553d16bb9f2f5ccfad6d4",
+  "qualified_ci_run": 34482554751,
+  "qualified_ci_conclusion": "success",
   "regressions": [
     {
       "id": "CR-01",
@@ -30,7 +33,7 @@
       "discovery_stage": "historical Stage 11 / retroactive Stage 7.5A",
       "earlier_obligation_that_should_have_caught_it": "Stage 4A equilibrium-set certificate plus Stage 7.5A manuscript claim-scope ledger",
       "earliest_historical_rollback": "Stage 7.5A wording/scope certification; no theory rollback",
-      "repair": "Manuscript now states unique pure-strategy Bertrand / price equilibrium and explicitly declines mixed-strategy uniqueness.",
+      "repair": "Manuscript states unique pure-strategy Bertrand / price equilibrium and explicitly declines mixed-strategy uniqueness.",
       "permanent_artifacts": [
         "docs/STAGE_04A_RETROACTIVE_MATH_ADVERSARIAL_CERTIFICATION.md",
         "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
@@ -42,7 +45,7 @@
     {
       "id": "CR-03",
       "class": "REPRODUCIBILITY PROVENANCE REGRESSION",
-      "status": "REPAIRED_IN_CURRENT_STAGE11_RECHECK",
+      "status": "CLOSED_PERMANENTLY_GUARDED",
       "defect": "Appendix computational-verification note still described v3 as the active frozen theory after Stage 9 synchronized the project to certification-only v4.",
       "discovery_stage": "current Stage 11 certification-regression recheck",
       "earlier_obligation_that_should_have_caught_it": "Stage 9 active-metadata/manuscript provenance synchronization",
@@ -54,6 +57,27 @@
       ]
     }
   ],
+  "clean_regression_counts": {
+    "stage4a_parameter_sets": 126,
+    "stage4a_histories": 2142,
+    "stage4a_player_histories": 4284,
+    "stage4a_unresolved": 0,
+    "profitable_price_deviations": 0,
+    "alternative_pure_price_equilibria": 0,
+    "rd_corner_failures": 0,
+    "policy_regime_failures": 0,
+    "welfare_failures": 0,
+    "stage11_continuation_histories": 73,
+    "stage11_continuation_unresolved": 0,
+    "stage11_continuation_failures": 0,
+    "pytest_passed": 22,
+    "lean_jobs": 8664,
+    "lean_build": "success",
+    "formal_escape_hatch_audit": "PASS"
+  },
   "unresolved_material_regressions": 0,
-  "theory_rollback_required": false
+  "unresolved_fatal_attacks": 0,
+  "unresolved_major_attacks": 0,
+  "theory_rollback_required": false,
+  "final_verdict": "GO TO JOURNAL POSITIONING"
 }
