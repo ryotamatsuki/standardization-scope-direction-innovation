@@ -150,12 +150,14 @@ During Stage-11 setup, a one-line temporary file `TEMP_NOT_USE` was accidentally
 - branch: `stage11-certification-regression-recheck`;
 - PR: `#23`;
 - qualified implementation head: `4b11aabb582e5d777c2553d16bb9f2f5ccfad6d4`;
+- final Stage-11 branch head: `97606838560784cf55307e8ba3b9466919e4c395`;
+- Stage-11 merge: `24f6f357277a8721ff95b12382891c7b69454863`;
 - canonical record: `docs/STAGE_11_CERTIFICATION_REGRESSION_RECHECK.md`;
 - certification-regression ledger: `docs/CERTIFICATION_REGRESSION_LEDGER.json`;
 - P2R historical regression record: `docs/CERTIFICATION_REGRESSION_P2R.md`;
 - permanent current regression suite: `tests/test_stage11_certification_regressions.py`.
 
-Clean qualification run `34482554751`: `success`.
+Clean qualification run `34482554751`: `success`. Final exact-head runs `34483926518` (`verify`) and `34483926524` (`lean-formal`) also completed successfully before merge.
 
 Re-executed evidence:
 
@@ -188,10 +190,29 @@ Final Stage-11 verdict:
 
 No theory rollback and no Stage-8 refreeze are required.
 
-Because the completed Stage 12 already selected IJIO and the current Stage-11 recheck found no scientific or result-level novelty change requiring repositioning, the next latest-workflow compatibility step is the current Journal Requirements Ledger rather than a redundant Stage-12 rerun.
+## Current Journal Requirements Ledger
+
+- branch: `journal-requirements-ledger-2026-09-10`;
+- canonical scientific baseline entering ledger construction: `main@24f6f357277a8721ff95b12382891c7b69454863`;
+- human-readable ledger: `docs/JOURNAL_REQUIREMENTS_LEDGER.md`;
+- machine-readable ledger: `docs/JOURNAL_REQUIREMENTS_LEDGER.json`;
+- closeout: `docs/JOURNAL_REQUIREMENTS_LEDGER_CLOSEOUT.md`;
+- regression guard: `tests/test_journal_requirements_ledger.py`;
+- initial source check: 2026-09-10;
+- current publisher-source refresh: 2026-09-11.
+
+Ledger construction verdict:
+
+`LEDGER ESTABLISHED — MATERIAL UNVERIFIED ITEMS RETAINED — AUTHENTICATED PREFLIGHT REQUIRED`.
+
+Current official Elsevier guidance confirms publisher-wide defaults for LaTeX/source packaging, Highlights, generative-AI disclosure, research-data policy structure, artwork, and pricing. It does not eliminate the need for current IJIO-specific evidence. The journal-specific Guide for Authors is identifiable but was not reliably retrievable through the public automated path used for this audit, and the authenticated current Editorial Manager fields have not yet been inspected.
+
+The ledger therefore retains as material `UNVERIFIED` the live IJIO review/anonymization model, initial PDF/editable-source rule, exact file roles, journal-specific format/data requirements, current portal metadata/attestations, submission-stage fee condition, and final portal-generated PDF inspection.
+
+This is a completed fail-closed ledger artifact, not a full submission-compliance PASS. Refreshed Stage 14 may not issue full `SUBMISSION QA PASS` until the material uncertainties are reconciled from the current Guide, authenticated portal, or direct editorial/support instruction.
 
 ## Current route
 
-`Stage 11 GO TO JOURNAL POSITIONING -> current Journal Requirements Ledger -> refreshed Stage 14 QA -> new Stage 15 submission freeze`.
+`Stage 11 PASS -> Current Journal Requirements Ledger ESTABLISHED -> authenticated IJIO Guide / Editorial Manager preflight -> resolve material UNVERIFIED items -> exact source-archive qualification if required -> refreshed Stage 14 QA -> new Stage 15 submission freeze`.
 
 Any substantive manuscript/theory change requires rollback to the earliest affected stage. Any material change to a formally certified theorem or encoded assumption makes the affected Formal Verification Certificate stale until recertified.
