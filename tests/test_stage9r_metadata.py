@@ -3,9 +3,11 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-FREEZE = "SSDI-THEORY-FREEZE-2026-09-06-v3"
+ACTIVE_FREEZE = "SSDI-THEORY-FREEZE-2026-09-10-v4"
+LEGACY_REPRO_FREEZE = "SSDI-THEORY-FREEZE-2026-09-06-v3"
 WORKFLOW_VERSION = "v1.3"
 WORKFLOW_RELEASE = "3e4e6a3f76d86058024d06f9710f942e21627386"
+LATEST_WORKFLOW = "f48984013898696f010f0437a8cfed6b5b54bdc2"
 
 
 def _manuscript_text():
@@ -13,24 +15,33 @@ def _manuscript_text():
     return "\n".join(path.read_text(encoding="utf-8") for path in paths)
 
 
-def test_active_metadata_is_synchronized():
+def test_active_metadata_is_synchronized_after_stage8_v4_refreeze():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     provenance = (ROOT / "docs" / "PROVENANCE.md").read_text(encoding="utf-8")
     freeze = (ROOT / "docs" / "THEORY_FREEZE.md").read_text(encoding="utf-8")
-    for text in (readme, provenance, freeze):
-        assert FREEZE in text
+    migration = (ROOT / "docs" / "LATEST_WORKFLOW_COMPATIBILITY_MIGRATION.md").read_text(encoding="utf-8")
+    for text in (readme, provenance, freeze, migration):
+        assert ACTIVE_FREEZE in text
     assert WORKFLOW_VERSION in readme
     assert WORKFLOW_VERSION in provenance
     assert WORKFLOW_RELEASE in readme
     assert WORKFLOW_RELEASE in provenance
+    assert LATEST_WORKFLOW in readme
+    assert LATEST_WORKFLOW in provenance
     assert (ROOT / "docs" / "THEORY_FREEZE_v2.md").is_file()
+    assert (ROOT / "docs" / "THEORY_FREEZE_v3.md").is_file()
+    assert "THEORY FROZEN — GO TO REPRODUCIBILITY SETUP" in freeze
+    assert "FORMAL VERIFICATION PASS" in freeze
 
 
-def test_stage10r_exposition_manifest_has_required_regime_map_under_v3():
+def test_historical_stage10r_exposition_manifest_remains_v3_until_stage9_sync():
     manifest = json.loads((ROOT / "docs" / "EXPOSITION_OUTPUT_MANIFEST.json").read_text(encoding="utf-8"))
-    assert manifest["freeze_id"] == FREEZE
+    freeze = (ROOT / "docs" / "THEORY_FREEZE.md").read_text(encoding="utf-8")
+    assert manifest["freeze_id"] == LEGACY_REPRO_FREEZE
     assert manifest["workflow_version"] == WORKFLOW_VERSION
     assert manifest["workflow_release_commit"] == WORKFLOW_RELEASE
+    assert "Stage 9" in freeze
+    assert "historical" in freeze.lower()
     outputs = manifest["approved_quantitative_outputs"]
     assert len(outputs) == 1
     figure = outputs[0]
@@ -41,7 +52,7 @@ def test_stage10r_exposition_manifest_has_required_regime_map_under_v3():
     assert abs(figure["representative_checks"]["bar_nu_at_y_0_9"] - 0.4755546783510237) < 1e-15
 
 
-def test_v3_p2r_is_order_comparative_statics_only():
+def test_v4_inherits_repaired_p2r_order_scope():
     freeze = (ROOT / "docs" / "THEORY_FREEZE.md").read_text(encoding="utf-8")
     equilibrium = (ROOT / "paper" / "sections" / "03_equilibrium.tex").read_text(encoding="utf-8")
     robustness = (ROOT / "paper" / "sections" / "05_robustness.tex").read_text(encoding="utf-8")
@@ -52,7 +63,7 @@ def test_v3_p2r_is_order_comparative_statics_only():
     assert "x^F(b_2)<x^F(b_1)" in equilibrium
     assert "x^S(b_2)>x^S(b_1)" in equilibrium
     assert "No pointwise sign for $dx^F/db$ or $dx^S/db$" in equilibrium
-    assert "No pointwise derivative statement" in freeze
+    assert "No pointwise" in freeze
     assert "We do not assert a pointwise sign" in robustness
 
     assert "g''" not in appendix
@@ -86,6 +97,13 @@ def test_rejected_claims_do_not_reenter_manuscript():
     assert "not an unconstrained first best" in lower
     assert "BryanLemus2017" in manuscript
     assert "fig:regime-map" in manuscript
+
+
+def test_pure_strategy_scope_is_explicit():
+    model = (ROOT / "paper" / "sections" / "02_model.tex").read_text(encoding="utf-8")
+    equilibrium = (ROOT / "paper" / "sections" / "03_equilibrium.tex").read_text(encoding="utf-8")
+    assert "unique pure-strategy Bertrand equilibrium" in model
+    assert "unique active-product pure-strategy price equilibrium" in equilibrium
 
 
 def test_citation_keys_and_cross_references_resolve_in_source():
