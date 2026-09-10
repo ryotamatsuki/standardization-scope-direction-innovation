@@ -1,0 +1,143 @@
+{
+  "stage": "Stage 9 — formal-artifact reproducibility synchronization",
+  "date": "2026-09-10",
+  "repository": "ryotamatsuki/standardization-scope-direction-innovation",
+  "active_freeze_id": "SSDI-THEORY-FREEZE-2026-09-10-v4",
+  "inherited_scientific_freeze_id": "SSDI-THEORY-FREEZE-2026-09-06-v3",
+  "stage8_merge_commit": "4c923f9e8e236ea18added57dfefa401f8c406e3",
+  "latest_workflow_authority": "f48984013898696f010f0437a8cfed6b5b54bdc2",
+  "historical_production_workflow": {
+    "version": "v1.3",
+    "release_commit": "3e4e6a3f76d86058024d06f9710f942e21627386"
+  },
+  "scientific_invariance": {
+    "status": "PASS",
+    "comparison_base": "3648ac2d4917986f1f09873a30bbd5948fceb8b3",
+    "comparison_head": "4c923f9e8e236ea18added57dfefa401f8c406e3",
+    "scientific_source_delta": "NONE",
+    "stage8_changed_path_classes": [
+      "freeze/certification records",
+      "provenance/migration documentation",
+      "metadata regression test"
+    ],
+    "unchanged_scientific_path_classes": [
+      "paper/",
+      "formal/",
+      "scripts/symbolic_verify.py",
+      "scripts/numerical_verify.py",
+      "scripts/stage4a_independent_equilibrium_set_audit.py",
+      "scripts/stage11_independent_continuation_audit.py",
+      "references/"
+    ]
+  },
+  "build": {
+    "complete_local_gate": "make all",
+    "components": {
+      "analytic_and_computational_verification": "make verify",
+      "exposition": "make exposition",
+      "manuscript": "make paper",
+      "formal_build": "make formal",
+      "formal_escape_hatch_audit": "make formal-audit"
+    },
+    "required_host_tools": [
+      "Python 3.12-compatible interpreter",
+      "packages in requirements.txt",
+      "TeX Live with pdflatex and BibTeX",
+      "elan"
+    ]
+  },
+  "formal_verification": {
+    "state": "FORMAL VERIFICATION PASS",
+    "certificate": "theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md",
+    "formal_root": "formal/",
+    "toolchain_file": "formal/lean-toolchain",
+    "lean_version": "v4.32.1",
+    "library_file": "formal/lakefile.toml",
+    "mathlib_commit": "520045ab14e26149ee970e2e617ca04b09bde5d6",
+    "umbrella_target": "formal/SSDI.lean",
+    "source_files": [
+      "formal/SSDI/Core.lean",
+      "formal/SSDI/Generality.lean",
+      "formal/SSDI/Continuation.lean",
+      "formal/SSDI/Threshold.lean",
+      "formal/SSDI/PolicySigns.lean",
+      "formal/SSDI/PolicyObjective.lean",
+      "formal/SSDI/WelfareIdentities.lean",
+      "formal/SSDI/Assurance.lean"
+    ],
+    "ci_workflow": ".github/workflows/lean.yml",
+    "escape_hatch_rule": "No project Lean source may contain sorry, admit, or a project-specific axiom declaration in the certified source tree.",
+    "model_boundary": "Selected proof-critical core only; full KKT/SPNE, mixed-strategy uniqueness, and complete P4 differentiation-to-argmax chain remain outside Lean."
+  },
+  "certification_artifacts": {
+    "stage4a_record": "docs/STAGE_04A_RETROACTIVE_MATH_ADVERSARIAL_CERTIFICATION.md",
+    "stage4a_theorem_certificates": "theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md",
+    "stage75a_record": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
+    "formal_certificate": "theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md",
+    "stage8_freeze_record": "docs/THEORY_FREEZE.md",
+    "stage8_process_record": "docs/STAGE_08_CERTIFICATION_ONLY_REFREEZE.md"
+  },
+  "headline_claim_traceability": {
+    "E0": {
+      "claim": "unique global pure-strategy downstream price continuation under (R)",
+      "paper": ["paper/sections/02_model.tex", "paper/sections/03_equilibrium.tex", "paper/sections/appendix.tex"],
+      "stage4a": "theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md",
+      "stage75a": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
+      "formal": "formal/SSDI/Continuation.lean",
+      "regression": ["scripts/stage4a_independent_equilibrium_set_audit.py", "scripts/stage11_independent_continuation_audit.py"]
+    },
+    "P1": {
+      "claim": "quadratic private common-R&D decreases strictly with standardization scope",
+      "paper": ["paper/sections/03_equilibrium.tex", "paper/sections/appendix.tex"],
+      "stage4a": "theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md",
+      "stage75a": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
+      "formal": "formal/SSDI/Core.lean",
+      "regression": ["scripts/symbolic_verify.py", "scripts/numerical_verify.py"]
+    },
+    "P2R": {
+      "claim": "general-concave private/coordinated order comparative statics with strict order only when compared optima are interior",
+      "paper": ["paper/sections/03_equilibrium.tex", "paper/sections/05_robustness.tex", "paper/sections/appendix.tex"],
+      "stage4a": "theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md",
+      "stage75a": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
+      "formal": "formal/SSDI/Generality.lean",
+      "regression": ["tests/test_p2r_order_monotonicity.py", "tests/test_stage9r_metadata.py"]
+    },
+    "P3R": {
+      "claim": "complete standardization under fixed positive symmetric common-R&D allocation",
+      "paper": ["paper/sections/04_welfare.tex", "paper/sections/appendix.tex"],
+      "stage4a": "theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md",
+      "stage75a": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
+      "formal": "not separately formalized as a full planner theorem",
+      "regression": ["scripts/stage4a_independent_equilibrium_set_audit.py"]
+    },
+    "P4": {
+      "claim": "quadratic selective-standardization threshold and unique interior policy above the threshold",
+      "paper": ["paper/sections/03_equilibrium.tex", "paper/sections/04_welfare.tex", "paper/sections/appendix.tex"],
+      "stage4a": "theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md",
+      "stage75a": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
+      "formal": ["formal/SSDI/Threshold.lean", "formal/SSDI/PolicySigns.lean", "formal/SSDI/PolicyObjective.lean"],
+      "regression": ["scripts/symbolic_verify.py", "scripts/numerical_verify.py", "scripts/generate_exposition_outputs.py"]
+    },
+    "P5R_W1": {
+      "claim": "coordinated symmetric-R&D benchmark selects complete scope and is not an unrestricted first best; welfare identities and Bertrand gap",
+      "paper": ["paper/sections/04_welfare.tex", "paper/sections/appendix.tex"],
+      "stage4a": "theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md",
+      "stage75a": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
+      "formal": ["formal/SSDI/WelfareIdentities.lean", "formal/SSDI/Core.lean"],
+      "regression": ["scripts/stage4a_independent_equilibrium_set_audit.py", "tests/test_stage9r_metadata.py"]
+    }
+  },
+  "generated_outputs": {
+    "manifest": "docs/EXPOSITION_OUTPUT_MANIFEST.json",
+    "generator": "scripts/generate_exposition_outputs.py",
+    "figure": "figures/policy_regime_map.pdf",
+    "table_outputs": [],
+    "status": "deterministic and v4-synchronized"
+  },
+  "ci": {
+    "full_workflow": ".github/workflows/verify.yml",
+    "formal_workflow": ".github/workflows/lean.yml",
+    "policy": "The full workflow executes make all; the focused formal workflow executes make formal and make formal-audit."
+  },
+  "status": "STAGE_9_SYNC_IMPLEMENTED_AWAITING_QUALIFIED_CI"
+}
