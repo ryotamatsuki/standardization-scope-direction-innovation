@@ -36,11 +36,11 @@ Historical Stage 10R:
 - output architecture: `docs/FIGURE_TABLE_ARCHITECTURE_STAGE10R.md`;
 - quantitative-output authority: `docs/EXPOSITION_OUTPUT_MANIFEST.json`.
 
-The only required quantitative output remains the policy-regime map. The current Stage 9 explicitly migrates its active freeze metadata to v4 without changing the underlying threshold calculation.
+The only required quantitative output remains the policy-regime map.
 
-## Stage 7R2 P2R repair and Stage 11R
+## Stage 7R2 P2R repair and historical Stage 11R
 
-The first Stage-11 hostile audit identified one material scope defect in P2R: the then-current wording overclaimed pointwise derivative signs for arbitrary differentiable increasing strictly concave `g` while relying on `g''`.
+The first Stage-11 hostile audit identified one material scope defect in P2R: the then-current wording overclaimed pointwise derivative signs for arbitrary differentiable increasing strictly concave `g` while relying on second-derivative reasoning.
 
 Stage 7R2:
 
@@ -50,7 +50,7 @@ Stage 7R2:
 
 The repair replaced the general pointwise derivative claim with global order comparative statics and strict order only when both compared optima are interior. P1, P3R, P4 and P5R were unchanged.
 
-Repeated Stage 11R:
+Repeated historical Stage 11R:
 
 - merge: `87108448ef5665bcc6d898911aa2179c7aa6a3bb`;
 - record: `docs/STAGE_11R_V3_HOSTILE_REFEREE_REGATE.md`;
@@ -73,7 +73,7 @@ Historical Stage 14 QA:
 - artifact ZIP SHA-256: `df90da9f8cf7e8a485702399f542eef2a232d703afcfe5acf7094377e3f47c64`;
 - verdict: `SUBMISSION QA PASS` under the earlier production chain.
 
-Historical Stage 15 submission freeze remains preserved as historical evidence only because it predates the latest certification/formal-verification migration. A new Stage 14/15 pass will be required before submission under the current chain.
+Historical Stage 15 submission freeze remains preserved as historical evidence only because it predates the latest certification/formal-verification migration. A new Stage 14/15 pass is required before submission under the current chain.
 
 ## Retroactive latest-workflow Stage 4A
 
@@ -84,7 +84,7 @@ Historical Stage 15 submission freeze remains preserved as historical evidence o
 - permanent independent audit: `scripts/stage4a_independent_equilibrium_set_audit.py`;
 - verdict: `GO — MATHEMATICAL ADVERSARIAL CERTIFICATION PASS`.
 
-The permanent evaluator records 126 parameter sets, 2,142 histories, 4,284 player-history cases, and zero unresolved cases, profitable price deviations, alternative pure price equilibria, R&D-corner failures, policy-regime failures, and welfare failures.
+The permanent evaluator covers candidate deviations, alternative pure equilibria, and zero-payoff/indifference behavior as separate attacks.
 
 ## Retroactive latest-workflow Stage 7.5A + Formal Verification
 
@@ -117,43 +117,81 @@ The formal boundary is selected proof-critical core only. Full KKT/SPNE formaliz
 - scientific delta: `NONE`;
 - verdict: `THEORY FROZEN — GO TO REPRODUCIBILITY SETUP`.
 
-A compare from `3648ac2...` to `4c923f9...` changed only certification/provenance documentation and `tests/test_stage9r_metadata.py`; no `paper/`, `formal/`, core model-verification script, bibliography or figure-generation source changed.
+A compare from `3648ac2...` to `4c923f9...` changed only certification/provenance material; no scientific source changed.
 
 ## Latest-workflow Stage 9 formal-artifact reproducibility synchronization
 
-- starting remote main: `4c923f9e8e236ea18added57dfefa401f8c406e3`;
-- open PRs at work start: none;
-- branch: `stage9-v4-formal-reproducibility-sync`;
+- Stage-9 implementation branch: `stage9-v4-formal-reproducibility-sync`;
 - PR: `#21`;
-- qualified implementation head: `fd650e6a3a925e7ae0d24e8981bb38a357a33f09`;
-- record: `docs/STAGE_09_V4_FORMAL_REPRODUCIBILITY_SYNC.md`;
+- Stage-9 merge commit: `707b9688dfb8afd4624f006795b91f5f2ef83b79`;
+- final closeout merge: `857c828dadb1b2b3b5d4ee0bf74f1f8a5c936146`;
+- synchronization record: `docs/STAGE_09_V4_FORMAL_REPRODUCIBILITY_SYNC.md`;
+- final closeout: `docs/STAGE_09_FINAL_CLOSEOUT.md`;
 - machine-readable map: `docs/REPRODUCIBILITY_MANIFEST.json`;
 - active output manifest: `docs/EXPOSITION_OUTPUT_MANIFEST.json`;
 - complete local-equivalent target: `make all`.
 
-Stage 9 integrates formal verification into the ordinary repository reproducibility path. `make all` comprises analytic/computational verification, deterministic exposition generation, manuscript build, pinned Lean build, and formal proof-escape-hatch audit. `.github/workflows/verify.yml` executes the same target; `.github/workflows/lean.yml` reuses `make formal` and `make formal-audit` as a focused formal gate.
+Stage 9 integrates formal verification into the ordinary repository reproducibility path. `make all` comprises analytic/computational verification, deterministic exposition generation, manuscript build, pinned Lean build, and formal proof-escape-hatch audit.
 
-Clean qualification of the implementation head:
+Post-merge qualification on the actual Stage-9 main object:
 
-- full reproducibility run `34478441732`: `success`;
-- focused formal run `34478441787`: `success`;
-- `make all`: PASS;
-- IJIO title-page build: PASS;
-- unresolved citation/reference kill test: PASS;
-- Stage-14 package QA: PASS;
-- PDF/font preflight: PASS;
-- submission-artifact assembly: PASS;
-- pinned Lean build: PASS;
-- proof escape-hatch / project-axiom audit: PASS.
+- full reproducibility run `34479910733`: `success`;
+- focused formal run `34479910711`: `success`.
 
-The Stage-9 synchronization also repairs `formal/README.md`, which previously still named v3 as active and pointed to nonexistent `formal/FORMAL_VERIFICATION_CERTIFICATE.md`. It now names v4 and the actual certificate `theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md`.
+Stage-9 verdict: `REPRODUCIBILITY BASELINE READY`; Stage 9 is closed.
 
-Stage-9 verdict: `REPRODUCIBILITY BASELINE READY`.
+## Operational no-content incident before current Stage 11
 
-The final documentation/status commits after the qualified implementation head do not modify the scientific or formal source. They are nevertheless re-run through the same PR CI before merge.
+During Stage-11 setup, a one-line temporary file `TEMP_NOT_USE` was accidentally created on main and immediately deleted. The resulting cleaned main commit was `67caf65aac91f0f5db1a7f445a86714e47266acd`. A compare against the Stage-9 closeout `857c828dadb1b2b3b5d4ee0bf74f1f8a5c936146` reported zero file differences. This is repository-history noise only; there is no content or scientific delta.
+
+## Latest-workflow Stage 11 certification-regression recheck
+
+- starting cleaned main: `67caf65aac91f0f5db1a7f445a86714e47266acd`;
+- branch: `stage11-certification-regression-recheck`;
+- PR: `#23`;
+- qualified implementation head: `4b11aabb582e5d777c2553d16bb9f2f5ccfad6d4`;
+- canonical record: `docs/STAGE_11_CERTIFICATION_REGRESSION_RECHECK.md`;
+- certification-regression ledger: `docs/CERTIFICATION_REGRESSION_LEDGER.json`;
+- P2R historical regression record: `docs/CERTIFICATION_REGRESSION_P2R.md`;
+- permanent current regression suite: `tests/test_stage11_certification_regressions.py`.
+
+Clean qualification run `34482554751`: `success`.
+
+Re-executed evidence:
+
+- symbolic verification: PASS;
+- numerical verification: PASS; canonical `b*≈0.68775`;
+- Stage-4A independent audit: 126 parameter sets, 2,142 histories, 4,284 player-history cases, unresolved `0`, profitable deviations `0`, alternative pure equilibria `0`, R&D-corner failures `0`, policy-regime failures `0`, welfare failures `0`;
+- independent Stage-11 continuation audit: 73 histories, unresolved `0`, failures `0`;
+- pytest: `22 passed`;
+- exposition v4 synchronization: PASS;
+- manuscript build: PASS;
+- Lean v4.32.1 / pinned mathlib build: 8,664 jobs, success;
+- project proof escape-hatch / project-axiom audit: PASS;
+- title-page, unresolved citation/reference kill test, package QA and PDF/font preflight: PASS.
+
+Certification-regression classifications:
+
+1. `CR-01 CERTIFICATION REGRESSION` — historical P2R hidden-smoothness/general-quantifier inflation; current status `CLOSED_PERMANENTLY_GUARDED`.
+2. `CR-02 CLAIM_SCOPE REGRESSION` — historical unqualified price-equilibrium uniqueness wording; current status `CLOSED_PERMANENTLY_GUARDED`; manuscript scope is pure-strategy only.
+3. `CR-03 REPRODUCIBILITY PROVENANCE REGRESSION` — Appendix still called v3 the active freeze after Stage 9; repaired to active v4 and permanently guarded.
+
+The current recheck found no new fatal or major scientific defect. The only new repair was CR-03, affecting Stage-9 provenance/exposition only. It changes no theorem or scientific result.
+
+Fresh adjacent-literature recheck did not identify a result-level collision. Novelty remains `DISTINCT BUT NARROW`.
+
+Unresolved fatal attacks: `0`. Unresolved major attacks: `0`. Unresolved material certification regressions: `0`.
+
+Final Stage-11 verdict:
+
+`GO TO JOURNAL POSITIONING`.
+
+No theory rollback and no Stage-8 refreeze are required.
+
+Because the completed Stage 12 already selected IJIO and the current Stage-11 recheck found no scientific or result-level novelty change requiring repositioning, the next latest-workflow compatibility step is the current Journal Requirements Ledger rather than a redundant Stage-12 rerun.
 
 ## Current route
 
-`Stage 9 REPRODUCIBILITY BASELINE READY -> Stage 11 certification-regression recheck -> current Journal Requirements Ledger -> refreshed Stage 14 QA -> new Stage 15 submission freeze`.
+`Stage 11 GO TO JOURNAL POSITIONING -> current Journal Requirements Ledger -> refreshed Stage 14 QA -> new Stage 15 submission freeze`.
 
 Any substantive manuscript/theory change requires rollback to the earliest affected stage. Any material change to a formally certified theorem or encoded assumption makes the affected Formal Verification Certificate stale until recertified.
