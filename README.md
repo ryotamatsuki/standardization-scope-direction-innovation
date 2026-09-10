@@ -18,6 +18,7 @@ Latest compatibility gates closed:
 - Stage 9: `REPRODUCIBILITY BASELINE READY`;
 - Stage 11 certification-regression recheck: `GO TO JOURNAL POSITIONING`;
 - unresolved fatal/major Stage-11 attacks: `0 / 0`;
+- Current Journal Requirements Ledger: `LEDGER ESTABLISHED — MATERIAL UNVERIFIED ITEMS RETAINED — AUTHENTICATED PREFLIGHT REQUIRED`;
 - active freeze: `SSDI-THEORY-FREEZE-2026-09-10-v4`.
 
 The v4 refreeze is certification-only. Scientific delta from v3 is `NONE`: no model primitive, proposition conclusion, threshold, welfare result, or contribution claim changed.
@@ -25,6 +26,9 @@ The v4 refreeze is certification-only. Scientific delta from v3 is `NONE`: no mo
 Canonical Stage-9 closeout: `docs/STAGE_09_FINAL_CLOSEOUT.md`.  
 Canonical Stage-11 recheck: `docs/STAGE_11_CERTIFICATION_REGRESSION_RECHECK.md`.  
 Certification-regression ledger: `docs/CERTIFICATION_REGRESSION_LEDGER.json`.  
+Current journal-requirements ledger: `docs/JOURNAL_REQUIREMENTS_LEDGER.md`.  
+Journal-requirements closeout: `docs/JOURNAL_REQUIREMENTS_LEDGER_CLOSEOUT.md`.  
+Machine-readable journal-requirements state: `docs/JOURNAL_REQUIREMENTS_LEDGER.json`.  
 Machine-readable reproducibility map: `docs/REPRODUCIBILITY_MANIFEST.json`.
 
 Stage-11 qualified head: `4b11aabb582e5d777c2553d16bb9f2f5ccfad6d4`.  
@@ -90,7 +94,7 @@ The repaired theory scope remains:
 - downstream price uniqueness: global pure-strategy continuation under `(R)` only;
 - coordinated symmetric-R&D benchmark: constrained benchmark with decentralized Bertrand pricing, not unrestricted first best.
 
-## Journal positioning and current route
+## Journal positioning and current requirements gate
 
 Historical Stage 12 selected the **International Journal of Industrial Organization (IJIO)** as the primary target. The default ladder remains:
 
@@ -98,9 +102,15 @@ Historical Stage 12 selected the **International Journal of Industrial Organizat
 
 with *The Journal of Industrial Economics* as an optional higher-risk stretch. RAND remains excluded by project instruction.
 
-The Stage-11 recheck found no scientific or result-level novelty change requiring Stage 12 to be rerun. The next latest-workflow compatibility step is:
+The Stage-11 recheck found no scientific or result-level novelty change requiring Stage 12 to be rerun.
 
-`current Journal Requirements Ledger -> refreshed Stage 14 QA -> new Stage 15 submission freeze`.
+The current Journal Requirements Ledger is now established under the latest workflow. It deliberately retains material IJIO-specific requirements as `UNVERIFIED` where the current journal-specific Guide for Authors or authenticated Editorial Manager flow is needed to resolve them. In particular, the project does not infer PDF-only initial-submission permission, editable-LaTeX timing, anonymization model, data-policy option, portal file roles, or submission-stage fees from generic Elsevier defaults or prior submissions.
+
+Therefore the next operational step is:
+
+`authenticated IJIO Guide / Editorial Manager preflight -> resolve material UNVERIFIED items -> exact source-archive qualification if required -> refreshed Stage 14 QA -> new Stage 15 submission freeze`.
+
+Until those material rules are resolved, refreshed Stage 14 cannot return full `SUBMISSION QA PASS`; if only authenticated-portal items remain, the maximum pre-portal verdict is `CONDITIONAL PASS — AUTHENTICATED PORTAL PREFLIGHT REQUIRED`.
 
 Historical Stage 13, Stage 14 and Stage 15 records remain preserved as historical provenance and do not substitute for the refreshed current-chain submission certification.
 

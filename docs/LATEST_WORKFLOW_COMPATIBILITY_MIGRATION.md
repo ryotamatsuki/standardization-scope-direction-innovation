@@ -22,8 +22,8 @@ Active canonical theory freeze: `SSDI-THEORY-FREEZE-2026-09-10-v4`. The exact v3
 | Certification-only Stage 8 refreeze | **PASS** | `docs/STAGE_08_CERTIFICATION_ONLY_REFREEZE.md`; active v4 freeze | scientific delta from v3 = none |
 | Stage 9 formal-artifact reproducibility synchronization | **PASS** | `docs/STAGE_09_FINAL_CLOSEOUT.md`; `docs/REPRODUCIBILITY_MANIFEST.json`; merged-main full run `34479910733`; formal run `34479910711` | `REPRODUCIBILITY BASELINE READY` |
 | Stage 11 certification-regression recheck | **PASS** | `docs/STAGE_11_CERTIFICATION_REGRESSION_RECHECK.md`; `docs/CERTIFICATION_REGRESSION_LEDGER.json`; qualified run `34482554751` | `GO TO JOURNAL POSITIONING`; no theory rollback |
-| Current Journal Requirements Ledger | **PENDING** | — | next required compatibility step before refreshed Stage 14 |
-| Refreshed Stage 14 / new Stage 15 submission freeze | **PENDING** | — | required before current-chain submission freeze |
+| Current Journal Requirements Ledger | **ESTABLISHED — FAIL-CLOSED** | `docs/JOURNAL_REQUIREMENTS_LEDGER.md`; `docs/JOURNAL_REQUIREMENTS_LEDGER.json`; `docs/JOURNAL_REQUIREMENTS_LEDGER_CLOSEOUT.md`; `tests/test_journal_requirements_ledger.py` | material IJIO-specific `UNVERIFIED` items retained; authenticated preflight required |
+| Refreshed Stage 14 / new Stage 15 submission freeze | **PENDING** | — | requires reconciliation of material journal/portal requirements first |
 
 ## Stage 4A result
 
@@ -94,16 +94,30 @@ Final Stage-11 verdict: `GO TO JOURNAL POSITIONING`.
 
 Because the already-completed Stage 12 selected IJIO and the Stage-11 recheck found no scientific or result-level novelty change, the migration does not rerun journal ranking.
 
+## Current Journal Requirements Ledger
+
+Ledger construction opened on 2026-09-10 and was refreshed against current official publisher sources on 2026-09-11.
+
+Final construction verdict:
+
+`LEDGER ESTABLISHED — MATERIAL UNVERIFIED ITEMS RETAINED — AUTHENTICATED PREFLIGHT REQUIRED`.
+
+This is a fail-closed completion of the ledger artifact, not a declaration that every IJIO requirement is verified. Current Elsevier-wide guidance confirms common defaults for LaTeX, Highlights, generative-AI disclosure, research-data frameworks, artwork and pricing, but journal-specific rules remain controlling where applicable.
+
+Material unresolved items include IJIO's live peer-review/anonymization model, PDF-only initial-submission permission, editable-source timing, current journal-specific format/data rules, portal file designations/metadata fields and any submission-stage payment requirement. These must be resolved from the current journal Guide, authenticated Editorial Manager flow, or direct editorial/support instruction.
+
+Until those items are reconciled, Stage 14 full `SUBMISSION QA PASS` is prohibited.
+
 ## Change-control note
 
-The migration adds certification and reproducibility provenance around the unchanged scientific result set. It does not authorize theory changes.
+The migration adds certification, reproducibility and submission-rule provenance around the unchanged scientific result set. It does not authorize theory changes.
 
 Any substantive defect routes to the earliest affected analytic stage. Any material change to a formalized theorem or encoded hypothesis makes the Formal Verification Certificate stale and requires recertification before refreeze.
 
 ## Next compatibility step
 
-`Current Journal Requirements Ledger`.
+`authenticated IJIO Guide / Editorial Manager preflight`.
 
-After that:
+After material `UNVERIFIED` items are resolved:
 
-`refreshed Stage 14 QA -> new Stage 15 submission freeze`.
+`exact source-archive qualification if required -> refreshed Stage 14 QA -> new Stage 15 submission freeze`.
