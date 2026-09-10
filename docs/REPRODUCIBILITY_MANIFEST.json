@@ -135,9 +135,14 @@
     "status": "deterministic and v4-synchronized"
   },
   "ci": {
+    "qualified_implementation_commit": "fd650e6a3a925e7ae0d24e8981bb38a357a33f09",
     "full_workflow": ".github/workflows/verify.yml",
+    "full_workflow_run": 34478441732,
+    "full_workflow_conclusion": "success",
     "formal_workflow": ".github/workflows/lean.yml",
+    "formal_workflow_run": 34478441787,
+    "formal_workflow_conclusion": "success",
     "policy": "The full workflow executes make all; the focused formal workflow executes make formal and make formal-audit."
   },
-  "status": "STAGE_9_SYNC_IMPLEMENTED_AWAITING_QUALIFIED_CI"
+  "status": "REPRODUCIBILITY BASELINE READY"
 }
