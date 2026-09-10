@@ -1,15 +1,24 @@
 # Standardization Scope and Endogenous Innovation Portfolios
 
-Active canonical theory freeze: `SSDI-THEORY-FREEZE-2026-09-06-v3`
+Active canonical theory freeze: `SSDI-THEORY-FREEZE-2026-09-10-v4`
+
+Canonical freeze record: `docs/THEORY_FREEZE.md`  
+Historical v3 freeze: `docs/THEORY_FREEZE_v3.md`
 
 Canonical historical production workflow: `ryotamatsuki/research-paper-workflow` v1.3  
-Workflow release commit: `3e4e6a3f76d86058024d06f9710f942e21627386`
+Historical workflow release commit: `3e4e6a3f76d86058024d06f9710f942e21627386`
 
-A latest-workflow compatibility migration is now in progress against `ryotamatsuki/research-paper-workflow@f48984013898696f010f0437a8cfed6b5b54bdc2`. Retroactive Stage 4A has passed with verdict `GO — MATHEMATICAL ADVERSARIAL CERTIFICATION PASS`; the record is `docs/STAGE_04A_RETROACTIVE_MATH_ADVERSARIAL_CERTIFICATION.md`. This compatibility work does not rewrite the historical v1.3 provenance and does not change the v3 scientific theory freeze. Retroactive Stage 7.5A plus the Formal Verification Gate remains the next migration gate.
+Latest-workflow compatibility authority: `ryotamatsuki/research-paper-workflow@f48984013898696f010f0437a8cfed6b5b54bdc2`.
+
+Retroactive Stage 4A is closed with `GO — MATHEMATICAL ADVERSARIAL CERTIFICATION PASS`. Retroactive Stage 7.5A is closed with `GO — GENERALITY / QUANTIFIER CERTIFICATION PASS`, and the embedded Formal Verification Gate is closed with `FORMAL VERIFICATION PASS`. Stage 8 has therefore been re-frozen on a certification-only basis as v4. The v4 scientific object is unchanged from v3; the refreeze records the latest-workflow certification inheritance and formal-proof boundary.
+
+The Stage-8 record is `docs/STAGE_08_CERTIFICATION_ONLY_REFREEZE.md`. The next compatibility step is Stage 9 formal-artifact reproducibility synchronization.
 
 Stage 11 hostile audit previously reopened Stage 7R only for the general-technology P2R formulation. That defect was repaired and refrozen as v3 without changing the quadratic baseline or Proposition 4. The repeated Stage 11R hostile referee gate returned `GO TO JOURNAL POSITIONING`.
 
-Stage 12 journal positioning selected **International Journal of Industrial Organization (IJIO)** as the primary target. Stage 13 IJIO full-paper integration returned `INTEGRATED MANUSCRIPT READY FOR SUBMISSION QA`. Stage 14 submission QA is complete under the historical workflow with verdict `SUBMISSION QA PASS`. The operational default ladder remains `IJIO -> Review of Industrial Organization -> Journal of Industry, Competition and Trade`, with The Journal of Industrial Economics retained as an optional higher-risk stretch rather than the default second submission. RAND remains excluded by project instruction.
+Stage 12 journal positioning selected **International Journal of Industrial Organization (IJIO)** as the primary target. Stage 13 IJIO full-paper integration returned `INTEGRATED MANUSCRIPT READY FOR SUBMISSION QA`. Stage 14 submission QA and the historical Stage 15 submission freeze remain valid historical records under the old production chain, but a refreshed latest-workflow Stage 14/15 pass will occur only after Stage 9 formal synchronization and the certification-regression recheck.
+
+The operational default journal ladder remains `IJIO -> Review of Industrial Organization -> Journal of Industry, Competition and Trade`, with The Journal of Industrial Economics retained as an optional higher-risk stretch. RAND remains excluded by project instruction.
 
 ## Reproducibility
 
@@ -33,6 +42,8 @@ make all
 - `make paper` depends on `make exposition` and builds `paper/main.pdf` from the modular LaTeX source and bibliography.
 - CI additionally runs Stage-14 submission-package QA, PDF/font preflight, title-page build, unresolved-reference kill tests, and submission-artifact assembly.
 
+The formal proof layer is under `formal/`. The pinned environment is Lean 4 `v4.32.1` with mathlib commit `520045ab14e26149ee970e2e617ca04b09bde5d6`. The dedicated workflow `.github/workflows/lean.yml` performs a clean `lake build`, prints axioms for selected certified targets, and fails on project `sorry`, `admit`, or project-defined `axiom` declarations.
+
 ## Retroactive Stage 4A certification
 
 The latest-workflow compatibility record is `docs/LATEST_WORKFLOW_COMPATIBILITY_MIGRATION.md`.
@@ -43,13 +54,48 @@ Stage-4A artifacts:
 - `theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md`;
 - `scripts/stage4a_independent_equilibrium_set_audit.py`.
 
-The audit separates candidate-deviation verification from alternative-equilibrium/multiplicity certification. Under `(R)`, it independently certifies the unique global pure-strategy price continuation, the unique quadratic R&D equilibrium, the P4 policy optimum, zero-demand/zero-profit indifference behavior, welfare identities, and the constrained benchmark taxonomy. Formalization is classified `FORMALIZATION APPLICABLE`; final proof-assistant statement-fidelity and model-boundary closure is intentionally deferred to retroactive Stage 7.5A as required by the current workflow.
+The audit separates candidate-deviation verification from alternative-equilibrium/multiplicity certification. Under `(R)`, it independently certifies the unique global pure-strategy price continuation, the unique quadratic R&D equilibrium, the P4 policy optimum, zero-demand/zero-profit indifference behavior, welfare identities, and the constrained benchmark taxonomy.
+
+## Retroactive Stage 7.5A + Formal Verification Gate
+
+Canonical Stage-7.5A record:
+
+`docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md`.
+
+Formal certificate:
+
+`theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md`.
+
+Final states:
+
+- `GO — GENERALITY / QUANTIFIER CERTIFICATION PASS`;
+- `FORMAL VERIFICATION PASS`.
+
+The formal layer covers selected proof-critical cores for P1, P2R, P4, the `(R)` continuation inequalities, and exact welfare identities. It does not claim to formalize the complete consumer KKT correspondence, full SPNE, mixed-strategy price-equilibrium uniqueness, the entire P4 calculus-to-argmax chain, or an unrestricted first-best problem.
+
+Clean evidence includes Lean run `34469130983`, PR-head run `34471931934`, and merged-main run `34472224655`, all successful. The project contains no certified `sorry`, `admit`, or project-specific axiom; the selected theorem dependency reports contain only standard Lean/mathlib foundations.
+
+## Stage 8 certification-only refreeze
+
+Canonical record:
+
+`docs/STAGE_08_CERTIFICATION_ONLY_REFREEZE.md`.
+
+Active freeze:
+
+`SSDI-THEORY-FREEZE-2026-09-10-v4`.
+
+Scientific delta from v3: `NONE`.
+
+The exact v3 freeze is preserved at `docs/THEORY_FREEZE_v3.md`. v4 records the current Stage-4A theorem-certificate register, Stage-7.5A claim-scope register, formal theorem mapping/model boundary, continuation completeness, solver/unresolved ledger, benchmark definitions, counterexample regressions, and current theory-change-control rules required by the latest Stage-8 template.
+
+Historical Stage-9/10 reproducibility metadata is intentionally not relabeled retroactively. Stage 9 must explicitly synchronize those artifacts to v4 and record that the quantitative scientific outputs remain unchanged.
 
 ## Stage 7R2 repair
 
 The repaired general-technology result uses order comparative statics only. For `b2>b1`, private common-layer R&D is globally nonincreasing and coordinated symmetric common-layer R&D is globally nondecreasing. If both compared optima are interior, the corresponding order inequalities are strict. No pointwise derivative sign is claimed for arbitrary differentiable increasing strictly concave `g`, and no `g''` assumption is added.
 
-The historical v2 freeze is preserved in `docs/THEORY_FREEZE_v2.md`. The Stage-7R2 repair record is `docs/STAGE_07R2_P2R_EXACT_MONOTONICITY_REPAIR.md`.
+The historical v2 and v3 freezes are preserved in `docs/THEORY_FREEZE_v2.md` and `docs/THEORY_FREEZE_v3.md`. The Stage-7R2 repair record is `docs/STAGE_07R2_P2R_EXACT_MONOTONICITY_REPAIR.md`.
 
 ## Stage 11R referee re-gate
 
@@ -82,43 +128,24 @@ The integration record is `docs/STAGE_13_IJIO_FULL_PAPER_INTEGRATION.md`.
 
 Verdict: `INTEGRATED MANUSCRIPT READY FOR SUBMISSION QA`.
 
-Integrated items include:
-
-- IJIO-specific Introduction and literature emphasis;
-- Figure 1 caption domain clarification (`conditional on (R)`);
-- pure-strategy equilibrium wording correction;
-- 2026 standards/innovation empirical citation;
-- Elsevier-compliant generative-AI declaration and AI-assisted verification disclosure;
-- data-availability statement;
-- IJIO Highlights;
-- cover letter;
-- submission metadata;
-- live fee/format check.
-
-No theory change was authorized or introduced by Stage 13.
+Integrated items include IJIO-specific Introduction/literature emphasis, Figure 1 `(R)` qualification, pure-strategy equilibrium wording, standards/innovation evidence, Elsevier-style AI/data declarations, Highlights, cover letter, and submission metadata. No theory change was authorized or introduced by Stage 13.
 
 ## Stage 14 IJIO submission QA
 
-The QA record is `docs/STAGE_14_IJIO_SUBMISSION_QA.md`.
+The historical QA record is `docs/STAGE_14_IJIO_SUBMISSION_QA.md` with verdict `SUBMISSION QA PASS` under the earlier production chain.
 
-Historical-workflow verdict: `SUBMISSION QA PASS`.
+The qualified package source commit was `c5c5f132a051a40339fc3a140c07f91e0920629e`. That package passed symbolic/numerical verification, continuation safety, regression tests, figure regeneration, LaTeX build, bibliography/cross-reference checks, anonymous-manuscript separation, title-page/declarations checks, PDF font preflight, package completeness, and visual inspection.
 
-The qualified package source commit is `c5c5f132a051a40339fc3a140c07f91e0920629e`. Clean CI verifies symbolic identities, numerical checks, continuation safety, regression tests, figure regeneration, LaTeX build, bibliography/cross-references, anonymous-manuscript separation, author title page, declarations, PDF font embedding, package completeness, and artifact generation.
-
-Author metadata and declaration fields are synchronized to the author's prior successful journal submissions. The IJIO article type is fixed to the previously confirmed Editorial Manager label `Research Paper`. The public repository does not store the private street address.
-
-The exact qualified CI artifact was visually inspected page by page. The manuscript is 16 pages; the title page and vector Figure 1 are clean and legible. Stage-14 cosmetic QA removed visible hyperlink boxes and an internal title-page note without changing theory or results.
-
-A fresh Stage-14 pass under the latest workflow will be performed only after the retroactive Stage 7.5A/Formal Verification Gate, certification-only refreeze, and formal reproducibility synchronization are complete.
+A fresh Stage-14 pass under the latest workflow will be performed only after Stage 9 formal-artifact reproducibility synchronization and the latest-workflow certification-regression recheck.
 
 ## Exposition architecture
 
-Workflow v1.3 assigned every headline result a primary exposition vehicle. The only required quantitative visual remains `figures/policy_regime_map.pdf`, generated by `scripts/generate_exposition_outputs.py`. No quantitative table is required. The P2R repair does not alter this figure.
+The only required quantitative visual remains `figures/policy_regime_map.pdf`, generated by `scripts/generate_exposition_outputs.py`. The P2R repair and certification-only v4 refreeze do not alter Proposition 4, the threshold equation, or the figure. Stage 9 will migrate the active reproducibility metadata to v4 while preserving this scientific identity.
 
 ## Theory change control
 
-The active theory is defined by `docs/THEORY_FREEZE.md`. Historical freezes v1 and v2 are preserved. Any subsequent substantive theory change requires a recorded rollback to every affected workflow stage.
+The active theory is defined by `docs/THEORY_FREEZE.md`. Historical freezes v1, v2, and v3 are preserved. Any subsequent substantive theory change requires a recorded rollback to every affected workflow stage; changes touching formalized theorem statements or encoded assumptions also stale the Formal Verification Certificate until recertified.
 
-Historical submission state remains preserved. Latest-workflow migration route:
+Latest-workflow migration route:
 
-`Retroactive Stage 4A PASS -> Retroactive Stage 7.5A + Formal Verification Gate -> certification-only Stage 8 refreeze -> Stage 9 formal sync -> Stage 11 regression recheck -> refreshed Stage 14/15 compliance`.
+`Stage 4A PASS -> Stage 7.5A PASS + FORMAL VERIFICATION PASS -> Stage 8 v4 FROZEN -> Stage 9 formal sync -> Stage 11 certification regression -> refreshed Stage 14/15 compliance`.
