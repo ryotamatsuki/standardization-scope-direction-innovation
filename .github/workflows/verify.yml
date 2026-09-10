@@ -3,6 +3,26 @@ on:
   push:
   pull_request:
 jobs:
+  formal:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Build Lean formalization
+        working-directory: formal
+        run: |
+          lake update
+          lake exe cache get
+          lake build
+      - name: Fail on Lean proof placeholders or project axioms
+        run: |
+          if grep -RInE '(^|[^A-Za-z])(sorry|admit)([^A-Za-z]|$)|^[[:space:]]*axiom[[:space:]]' formal --include='*.lean'; then
+            echo "Lean proof escape hatch or project-specific axiom detected"
+            exit 1
+          fi
   verify:
     runs-on: ubuntu-latest
     steps:
