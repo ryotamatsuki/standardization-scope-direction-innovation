@@ -11,10 +11,13 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r requirements.txt
-      - run: make verify
-      - run: make exposition
       - run: sudo apt-get update && sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-bibtex-extra poppler-utils
-      - run: make paper
+      - name: Install elan
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Complete Stage 9 reproducibility gate
+        run: make all
       - name: Build IJIO title page
         run: pdflatex -interaction=nonstopmode -halt-on-error -output-directory=submission submission/ijio_title_page.tex
       - name: Fail on unresolved LaTeX references or citations
