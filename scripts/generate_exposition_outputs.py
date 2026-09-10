@@ -10,9 +10,11 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "docs" / "EXPOSITION_OUTPUT_MANIFEST.json"
-EXPECTED_FREEZE = "SSDI-THEORY-FREEZE-2026-09-06-v3"
+EXPECTED_FREEZE = "SSDI-THEORY-FREEZE-2026-09-10-v4"
+EXPECTED_INHERITED_FREEZE = "SSDI-THEORY-FREEZE-2026-09-06-v3"
 EXPECTED_WORKFLOW = "v1.3"
 EXPECTED_RELEASE = "3e4e6a3f76d86058024d06f9710f942e21627386"
+EXPECTED_LATEST_WORKFLOW = "f48984013898696f010f0437a8cfed6b5b54bdc2"
 
 
 def H(y: float, nu: float) -> float:
@@ -48,15 +50,20 @@ with MANIFEST.open("r", encoding="utf-8") as fh:
     manifest = json.load(fh)
 
 assert manifest["freeze_id"] == EXPECTED_FREEZE
+assert manifest["inherited_scientific_freeze_id"] == EXPECTED_INHERITED_FREEZE
+assert manifest["certification_only_refreeze"] is True
 assert manifest["workflow_version"] == EXPECTED_WORKFLOW
 assert manifest["workflow_release_commit"] == EXPECTED_RELEASE
-assert manifest["stage"] == "10R"
+assert manifest["latest_workflow_compatibility_commit"] == EXPECTED_LATEST_WORKFLOW
+assert manifest["scientific_output_invariance"]["status"] == "PASS"
+assert manifest["scientific_output_invariance"]["scientific_source_delta"] == "NONE"
 outputs = manifest["approved_quantitative_outputs"]
 assert len(outputs) == 1
 spec = outputs[0]
 assert spec["id"] == "policy-regime-map"
 assert spec["type"] == "figure"
 assert spec["required_in_final_paper"] is True
+assert spec["v3_to_v4_scientific_change"] == "NONE"
 
 check_07 = threshold(0.7)
 check_09 = threshold(0.9)
@@ -91,6 +98,6 @@ plt.close(fig)
 
 assert output.is_file() and output.stat().st_size > 0
 print(
-    "EXPOSITION_OUTPUTS: PASS; generated unchanged policy regime map under freeze v3; "
+    "EXPOSITION_OUTPUTS: PASS; v4 metadata synchronized with unchanged v3 scientific output; "
     f"bar_nu(0.7)={check_07:.12f}, bar_nu(0.9)={check_09:.12f}"
 )
