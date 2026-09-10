@@ -20,9 +20,9 @@ Active canonical theory freeze: `SSDI-THEORY-FREEZE-2026-09-10-v4`. The exact v3
 | Retroactive Stage 7.5A quantifier/scope certification | **PASS** | `docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md` | claim scope closed |
 | Formal Verification Gate | **FORMAL VERIFICATION PASS** | `theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md`; pinned Lean source/toolchain | formal pre-freeze obligation closed |
 | Certification-only Stage 8 refreeze | **PASS** | `docs/STAGE_08_CERTIFICATION_ONLY_REFREEZE.md`; active v4 freeze | scientific delta from v3 = none |
-| Stage 9 formal-artifact reproducibility synchronization | **PASS** | `docs/STAGE_09_V4_FORMAL_REPRODUCIBILITY_SYNC.md`; `docs/REPRODUCIBILITY_MANIFEST.json`; full run `34478441732`; formal run `34478441787` | `REPRODUCIBILITY BASELINE READY` |
-| Stage 11 certification-regression recheck | **PENDING** | — | next required scientific gate |
-| Current Journal Requirements Ledger | **PENDING** | — | required before refreshed Stage 14 |
+| Stage 9 formal-artifact reproducibility synchronization | **PASS** | `docs/STAGE_09_FINAL_CLOSEOUT.md`; `docs/REPRODUCIBILITY_MANIFEST.json`; merged-main full run `34479910733`; formal run `34479910711` | `REPRODUCIBILITY BASELINE READY` |
+| Stage 11 certification-regression recheck | **PASS** | `docs/STAGE_11_CERTIFICATION_REGRESSION_RECHECK.md`; `docs/CERTIFICATION_REGRESSION_LEDGER.json`; qualified run `34482554751` | `GO TO JOURNAL POSITIONING`; no theory rollback |
+| Current Journal Requirements Ledger | **PENDING** | — | next required compatibility step before refreshed Stage 14 |
 | Refreshed Stage 14 / new Stage 15 submission freeze | **PENDING** | — | required before current-chain submission freeze |
 
 ## Stage 4A result
@@ -53,38 +53,46 @@ The v4 freeze adds the latest certification/formal registers without altering th
 
 ## Stage 9 formal-artifact reproducibility synchronization
 
-Starting remote main: `4c923f9e8e236ea18added57dfefa401f8c406e3`.
+Final closeout: `docs/STAGE_09_FINAL_CLOSEOUT.md`.
 
-Open PRs at work start: none.
+Stage-9 canonical main merge: `707b9688dfb8afd4624f006795b91f5f2ef83b79`.
 
-Branch: `stage9-v4-formal-reproducibility-sync`.
+Post-merge qualification:
 
-PR: `#21`.
+- full reproducibility run `34479910733`: **success**;
+- focused formal run `34479910711`: **success**.
 
-Qualified implementation head: `fd650e6a3a925e7ae0d24e8981bb38a357a33f09`.
+The full workflow executes `make all`, including symbolic/numerical verification, Stage-4A and Stage-11 independent equilibrium audits, pytest, deterministic exposition regeneration, manuscript build, pinned Lean build, and formal escape-hatch audit. Stage-9 verdict: `REPRODUCIBILITY BASELINE READY`.
 
-Clean qualification:
+## Stage 11 certification-regression recheck
 
-- full reproducibility workflow run `34478441732`: **success**;
-- focused formal workflow run `34478441787`: **success**.
+Canonical record: `docs/STAGE_11_CERTIFICATION_REGRESSION_RECHECK.md`.
 
-The full workflow executes `make all`, which now includes symbolic/numerical verification, Stage-4A and Stage-11 independent equilibrium audits, pytest, deterministic exposition regeneration, manuscript build, pinned Lean build, and formal escape-hatch audit. It then retains IJIO package QA and PDF/font preflight.
+Machine-readable regression ledger: `docs/CERTIFICATION_REGRESSION_LEDGER.json`.
 
-Stage-9 artifacts:
+Qualified implementation head: `4b11aabb582e5d777c2553d16bb9f2f5ccfad6d4`.
 
-- `docs/STAGE_09_V4_FORMAL_REPRODUCIBILITY_SYNC.md`;
-- `docs/REPRODUCIBILITY_MANIFEST.json`;
-- v4-synchronized `docs/EXPOSITION_OUTPUT_MANIFEST.json`;
-- v4-synchronized `formal/README.md`;
-- root Makefile `make all` / `make formal` / `make formal-audit`;
-- full and focused CI workflows using the same Makefile targets;
-- strengthened Stage-9 metadata/traceability regressions.
+Clean qualification run `34482554751`: **success**.
 
-The Stage-8 v3->v4 compare shows no change to paper/formal/core scientific generation sources. Stage 9 therefore rebinds the verified output to v4 without changing the underlying threshold, figure, theorem, or welfare result.
+The recheck explicitly classifies and permanently guards three regression classes:
 
-A documentation defect was repaired: `formal/README.md` had still named v3 as active and pointed to nonexistent `formal/FORMAL_VERIFICATION_CERTIFICATE.md`; it now names v4 and the actual certificate `theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md`.
+1. historical P2R hidden-smoothness / general-quantifier inflation — genuine `CERTIFICATION REGRESSION`, repaired by v3/v4 order comparative statics;
+2. historical unqualified price-equilibrium uniqueness wording — `CLAIM_SCOPE REGRESSION`, repaired to pure-strategy scope;
+3. stale Appendix v3 active-freeze provenance after Stage 9 — `REPRODUCIBILITY PROVENANCE REGRESSION`, repaired to active v4.
 
-Stage-9 verdict: `REPRODUCIBILITY BASELINE READY`.
+Clean Stage-11 evidence:
+
+- Stage-4A: 126 parameter sets, 2,142 histories, 4,284 player-history cases; unresolved `0`; profitable price deviations `0`; alternative pure equilibria `0`;
+- Stage-11 continuation audit: 73 histories; unresolved `0`; failures `0`;
+- pytest: `22 passed`;
+- Lean: 8,664 jobs, success; project escape-hatch audit PASS;
+- manuscript, exposition, title-page, citation/reference, package and PDF preflight: PASS.
+
+Unresolved fatal attacks: `0`. Unresolved major attacks: `0`. Unresolved material certification regressions: `0`.
+
+Final Stage-11 verdict: `GO TO JOURNAL POSITIONING`.
+
+Because the already-completed Stage 12 selected IJIO and the Stage-11 recheck found no scientific or result-level novelty change, the migration does not rerun journal ranking.
 
 ## Change-control note
 
@@ -92,10 +100,10 @@ The migration adds certification and reproducibility provenance around the uncha
 
 Any substantive defect routes to the earliest affected analytic stage. Any material change to a formalized theorem or encoded hypothesis makes the Formal Verification Certificate stale and requires recertification before refreeze.
 
-## Next compatibility gate
+## Next compatibility step
 
-`Stage 11 — certification-regression recheck`.
+`Current Journal Requirements Ledger`.
 
-After a PASS there, the route is:
+After that:
 
-`current Journal Requirements Ledger -> refreshed Stage 14 QA -> new Stage 15 submission freeze`.
+`refreshed Stage 14 QA -> new Stage 15 submission freeze`.

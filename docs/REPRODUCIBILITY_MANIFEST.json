@@ -75,7 +75,11 @@
     "stage75a_record": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
     "formal_certificate": "theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md",
     "stage8_freeze_record": "docs/THEORY_FREEZE.md",
-    "stage8_process_record": "docs/STAGE_08_CERTIFICATION_ONLY_REFREEZE.md"
+    "stage8_process_record": "docs/STAGE_08_CERTIFICATION_ONLY_REFREEZE.md",
+    "stage9_closeout": "docs/STAGE_09_FINAL_CLOSEOUT.md",
+    "stage11_record": "docs/STAGE_11_CERTIFICATION_REGRESSION_RECHECK.md",
+    "stage11_regression_ledger": "docs/CERTIFICATION_REGRESSION_LEDGER.json",
+    "p2r_regression_record": "docs/CERTIFICATION_REGRESSION_P2R.md"
   },
   "headline_claim_traceability": {
     "E0": {
@@ -84,7 +88,7 @@
       "stage4a": "theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md",
       "stage75a": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
       "formal": "formal/SSDI/Continuation.lean",
-      "regression": ["scripts/stage4a_independent_equilibrium_set_audit.py", "scripts/stage11_independent_continuation_audit.py"]
+      "regression": ["scripts/stage4a_independent_equilibrium_set_audit.py", "scripts/stage11_independent_continuation_audit.py", "tests/test_stage11_certification_regressions.py"]
     },
     "P1": {
       "claim": "quadratic private common-R&D decreases strictly with standardization scope",
@@ -100,7 +104,7 @@
       "stage4a": "theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md",
       "stage75a": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
       "formal": "formal/SSDI/Generality.lean",
-      "regression": ["tests/test_p2r_order_monotonicity.py", "tests/test_stage9r_metadata.py"]
+      "regression": ["tests/test_p2r_order_monotonicity.py", "tests/test_stage9r_metadata.py", "tests/test_stage11_certification_regressions.py", "docs/CERTIFICATION_REGRESSION_P2R.md"]
     },
     "P3R": {
       "claim": "complete standardization under fixed positive symmetric common-R&D allocation",
@@ -116,7 +120,7 @@
       "stage4a": "theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md",
       "stage75a": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
       "formal": ["formal/SSDI/Threshold.lean", "formal/SSDI/PolicySigns.lean", "formal/SSDI/PolicyObjective.lean"],
-      "regression": ["scripts/symbolic_verify.py", "scripts/numerical_verify.py", "scripts/generate_exposition_outputs.py"]
+      "regression": ["scripts/symbolic_verify.py", "scripts/numerical_verify.py", "scripts/generate_exposition_outputs.py", "tests/test_stage11_certification_regressions.py"]
     },
     "P5R_W1": {
       "claim": "coordinated symmetric-R&D benchmark selects complete scope and is not an unrestricted first best; welfare identities and Bertrand gap",
@@ -124,7 +128,7 @@
       "stage4a": "theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md",
       "stage75a": "docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md",
       "formal": ["formal/SSDI/WelfareIdentities.lean", "formal/SSDI/Core.lean"],
-      "regression": ["scripts/stage4a_independent_equilibrium_set_audit.py", "tests/test_stage9r_metadata.py"]
+      "regression": ["scripts/stage4a_independent_equilibrium_set_audit.py", "tests/test_stage9r_metadata.py", "tests/test_stage11_certification_regressions.py"]
     }
   },
   "generated_outputs": {
@@ -143,6 +147,20 @@
     "formal_workflow_run": 34478441787,
     "formal_workflow_conclusion": "success",
     "policy": "The full workflow executes make all; the focused formal workflow executes make formal and make formal-audit."
+  },
+  "downstream_certification": {
+    "stage11": {
+      "state": "PASS",
+      "verdict": "GO TO JOURNAL POSITIONING",
+      "qualified_head": "4b11aabb582e5d777c2553d16bb9f2f5ccfad6d4",
+      "qualified_run": 34482554751,
+      "run_conclusion": "success",
+      "regression_ledger": "docs/CERTIFICATION_REGRESSION_LEDGER.json",
+      "unresolved_fatal_attacks": 0,
+      "unresolved_major_attacks": 0,
+      "unresolved_material_certification_regressions": 0,
+      "theory_rollback_required": false
+    }
   },
   "status": "REPRODUCIBILITY BASELINE READY"
 }
