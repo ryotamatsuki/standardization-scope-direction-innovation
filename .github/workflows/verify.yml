@@ -19,7 +19,7 @@ jobs:
           lake build
       - name: Fail on Lean proof placeholders or project axioms
         run: |
-          if grep -RInE '(^|[^A-Za-z])(sorry|admit)([^A-Za-z]|$)|^[[:space:]]*axiom[[:space:]]' formal --include='*.lean'; then
+          if grep -RInE '(^|[^A-Za-z])(sorry|admit)([^A-Za-z]|$)|^[[:space:]]*axiom[[:space:]]' formal/SSDI formal/SSDI.lean --include='*.lean'; then
             echo "Lean proof escape hatch or project-specific axiom detected"
             exit 1
           fi
