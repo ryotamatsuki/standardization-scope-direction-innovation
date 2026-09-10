@@ -6,7 +6,7 @@ import SSDI.PolicySigns
 
 This file encodes the actual normalized policy objective used in the paper,
 not merely its reported derivative expressions, and proves its exact rational
-closed form after substituting the private R&D allocation.  The subsequent
+closed form after substituting the private R&D allocation. The subsequent
 formal sign layer still treats the manuscript's derivative formulas as the
 analytic input; formal calculus connecting this objective to those derivative
 formulas is explicitly outside the selected Stage-7.5A target and is not
@@ -60,12 +60,15 @@ theorem policyObjective_eq_closed
 theorem policyObjective_den_pos
     {y nu b : ℝ}
     (hy1 : y < 1)
+    (hnu0 : 0 < nu)
     (hnuy : nu < y)
-    (hb0 : 0 ≤ b)
+    (_hb0 : 0 ≤ b)
     (hb1 : b ≤ 1) :
     0 < 2 - b * nu := by
   have hnu1 : nu < 1 := lt_trans hnuy hy1
-  have hbnu : b * nu ≤ nu := by nlinarith
+  have hbnu_raw := mul_le_mul_of_nonneg_right hb1 (le_of_lt hnu0)
+  have hbnu : b * nu ≤ nu := by
+    simpa using hbnu_raw
   linarith
 
 end
