@@ -124,19 +124,36 @@ A compare from `3648ac2...` to `4c923f9...` changed only certification/provenanc
 - starting remote main: `4c923f9e8e236ea18added57dfefa401f8c406e3`;
 - open PRs at work start: none;
 - branch: `stage9-v4-formal-reproducibility-sync`;
+- PR: `#21`;
+- qualified implementation head: `fd650e6a3a925e7ae0d24e8981bb38a357a33f09`;
 - record: `docs/STAGE_09_V4_FORMAL_REPRODUCIBILITY_SYNC.md`;
 - machine-readable map: `docs/REPRODUCIBILITY_MANIFEST.json`;
 - active output manifest: `docs/EXPOSITION_OUTPUT_MANIFEST.json`;
 - complete local-equivalent target: `make all`.
 
-Stage 9 integrates formal verification into the ordinary repository reproducibility path. `make all` now comprises analytic/computational verification, deterministic exposition generation, manuscript build, pinned Lean build, and formal proof-escape-hatch audit. `.github/workflows/verify.yml` executes that same target; `.github/workflows/lean.yml` reuses `make formal` and `make formal-audit` as a focused formal gate.
+Stage 9 integrates formal verification into the ordinary repository reproducibility path. `make all` comprises analytic/computational verification, deterministic exposition generation, manuscript build, pinned Lean build, and formal proof-escape-hatch audit. `.github/workflows/verify.yml` executes the same target; `.github/workflows/lean.yml` reuses `make formal` and `make formal-audit` as a focused formal gate.
+
+Clean qualification of the implementation head:
+
+- full reproducibility run `34478441732`: `success`;
+- focused formal run `34478441787`: `success`;
+- `make all`: PASS;
+- IJIO title-page build: PASS;
+- unresolved citation/reference kill test: PASS;
+- Stage-14 package QA: PASS;
+- PDF/font preflight: PASS;
+- submission-artifact assembly: PASS;
+- pinned Lean build: PASS;
+- proof escape-hatch / project-axiom audit: PASS.
 
 The Stage-9 synchronization also repairs `formal/README.md`, which previously still named v3 as active and pointed to nonexistent `formal/FORMAL_VERIFICATION_CERTIFICATE.md`. It now names v4 and the actual certificate `theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md`.
 
-Qualified Stage-9 CI source/run IDs will be added to this section when the exact synchronization head passes clean CI. Until then the Stage-9 verdict remains pending.
+Stage-9 verdict: `REPRODUCIBILITY BASELINE READY`.
+
+The final documentation/status commits after the qualified implementation head do not modify the scientific or formal source. They are nevertheless re-run through the same PR CI before merge.
 
 ## Current route
 
-`Stage 9 clean CI qualification -> Stage 11 certification-regression recheck -> current Journal Requirements Ledger -> refreshed Stage 14 QA -> new Stage 15 submission freeze`.
+`Stage 9 REPRODUCIBILITY BASELINE READY -> Stage 11 certification-regression recheck -> current Journal Requirements Ledger -> refreshed Stage 14 QA -> new Stage 15 submission freeze`.
 
 Any substantive manuscript/theory change requires rollback to the earliest affected stage. Any material change to a formally certified theorem or encoded assumption makes the affected Formal Verification Certificate stale until recertified.
