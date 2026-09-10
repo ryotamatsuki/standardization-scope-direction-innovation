@@ -1,16 +1,15 @@
 # Lean formal verification
 
-This directory adds an independent Lean 4 + mathlib verification layer for the active theory freeze `SSDI-THEORY-FREEZE-2026-09-06-v3`.
+This directory contains the Lean 4 + mathlib proof-assurance layer for the active scientific theory `SSDI-THEORY-FREEZE-2026-09-06-v3`.
 
-It is deliberately separate from the Python/SymPy verification stack and from the LaTeX submission build. The Lean code is a verification aid; it does not modify the frozen model or expand the paper's claims.
+The formal layer is complementary to the analytic proof, Stage-4A independent adversarial certification, Python/SymPy checks, and direct-KKT continuation audit. It is **not** a claim that the complete economic model or complete SPNE correspondence has been machine formalized.
 
-## Toolchain
+## Toolchain and clean build
 
-- Lean: `v4.32.1`
-- mathlib: `v4.32.1`
-- project root: `formal/`
-
-Build locally from this directory with:
+- Lean: `v4.32.1`, pinned by `formal/lean-toolchain`.
+- mathlib: `v4.32.1`, pinned in `formal/lakefile.toml`; clean CI records the resolved mathlib commit.
+- project root: `formal/`.
+- build command:
 
 ```bash
 lake update
@@ -18,45 +17,88 @@ lake exe cache get
 lake build
 ```
 
-## Formalized claims
+`.github/workflows/lean.yml` executes this build from a clean Ubuntu runner and fails if project Lean source contains `sorry`, `admit`, or a project-specific `axiom` declaration. `SSDI/Assurance.lean` emits `#print axioms` dependency reports for the principal certified theorems.
 
-All current Lean proofs compile without `sorry`.
+## Selected Stage-7.5A proof-critical targets
 
-### `SSDI/Core.lean`
+The Formal Verification Gate intentionally selects a high-value core rather than the entire game.
 
-1. `0 < rho < 1` implies `0 < nu(rho) < 1` for `nu = rho/(2-rho^2)`.
-2. The closed-form private allocation satisfies the exact two-policy difference identity and is strictly decreasing in scope on its interior domain.
-3. The paper's quadratic derivative expression for private common-layer R&D is strictly negative on its interior domain.
-4. The coordinated symmetric quadratic allocation satisfies the exact difference identity and is strictly increasing in scope.
-5. The threshold polynomial identities `H(y,0)=2y(y-4)` and `H(y,y)=2y(y-2)^2(y+1)`.
-6. The endpoint signs used in the selective-standardization proof.
-7. The algebraic lower bound `H_nu > 5(y-2)^2`, hence `H_nu>0`, on the frozen region `1/2<y<1` and `0<nu<y`.
-8. Positivity of the symmetric-Bertrand welfare multiplier and strict positivity of the Bertrand quantity-control welfare gap for nonzero symmetric quality.
+### P1 — quadratic private R&D
 
-### `SSDI/Threshold.lean`
+`SSDI/Core.lean` certifies:
 
-9. Exact two-point factorization of `H(y,nu2)-H(y,nu1)`.
-10. Strict positivity of the secant factor on `0 <= nu1 < nu2 <= y < 1` in the frozen region.
-11. Strict monotonicity of `H(y,nu)` in `nu` on `[0,y]`.
-12. By continuity and the endpoint signs, existence of a root `bar_nu(y)` strictly inside `(0,y)`.
-13. Uniqueness of that root, yielding `exists_unique_threshold_root`.
-14. Exact sign classification: `H(y,nu) <= 0` at/below the threshold and `H(y,nu) > 0` above it.
+- `0<rho<1 -> 0<nu(rho)<1`;
+- exact two-policy identity for `xPrivate`;
+- strict decrease of the closed-form private allocation on its stated denominator domain;
+- negativity of the reported quadratic derivative expression;
+- the coordinated quadratic allocation identity and strict increase.
 
-### `SSDI/PolicySigns.lean`
+### P2R — general-technology direction
 
-15. Positivity of the paper's `F'(0)` expression.
-16. Negativity of the paper's `F''(b)` expression on `b in [0,1]` under the frozen quadratic restrictions.
-17. Positivity of the denominator in the complete-scope endpoint expression `F'(1)=-H/[2(2-nu)^3]`.
-18. The complete-scope endpoint slope is nonnegative at/below the unique rivalry threshold and strictly negative above it.
-19. The corresponding iff characterizations of the endpoint-slope regime.
+`SSDI/Generality.lean` certifies on the actual choice domain `[0,E]`:
 
-## Not yet formalized
+- exact decreasing-differences and increasing-differences identities;
+- the revealed-preference implication that unique private maximizers are nonincreasing in scope when `g` is monotone on `[0,E]`;
+- the corresponding nondecreasing result for coordinated maximizers;
+- the algebraic contradiction used to obtain strict order when equal interior optima would satisfy two FOCs and `g'(x)>0`.
 
-The current Lean layer does **not** yet claim a complete machine proof of the paper. The main remaining targets are:
+Existence/uniqueness of maximizers from differentiability and strict concavity is supplied as a hypothesis to the abstract Lean order lemmas and remains analytically proved in the paper. Lean does not claim a pointwise derivative theorem for arbitrary `g`.
 
-- connect the reported `F'`/`F''` expressions to the actual normalized policy objective by formal differentiation, then close the full regulator argmax theorem `b*=1` versus a unique interior optimum;
-- global price-continuation uniqueness at every feasible upstream history;
-- the full general-technology P2R revealed-preference theorem with arbitrary differentiable, increasing, strictly concave `g` and corner solutions;
-- the complete subgame-perfect equilibrium construction.
+### E0 — price-continuation algebraic core
 
-The next priority is the formal differentiation plus regulator argmax layer, because the threshold existence/uniqueness and policy-sign architecture of P4 are now machine checked.
+`SSDI/Continuation.lean` certifies:
+
+- the active candidate solves the linear Bertrand FOC system;
+- positivity of `4-rho^2` for `0<rho<1`;
+- the exact rival-foreclosure threshold formula;
+- the `(R)` cross-ratio inequality implies a negative foreclosure threshold;
+- the opposite cross-ratio inequality plus positive quality implies `A_i>rho A_j`, the profitable re-entry margin used to eliminate inactive-product pure equilibria;
+- the resulting candidate-price numerator and candidate price are positive.
+
+The full consumer KKT correspondence and complete pure-price equilibrium-set exhaustion remain analytic/independent-computational objects, not Lean objects. Mixed-strategy equilibria are not claimed by the paper or formal layer.
+
+### P4 — threshold and policy-sign core
+
+`SSDI/Threshold.lean` and `SSDI/PolicySigns.lean` certify:
+
+- `H(y,0)` and `H(y,y)` identities and signs;
+- strict monotonicity of `H` on the frozen rivalry interval;
+- existence and uniqueness of `bar_nu(y)` in `(0,y)`;
+- sign classification of `H` relative to that root;
+- positivity of the reported `F'(0)` expression;
+- negativity of the reported `F''(b)` expression on `b in [0,1]`;
+- the exact sign/threshold classification of the reported `F'(1)` expression.
+
+`SSDI/PolicyObjective.lean` additionally encodes the actual normalized reduced policy objective from the paper and proves its exact rational closed form after substitution of `xPrivate`. This prevents the formal layer from treating an unrelated policy object as the paper's `F`.
+
+Formal differentiation connecting that objective to the displayed `F'` and `F''` formulas, and the final calculus theorem turning strict curvature plus endpoint slopes into the complete regulator argmax theorem, are **not** claimed as Lean-certified. Those steps remain analytic and are independently SymPy/regression checked. The selected formal target certifies the fragile threshold, sign, domain, and objective-algebra core rather than claiming a complete P4 machine proof.
+
+### W1 / P5R — welfare and benchmark identities
+
+`SSDI/WelfareIdentities.lean` and `SSDI/Core.lean` certify:
+
+- symmetric Bertrand price and quantity substitutions;
+- exact consumer-surplus, producer-surplus, and total-welfare identities;
+- the efficient fixed-quality quantity/welfare identity;
+- the exact Bertrand quantity-control welfare gap and its positivity.
+
+These facts protect the statement that the coordinated symmetric-R&D exercise is a constrained benchmark with decentralized Bertrand pricing, not an unconstrained first best.
+
+## Explicit non-formalized model boundary
+
+The Stage-7.5A certificate does **not** claim Lean formalization of:
+
+- the representative consumer's complete KKT demand correspondence across all price regimes;
+- the full Nash-equilibrium definition and exhaustive pure-price best-response correspondence;
+- any absence theorem for mixed-strategy price equilibria;
+- the complete three-stage SPNE construction;
+- the derivation that price-equilibrium profit maximization reduces to the private R&D index from the full game primitives;
+- existence/uniqueness of general-`g` maximizers from strict concavity as an internal Lean theorem;
+- formal differentiation of the complete reduced policy objective or a full machine-checked regulator argmax theorem;
+- institutional interpretations, literature novelty, or empirical claims.
+
+Those components are covered, where claimed, by the analytic manuscript, Stage-4A theorem/equilibrium-set certificates, symbolic verification, and independent numerical/global-deviation artifacts.
+
+## Formal gate status
+
+The canonical Stage-7.5A formal certificate is `formal/FORMAL_VERIFICATION_CERTIFICATE.md`. Its final `FORMAL VERIFICATION PASS` state applies only to the selected proof-critical core documented above and must be invalidated if the corresponding paper theorem, assumptions, parameter domain, or formal source changes materially.
