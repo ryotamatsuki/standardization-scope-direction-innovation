@@ -2,11 +2,13 @@
 
 ## Active canonical state
 
-- Freeze ID: `SSDI-THEORY-FREEZE-2026-09-06-v3`
-- Freeze date: 2026-09-06
+- Freeze ID: `SSDI-THEORY-FREEZE-2026-09-10-v4`
+- Freeze date: 2026-09-10
 - Freeze record: `docs/THEORY_FREEZE.md`
-- Historical freezes: `docs/THEORY_FREEZE_v1.md`, `docs/THEORY_FREEZE_v2.md`
-- Stage 7.5R authorization commit: `7c7f19094c0151f350e0b256152c34da6ba9f851`
+- Historical freezes: `docs/THEORY_FREEZE_v1.md`, `docs/THEORY_FREEZE_v2.md`, `docs/THEORY_FREEZE_v3.md`
+- v4 classification: `CERTIFICATION-ONLY REFREEZE`
+- Scientific baseline entering v4: `main@3648ac2d4917986f1f09873a30bbd5948fceb8b3`
+- Scientific delta from v3: `NONE`
 
 ## Workflow authority
 
@@ -23,6 +25,8 @@ Earlier workflow references remain historical provenance only. Retroactive compa
 - Stage 9R branch: `stage9r-v13-reproducibility-sync`
 - Stage 9R merge commit: `ba641614eb191928193f443d46d15d40af08b1d9`
 - Verdict: `REPRODUCIBILITY BASELINE READY`
+
+This is historical v1.3 provenance. Its reproducibility metadata predates v4 and will be explicitly synchronized by the next latest-workflow Stage 9 step rather than silently relabeled.
 
 ## Pre-Stage-10R JET/GEB architecture gate
 
@@ -68,6 +72,8 @@ The repair:
 7. synchronizes manuscript, exposition metadata, tests, and verification provenance;
 8. incorporates bounded Stage-11 clarifications on the welfare decomposition, endogenous-total-R&D relative FOC, and closest-literature boundary.
 
+The exact v3 freeze is now preserved at `docs/THEORY_FREEZE_v3.md` after the certification-only v4 refreeze.
+
 ## Stage 11R repeated hostile referee gate
 
 - Starting remote `main`: `4d221158ed9d1b3375a8a5e970ea9e6f5cd2afcd`
@@ -75,9 +81,8 @@ The repair:
 - Merge commit: `87108448ef5665bcc6d898911aa2179c7aa6a3bb`
 - Audit record: `docs/STAGE_11R_V3_HOSTILE_REFEREE_REGATE.md`
 - Independent continuation implementation: `scripts/stage11_independent_continuation_audit.py`
-- Active theory remains v3; no new theory change is authorized.
 
-The repeated gate independently re-audits novelty, assumptions, P2R, the quadratic policy theorem, welfare, benchmark interpretation, exposition, and the full pure-price continuation over off-path histories. The continuation audit reconstructs consumer KKT allocations directly, includes boundary R&D/scope histories and large finite price deviations, and fails closed on unresolved active sets.
+The repeated gate independently re-audited novelty, assumptions, P2R, the quadratic policy theorem, welfare, benchmark interpretation, exposition, and the full pure-price continuation over off-path histories. The continuation audit reconstructs consumer KKT allocations directly, includes boundary R&D/scope histories and large finite price deviations, and fails closed on unresolved active sets.
 
 Stage-11R classification:
 
@@ -91,8 +96,6 @@ Stage-11R classification:
 - unresolved major attacks: `0`;
 - final verdict: `GO TO JOURNAL POSITIONING`.
 
-Minor carry-forward items are limited to copy/positioning: clarify pure-strategy uniqueness wording, optionally mention `(R)` in the figure caption, and consider adjacent 2026 empirical standards/innovation evidence during journal-specific integration. None changes the frozen theory.
-
 ## Stage 12 journal positioning
 
 - Starting remote `main`: `87108448ef5665bcc6d898911aa2179c7aa6a3bb`
@@ -104,9 +107,7 @@ Minor carry-forward items are limited to copy/positioning: clarify pure-strategy
 - Optional stretch: `The Journal of Industrial Economics`
 - RAND: excluded by explicit project instruction.
 
-Current web evidence used at Stage 12 shows that IJIO explicitly covers theoretical and empirical industrial organization, technological change and regulation, and has recently published work on innovation incentives in technical standards and standard-setting/innovation. JIE is retained only as a higher-risk stretch because the surviving contribution is narrow and the exact policy theorem is quadratic-specific. RIO is the strongest fallback because recent issues continue to publish self-contained IO theory on innovation, spillovers, differentiation, and policy.
-
-No theory change is authorized by Stage 12. Journal selection follows the surviving Stage-11 result set.
+No theory change was authorized by Stage 12.
 
 ## Stage 13 IJIO full-paper integration
 
@@ -116,7 +117,7 @@ No theory change is authorized by Stage 12. Journal selection follows the surviv
 - Integration record: `docs/STAGE_13_IJIO_FULL_PAPER_INTEGRATION.md`
 - Verdict: `INTEGRATED MANUSCRIPT READY FOR SUBMISSION QA`
 
-Stage 13 sharpened the Introduction and closest-literature boundary for IJIO, added the `(R)` scope qualification to Figure 1, restricted global price-equilibrium wording to pure strategies, integrated bounded 2026 standards/innovation evidence, added Elsevier-style AI/data declarations, and prepared Highlights, cover letter, and submission metadata. The theory freeze remained v3.
+Stage 13 sharpened the Introduction and closest-literature boundary for IJIO, added the `(R)` scope qualification to Figure 1, restricted global price-equilibrium wording to pure strategies, integrated bounded standards/innovation evidence, added Elsevier-style AI/data declarations, and prepared Highlights, cover letter, and submission metadata. The theory freeze remained v3.
 
 ## Stage 14 IJIO submission QA
 
@@ -129,9 +130,11 @@ Stage 13 sharpened the Introduction and closest-literature boundary for IJIO, ad
 - Artifact ZIP SHA-256: `df90da9f8cf7e8a485702399f542eef2a232d703afcfe5acf7094377e3f47c64`
 - Verdict: `SUBMISSION QA PASS`
 
-Stage 14 reused verified author/account and declaration information from prior journal submissions, including the exact IJIO Editorial Manager article-type label `Research Paper`. It created a separate author title page while preserving the anonymous review manuscript and deliberately excluded the private street address from the public repository.
+This remains valid historical submission-QA provenance but is not the final latest-workflow submission certification after the v4 refreeze.
 
-The clean-run gate passed symbolic and numerical verification, the independent continuation audit, 11 regression tests, figure regeneration, LaTeX build, citation/cross-reference kill tests, package completeness checks, and PDF/font preflight. The exact qualified artifact was rendered and visually inspected page by page. The 16-page manuscript, separate title page, and standalone vector figure have no clipping, overlap, broken glyph, or missing-content defect. Bounded Stage-14 repairs removed visible hyperlink boxes, removed an internal title-page note, and embedded appropriate vector fonts without changing economic content.
+## Historical Stage 15 submission freeze
+
+The historical IJIO submission freeze was completed before the latest-workflow compatibility migration and before formal verification became part of the canonical freeze chain. It remains preserved as historical evidence only. A refreshed Stage 14/15 pass will be required after Stage 9 formal synchronization and the latest certification-regression recheck.
 
 ## Retroactive latest-workflow Stage 4A certification
 
@@ -139,32 +142,47 @@ The clean-run gate passed symbolic and numerical verification, the independent c
 - Stage-4A merge commit: `5d878738dccd2dbe08066eda5678b1845b2e8a1a`
 - Record: `docs/STAGE_04A_RETROACTIVE_MATH_ADVERSARIAL_CERTIFICATION.md`
 - Theorem certificates: `theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md`
+- Permanent independent audit: `scripts/stage4a_independent_equilibrium_set_audit.py`
 - Verdict: `GO — MATHEMATICAL ADVERSARIAL CERTIFICATION PASS`
 
-This retroactive gate strengthens evidence for the unchanged v3 scientific object without rewriting the historical workflow chronology.
+The permanent evaluator records `parameter_sets=126`, `histories=2142`, `player_histories=4284`, and zero unresolved cases, profitable price deviations, alternative pure price equilibria, R&D-corner failures, policy-regime failures, and welfare failures.
 
 ## Retroactive latest-workflow Stage 7.5A + Formal Verification Gate
 
 - Starting canonical main: `5d878738dccd2dbe08066eda5678b1845b2e8a1a`
 - Branch: `retro-stage075a-formal-verification`
+- Merge commit: `3648ac2d4917986f1f09873a30bbd5948fceb8b3`
 - Stage record: `docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md`
 - Formal certificate: `theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md`
 - Certified Lean source commit: `5078719c57495c510405aa0cd33e621f3a7a2ab0`
-- Dedicated Lean workflow run: `34469130983` — `success`
-- Companion full verify/package run: `34469131273` — `success`
-- Post-scope-wording full verify run: `34469426862` — `success`
+- Dedicated clean Lean workflow run: `34469130983` — `success`
+- PR-head Lean workflow run: `34471931934` — `success`
+- Merged-main Lean workflow run: `34472224655` — `success`
+- Merged-main normal verification/package run: `34472224636` — `success`
 - Lean: `v4.32.1`
 - mathlib exact commit: `520045ab14e26149ee970e2e617ca04b09bde5d6`
 - Axiom/escape-hatch status: only `propext`, `Classical.choice`, `Quot.sound`; no project-specific axiom; `PROJECT_LEAN_ESCAPE_HATCH_AUDIT=PASS`
 - Stage verdict: `GO — GENERALITY / QUANTIFIER CERTIFICATION PASS`
 - Formal state: `FORMAL VERIFICATION PASS`
 
-The gate formalizes a selected proof-critical core rather than the entire economic game. It covers the P2R order mechanism on `[0,E]`, P4 threshold/sign architecture and policy-objective algebraic fidelity, selected `(R)` continuation inequalities, welfare identities, and existing quadratic proof cores. The certificate explicitly excludes full KKT/SPNE formalization, mixed-strategy equilibrium uniqueness, and a complete machine-checked P4 differentiation/argmax chain.
+The formal gate certifies selected proof-critical cores rather than the entire economic game. Explicit exclusions include full KKT/SPNE formalization, mixed-strategy price-equilibrium uniqueness, and a complete machine-checked P4 differentiation/argmax chain.
 
-During statement-fidelity audit, two non-substantive repairs were made: the new P2R formal order theorem was aligned to the bounded R&D domain, and manuscript price-equilibrium uniqueness wording was explicitly limited to pure strategies. Neither changed the v3 scientific result set.
+## Latest-workflow Stage 8 certification-only refreeze
+
+- Pre-refreeze canonical main: `3648ac2d4917986f1f09873a30bbd5948fceb8b3`
+- Branch: `stage8-certification-only-refreeze`
+- Stage record: `docs/STAGE_08_CERTIFICATION_ONLY_REFREEZE.md`
+- New active freeze: `SSDI-THEORY-FREEZE-2026-09-10-v4`
+- Historical inherited freeze: `SSDI-THEORY-FREEZE-2026-09-06-v3`, preserved at `docs/THEORY_FREEZE_v3.md`
+- Scientific delta from v3: `NONE`
+- Verdict: `THEORY FROZEN — GO TO REPRODUCIBILITY SETUP`
+
+The v4 freeze records all latest Stage-8 mandatory registers: exact proposition quantifiers, parameter/function-class restrictions, welfare/benchmark definitions, Stage-4A certificates, Stage-7.5A claim scope, formal-verification theorem mapping/model boundary/toolchain/axiom status, off-path continuation completeness, active-set/corner handling, solver/unresolved taxonomy, multiplicity/nonexistence scope, independent verification artifacts, and permanent counterexample/regression evidence.
+
+Historical Stage-9/10 metadata remains attached to v3 until the explicit next Stage-9 synchronization; this prevents retroactive falsification of provenance.
 
 Authorized latest-workflow compatibility route:
 
-`Retroactive Stage 7.5A complete -> certification-only Stage 8 refreeze -> Stage 9 formal-artifact reproducibility synchronization -> Stage 11 certification regression -> refreshed Stage 14/15 compliance`.
+`Stage 8 v4 FROZEN -> Stage 9 formal-artifact reproducibility synchronization -> Stage 11 certification regression -> refreshed Stage 14/15 compliance`.
 
-The active scientific theory remains `SSDI-THEORY-FREEZE-2026-09-06-v3` until the certification-only Stage-8 migration step records inheritance under the latest workflow. Any substantive manuscript/theory change still requires rollback to the earliest affected stage.
+Any substantive manuscript/theory change requires rollback to the earliest affected stage. Any change to a formally certified theorem or encoded assumption makes the affected formal certificate stale until recertified.
