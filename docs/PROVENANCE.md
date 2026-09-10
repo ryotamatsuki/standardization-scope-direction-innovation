@@ -11,10 +11,11 @@
 ## Workflow authority
 
 - Repository: `ryotamatsuki/research-paper-workflow`
-- Active version: `v1.3`
-- Release commit: `3e4e6a3f76d86058024d06f9710f942e21627386`
+- Active historical production version: `v1.3`
+- Historical release commit: `3e4e6a3f76d86058024d06f9710f942e21627386`
+- Latest-workflow compatibility authority: `f48984013898696f010f0437a8cfed6b5b54bdc2`
 
-Earlier workflow references remain historical provenance only.
+Earlier workflow references remain historical provenance only. Retroactive compatibility certifications do not rewrite the original stage chronology.
 
 ## Stage 9R
 
@@ -132,8 +133,38 @@ Stage 14 reused verified author/account and declaration information from prior j
 
 The clean-run gate passed symbolic and numerical verification, the independent continuation audit, 11 regression tests, figure regeneration, LaTeX build, citation/cross-reference kill tests, package completeness checks, and PDF/font preflight. The exact qualified artifact was rendered and visually inspected page by page. The 16-page manuscript, separate title page, and standalone vector figure have no clipping, overlap, broken glyph, or missing-content defect. Bounded Stage-14 repairs removed visible hyperlink boxes, removed an internal title-page note, and embedded appropriate vector fonts without changing economic content.
 
-Authorized forward route:
+## Retroactive latest-workflow Stage 4A certification
 
-`Stage 14 complete -> Stage 15 submission freeze / authenticated Editorial Manager finalization`.
+- Scientific baseline when migration opened: `main@9678decb82ea60a6706c9212505bdd73c9915c67`
+- Stage-4A merge commit: `5d878738dccd2dbe08066eda5678b1845b2e8a1a`
+- Record: `docs/STAGE_04A_RETROACTIVE_MATH_ADVERSARIAL_CERTIFICATION.md`
+- Theorem certificates: `theorem_certificates/STAGE4A_RETROACTIVE_CERTIFICATES.md`
+- Verdict: `GO — MATHEMATICAL ADVERSARIAL CERTIFICATION PASS`
 
-Stage 15 must freeze the exact submission objects and portal entries, confirm any current live file roles, classifications, reviewer requirements, declarations, and payment conditions, and inspect the system-generated submission PDF before final Submit. Any substantive manuscript/theory change still requires rollback.
+This retroactive gate strengthens evidence for the unchanged v3 scientific object without rewriting the historical workflow chronology.
+
+## Retroactive latest-workflow Stage 7.5A + Formal Verification Gate
+
+- Starting canonical main: `5d878738dccd2dbe08066eda5678b1845b2e8a1a`
+- Branch: `retro-stage075a-formal-verification`
+- Stage record: `docs/STAGE_075A_RETROACTIVE_GENERALITY_QUANTIFIER_FORMAL_VERIFICATION.md`
+- Formal certificate: `theorem_certificates/STAGE075A_FORMAL_VERIFICATION_CERTIFICATE.md`
+- Certified Lean source commit: `5078719c57495c510405aa0cd33e621f3a7a2ab0`
+- Dedicated Lean workflow run: `34469130983` — `success`
+- Companion full verify/package run: `34469131273` — `success`
+- Post-scope-wording full verify run: `34469426862` — `success`
+- Lean: `v4.32.1`
+- mathlib exact commit: `520045ab14e26149ee970e2e617ca04b09bde5d6`
+- Axiom/escape-hatch status: only `propext`, `Classical.choice`, `Quot.sound`; no project-specific axiom; `PROJECT_LEAN_ESCAPE_HATCH_AUDIT=PASS`
+- Stage verdict: `GO — GENERALITY / QUANTIFIER CERTIFICATION PASS`
+- Formal state: `FORMAL VERIFICATION PASS`
+
+The gate formalizes a selected proof-critical core rather than the entire economic game. It covers the P2R order mechanism on `[0,E]`, P4 threshold/sign architecture and policy-objective algebraic fidelity, selected `(R)` continuation inequalities, welfare identities, and existing quadratic proof cores. The certificate explicitly excludes full KKT/SPNE formalization, mixed-strategy equilibrium uniqueness, and a complete machine-checked P4 differentiation/argmax chain.
+
+During statement-fidelity audit, two non-substantive repairs were made: the new P2R formal order theorem was aligned to the bounded R&D domain, and manuscript price-equilibrium uniqueness wording was explicitly limited to pure strategies. Neither changed the v3 scientific result set.
+
+Authorized latest-workflow compatibility route:
+
+`Retroactive Stage 7.5A complete -> certification-only Stage 8 refreeze -> Stage 9 formal-artifact reproducibility synchronization -> Stage 11 certification regression -> refreshed Stage 14/15 compliance`.
+
+The active scientific theory remains `SSDI-THEORY-FREEZE-2026-09-06-v3` until the certification-only Stage-8 migration step records inheritance under the latest workflow. Any substantive manuscript/theory change still requires rollback to the earliest affected stage.

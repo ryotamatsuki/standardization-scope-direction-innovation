@@ -5,7 +5,7 @@ defaultTargets = ["SSDI"]
 [[require]]
 name = "mathlib"
 scope = "leanprover-community"
-rev = "v4.32.1"
+rev = "520045ab14e26149ee970e2e617ca04b09bde5d6"
 
 [[lean_lib]]
 name = "SSDI"
