@@ -94,6 +94,18 @@ The repaired theory scope remains:
 - downstream price uniqueness: global pure-strategy continuation under `(R)` only;
 - coordinated symmetric-R&D benchmark: constrained benchmark with decentralized Bertrand pricing, not unrestricted first best.
 
+## Current mandatory next workflow
+
+New closest prior art identified on 2026-09-21 requires a bounded literature/novelty recertification before portal submission.
+
+Mandatory sequence:
+
+`Stage 11N Closest Prior-Art Recertification -> Stage 12R Journal Positioning Recertification -> Stage 13R Literature Integration -> refreshed Stage 14 Submission QA -> Stage 15 Submission Freeze`.
+
+Canonical plan: `docs/CLOSEST_PRIOR_ART_INTEGRATION_WORKFLOW_2026-09-21.md`.
+
+This sequence supersedes the earlier immediate-portal-preflight next action. It is literature/novelty recertification only: the active v4 theory freeze remains binding unless Stage 11N finds a genuine result-level absorption requiring explicit rollback.
+
 ## Journal positioning and current requirements gate
 
 Historical Stage 12 selected the **International Journal of Industrial Organization (IJIO)** as the primary target. The default ladder remains:
