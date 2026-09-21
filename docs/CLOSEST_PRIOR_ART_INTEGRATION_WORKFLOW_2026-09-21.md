@@ -65,7 +65,7 @@ The key surviving distinction to test is that the manuscript holds product subst
 
 ### Stage 11N — Closest Prior-Art Recertification
 
-Status: **NEXT / NOT STARTED**
+Status: **PASS — DISTINCT BUT NARROW RECERTIFIED (2026-09-21)**
 
 Tasks:
 
@@ -93,7 +93,7 @@ Completion condition: a written, source-grounded novelty verdict with no unresol
 
 ### Stage 12R — Journal Positioning Recertification
 
-Status: **BLOCKED ON STAGE 11N**
+Status: **NEXT / NOT STARTED — STAGE 11N PASSED**
 
 Tasks:
 
