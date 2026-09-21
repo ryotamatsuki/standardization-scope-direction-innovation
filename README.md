@@ -100,8 +100,9 @@ New closest prior art identified on 2026-09-21 requires a bounded literature/nov
 
 Mandatory sequence:
 
-`Stage 11N Closest Prior-Art Recertification -> Stage 12R Journal Positioning Recertification -> Stage 13R Literature Integration -> refreshed Stage 14 Submission QA -> Stage 15 Submission Freeze`.
+`Stage 11N Closest Prior-Art Recertification [PASS: DISTINCT BUT NARROW — RECERTIFIED] -> Stage 12R Journal Positioning Recertification [NEXT] -> Stage 13R Literature Integration -> refreshed Stage 14 Submission QA -> Stage 15 Submission Freeze`.
 
+Canonical Stage 11N report: `docs/STAGE_11N_CLOSEST_PRIOR_ART_RECERTIFICATION.md`.  
 Canonical plan: `docs/CLOSEST_PRIOR_ART_INTEGRATION_WORKFLOW_2026-09-21.md`.
 
 This sequence supersedes the earlier immediate-portal-preflight next action. It is literature/novelty recertification only: the active v4 theory freeze remains binding unless Stage 11N finds a genuine result-level absorption requiring explicit rollback.
