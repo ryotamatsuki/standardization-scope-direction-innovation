@@ -2,6 +2,7 @@ name: lean-formal
 
 on:
   push:
+    branches: [main]
     paths:
       - 'formal/**'
       - 'Makefile'
@@ -19,9 +20,14 @@ on:
       - '.github/workflows/lean.yml'
   workflow_dispatch:
 
+concurrency:
+  group: standardization-scope-direction-innovation-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   formal-verification:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
       - name: Install elan
